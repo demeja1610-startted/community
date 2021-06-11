@@ -1,0 +1,9 @@
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  script:
+      - sudo su - community.com -c "sh /var/www/community.com/data/www/community.com/deploy.sh"
+  only:
+    - master
