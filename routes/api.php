@@ -19,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get('/login', [AuthController::class, 'login']);
-Route::get('/register', [AuthController::class, 'register']);
+// Route::get('/login', [AuthController::class, 'login']);
+// Route::get('/register', [AuthController::class, 'register']);
 
-Route::group(['middleware' => 'auth:sanctum'], function() {
-    Route::get('/logout', [AuthController::class, 'logout']);
-});
+// Route::group(['middleware' => 'auth:sanctum'], function() {
+//     Route::get('/logout', [AuthController::class, 'logout']);
+// });

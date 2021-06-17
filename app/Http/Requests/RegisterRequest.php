@@ -40,14 +40,4 @@ class RegisterRequest extends FormRequest
             'confirmed' => 'Пароли должны совпадать',
         ];
     }
-
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(
-            response()->json([
-                'errors' => $validator->errors(),
-                'code' => 422,
-            ], 422)
-        );
-    }
 }

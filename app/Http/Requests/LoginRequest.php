@@ -39,14 +39,4 @@ class LoginRequest extends FormRequest
             'email' => RequestMessagesEnum::EMAIL,
         ];
     }
-
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(
-            response()->json([
-                'errors' => $validator->errors(),
-                'code' => 422,
-            ], 422)
-        );
-    }
 }

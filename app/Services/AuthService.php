@@ -33,7 +33,6 @@ class AuthService
 
     public function login(array $credentials)
     {
-        // dd($credentials);
         try {
             $canLogin = Auth::attempt($credentials);
 
@@ -41,13 +40,7 @@ class AuthService
                 throw new Exception('Неверный email или пароль', 401);
             }
 
-            $user = User::where('email', $credentials['email'])->first();
-
-            $token = $user->createToken('auth-token');
-
-            $user = UserResource::make($user)->addToken($token->plainTextToken);
-
-            return $user;
+            return $canLogin;
         } catch (Exception $ex) {
             return (object) [
                 'error' => $ex->getMessage(),
@@ -59,16 +52,13 @@ class AuthService
     public function logout()
     {
         try {
-            $success = auth()->user()->tokens()->delete();
+            $success = Auth::logout();
 
             if (!$success) {
                 throw new Exception('Не удалось выйти', 500);
             }
 
-            return (object) [
-                'message' => 'Вы успешно вышли',
-                'code' => 200,
-            ];
+            return $success;
         } catch (Exception $ex) {
             return (object) [
                 'error' => $ex->getMessage(),
