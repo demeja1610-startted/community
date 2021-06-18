@@ -40,4 +40,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(User::class, 'subscriptions', 'subscriber_id', 'user_id');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
