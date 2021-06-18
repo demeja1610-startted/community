@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Category;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
@@ -20,5 +21,10 @@ class Article extends Model
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function categories()
+    {
+        return $this->morphToMany(Category::class, 'categorizable');
     }
 }

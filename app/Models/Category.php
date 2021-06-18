@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use App\Models\Category;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Question extends Model
+class Category extends Model
 {
     use HasFactory, HasSlug;
 
@@ -19,12 +18,13 @@ class Question extends Model
             ->saveSlugsTo('slug');
     }
 
-    public function user() {
-        return $this->belongsTo(User::class);
+    public function articles()
+    {
+        return $this->morphedByMany(Article::class, 'categorizable');
     }
 
-    public function categories()
+    public function questions()
     {
-        return $this->morphToMany(Category::class, 'categorizable');
+        return $this->morphedByMany(Question::class, 'categorizable');
     }
 }
