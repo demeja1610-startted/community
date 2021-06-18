@@ -49,4 +49,8 @@ class User extends Authenticatable
     public function bookmarks() {
         return $this->hasMany(Bookmark::class);
     }
+
+    public function likes() {
+        return $this->hasMany(Like::class);
+    }
 }

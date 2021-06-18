@@ -41,4 +41,8 @@ class Question extends Model
     public function bookmarks() {
         return $this->morphMany(Bookmark::class, 'bookmarkable');
     }
+
+    public function likes() {
+        return $this->morphMany(Like::class, 'likable');
+    }
 }
