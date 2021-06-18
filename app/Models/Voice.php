@@ -2,15 +2,14 @@
 
 namespace App\Models;
 
-use App\Traits\HasVoices;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Voice extends Model
 {
-    use HasFactory, HasVoices;
+    use HasFactory;
 
-    public function commentable()
+    public function voiceable()
     {
         return $this->morphTo();
     }

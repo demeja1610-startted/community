@@ -24,9 +24,9 @@ class LikeFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->numberBetween(1, 50),
-            'likable_id' => $this->faker->numberBetween(1, 50),
-            'likable_type' => $this->faker->randomElement([
+            'user_id' => $this->faker->unique()->numberBetween(1, 50),
+            'likeable_id' => $this->faker->numberBetween(1, 50),
+            'likeable_type' => $this->faker->randomElement([
                 Article::class,
                 Question::class,
             ])

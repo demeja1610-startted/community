@@ -9,7 +9,7 @@ class Like extends Model
 {
     use HasFactory;
 
-    public function likable()
+    public function likeable()
     {
         return $this->morphTo();
     }
