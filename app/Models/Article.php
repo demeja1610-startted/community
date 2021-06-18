@@ -37,4 +37,8 @@ class Article extends Model
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
+
+    public function bookmarks() {
+        return $this->morphMany(Bookmark::class, 'bookmarkable');
+    }
 }
