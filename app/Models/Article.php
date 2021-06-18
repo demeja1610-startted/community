@@ -27,4 +27,9 @@ class Article extends Model
     {
         return $this->morphToMany(Category::class, 'categorizable');
     }
+
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
 }

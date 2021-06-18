@@ -19,6 +19,8 @@ class CreateCategorizablesTable extends Migration
             $table->unsignedBigInteger('categorizable_id');
             $table->string('categorizable_type');
             $table->timestamps();
+
+            $table->unique(['category_id', 'categorizable_id', 'categorizable_type'], 'poly_category_unique');
         });
     }
 
