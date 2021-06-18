@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UserSeeder extends Seeder
 {
@@ -14,6 +16,15 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $users = User::factory(50)->create();
+        $faker = Factory::create();
+
+        $users = User::factory(50)->create()->each(function($user) use ($faker){
+            DB::table('subscriptions')->insert(
+                [
+                    'user_id' => $user->id,
+                    'subscriber_id' => $faker->unique()->numberBetween(1, 50),
+                ]
+            );
+        });
     }
 }

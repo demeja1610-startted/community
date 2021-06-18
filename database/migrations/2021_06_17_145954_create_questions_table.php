@@ -20,8 +20,6 @@ class CreateQuestionsTable extends Migration
             $table->string('slug')->unique();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

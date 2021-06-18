@@ -21,11 +21,23 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function articles() {
+    public function articles()
+    {
         return $this->hasMany(Article::class);
     }
 
-    public function questions() {
+    public function questions()
+    {
         return $this->hasMany(Article::class);
+    }
+
+    public function subscribers()
+    {
+        return $this->belongsToMany(User::class, 'subscriptions', 'user_id', 'subscriber_id');
+    }
+
+    public function subscriptions()
+    {
+        return $this->belongsToMany(User::class, 'subscriptions', 'subscriber_id', 'user_id');
     }
 }
