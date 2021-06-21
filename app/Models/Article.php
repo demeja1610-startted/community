@@ -45,4 +45,9 @@ class Article extends Model
     public function likes() {
         return $this->morphMany(Like::class, 'likeable');
     }
+
+    public function images()
+    {
+        return $this->morphToMany(Image::class, 'imageable');
+    }
 }
