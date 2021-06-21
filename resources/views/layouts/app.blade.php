@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ mix('css/main.css') }}">
 </head>
 <body>
+    @include('components.notification/wrap')
     @yield('content')
 
     <script src="{{ mix('js/main.js') }}"></script>
