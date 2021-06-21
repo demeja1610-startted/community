@@ -18,6 +18,14 @@ class PermissionsEnum {
 
     public const manage_roles_and_permissions = 'manage_roles_and_permissions';
 
+    public const remove_articles = 'remove_articles';
+    public const remove_questions = 'remove_questions';
+    public const remove_users = 'remove_users';
+    public const remove_comments = 'remove_comments';
+    public const remove_categories = 'remove_categories';
+    public const remove_tags = 'remove_tags';
+    public const remove_images = 'remove_images';
+
     public static function values() {
         return [
             self::write_articles,
@@ -33,6 +41,13 @@ class PermissionsEnum {
             self::manage_tags,
             self::manage_images,
             self::manage_roles_and_permissions,
+            self::remove_articles,
+            self::remove_questions,
+            self::remove_users,
+            self::remove_comments,
+            self::remove_categories,
+            self::remove_tags,
+            self::remove_images,
         ];
     }
 }

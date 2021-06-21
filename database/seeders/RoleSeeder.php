@@ -17,7 +17,6 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        // $permissions = Permission::all();
         $rawRoles = RolesEnum::values();
         $rolesPermissions = RolesPermissionsEnum::values();
 

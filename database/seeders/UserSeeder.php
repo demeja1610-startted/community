@@ -21,12 +21,21 @@ class UserSeeder extends Seeder
         $additional_users = [
             [
                 'data' => [
+                    'name' => 'editor',
+                    'email' => 'editor@community.com',
+                    'password' => bcrypt('slnf.kjb=f23232ff-'),
+                ],
+                'roles' => [
+                    RolesEnum::editor,
+                ]
+            ],
+            [
+                'data' => [
                     'name' => 'admin',
                     'email' => 'admin@community.com',
                     'password' => bcrypt('slnf.kjb=f23232ff-'),
                 ],
                 'roles' => [
-                    RolesEnum::user,
                     RolesEnum::admin,
                 ]
             ],
@@ -37,8 +46,6 @@ class UserSeeder extends Seeder
                     'password' => bcrypt('slnf.kjb=f23232ff-'),
                 ],
                 'roles' => [
-                    RolesEnum::user,
-                    RolesEnum::admin,
                     RolesEnum::super_admin,
                 ]
             ],
