@@ -27,7 +27,7 @@ class CommentController extends Controller
         $response = $this->commentService->add($data);
 
         if(isset($response->error)) {
-            session()->flash('error', 'Не удалость добавить комментарий');
+            session()->flash('error', 'Не удалось добавить комментарий');
         } else {
             session()->flash('success', $response->message);
         }
