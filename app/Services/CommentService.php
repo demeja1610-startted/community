@@ -2,8 +2,11 @@
 
 namespace App\Services;
 
+use App\Enum\SettingsEnum;
 use App\Models\Comment;
+use App\Models\Setting;
 use Exception;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Log;
 
@@ -35,6 +38,22 @@ class CommentService
                 'parent_id' => $parent_id ?? null,
                 'user_id' => $user_id,
             ];
+
+
+
+            if(!empty($parent_id)) {
+                $parent = Comment::byId($parent_id)->with('user')->first();
+                $maxDepth = Setting::where('slug', SettingsEnum::comments_depth)->first()->value;;
+                $replyDepth = $parent->depth + 1;
+
+                $comment_data['depth'] = $replyDepth;
+                $comment_data['reply_to'] = $parent->user->id;
+
+                if($replyDepth > $maxDepth) {
+                    $comment_data['depth'] = $maxDepth;
+                    $comment_data['parent_id'] = $parent->parent_id;
+                }
+            }
 
             $comment = new Comment($comment_data);
 

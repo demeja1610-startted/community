@@ -14,6 +14,8 @@ class Comment extends Model
         'body',
         'user_id',
         'parent_id',
+        'depth',
+        'reply_to',
     ];
 
     public function commentable()
@@ -28,5 +30,13 @@ class Comment extends Model
     public function replies()
     {
         return $this->hasMany(Comment::class, 'parent_id');
+    }
+
+    public function replyTo() {
+        return $this->belongsTo(User::class, 'reply_to', 'id');
+    }
+
+    public function scopeById($query, $id) {
+        return $query->where('id', $id);
     }
 }
