@@ -10,6 +10,12 @@ class Comment extends Model
 {
     use HasFactory, HasVoices;
 
+    protected $fillable = [
+        'body',
+        'user_id',
+        'parent_id',
+    ];
+
     public function commentable()
     {
         return $this->morphTo();

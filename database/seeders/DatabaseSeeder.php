@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(PermissionSeeder::class);
         $this->call(RoleSeeder::class);
+        $this->call(ImageSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(ArticleSeeder::class);
         $this->call(QuestionSeeder::class);
@@ -24,6 +25,5 @@ class DatabaseSeeder extends Seeder
         $this->call(BookmarkSeeder::class);
         $this->call(LikeSeeder::class);
         $this->call(VoiceSeeder::class);
-        $this->call(ImageSeeder::class);
     }
 }

@@ -50,4 +50,8 @@ class Article extends Model
     {
         return $this->morphToMany(Image::class, 'imageable');
     }
+
+    public function scopeById($query, $id) {
+        return $query->where('id', $id);
+    }
 }

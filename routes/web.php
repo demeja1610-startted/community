@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Pages\LKController;
 use App\Http\Controllers\Pages\LoginController;
@@ -18,15 +20,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/**
+ * GET
+ */
 Route::get('/', [IndexController::class, 'index'])->name('page.index');
 
+/**
+ * GROUP
+ */
 Route::group(['prefix' => 'login'], function() {
     Route::get('/', [LoginController::class, 'index'])->name('page.login');
+
     Route::post('/', [AuthController::class, 'login'])->name('auth.login');
 });
 
 Route::group(['prefix' => 'register'], function() {
     Route::get('/', [RegisterController::class, 'index'])->name('page.register');
+
     Route::post('/', [AuthController::class, 'register'])->name('auth.register');
 });
 
@@ -34,4 +44,13 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
     Route::get('lk', [LKController::class, 'index'])->name('page.lk.index');
+});
+
+Route::group(['prefix' => 'articles'], function() {
+    Route::get('/', [ArticleController::class, 'index'])->name('page.articles.index');
+    Route::get('/{article_id}', [ArticleController::class, 'show'])->name('page.articles.single');
+});
+
+Route::group(['prefix' => 'comments'], function() {
+    Route::post('/add', [CommentController::class, 'add'])->name('comments.add');
 });
