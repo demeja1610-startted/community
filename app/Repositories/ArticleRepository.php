@@ -10,9 +10,9 @@ class ArticleRepository
         return Article::query()->with(['categories', 'tags', 'images'])->withCount(['comments', 'likes']);
     }
 
-    public function singlePageArticle(int $article_id)
+    public function singlePageArticle($slug)
     {
-        return Article::byId($article_id)
+        return Article::where('slug', $slug)
             ->with(['categories', 'tags', 'images'])
             ->withCount(['likes']);
     }

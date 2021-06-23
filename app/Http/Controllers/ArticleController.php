@@ -20,8 +20,8 @@ class ArticleController extends Controller
         return view('pages.articles.index', ['articles' =>  $response]);
     }
 
-    public function show($article_id) {
-        $response = $this->articleService->show($article_id);
+    public function show($slug) {
+        $response = $this->articleService->show($slug);
 
         if(isset($response->error)) {
             abort(404, 'Не найдено');

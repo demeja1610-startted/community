@@ -1,6 +1,7 @@
 <?php
 
 use App\Enum\PermissionsEnum;
+use App\Http\Controllers\Admin\AArticleController;
 use App\Http\Controllers\Admin\AIndexController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
@@ -10,8 +11,6 @@ use App\Http\Controllers\Pages\LKController;
 use App\Http\Controllers\Pages\LoginController;
 use App\Http\Controllers\Pages\RegisterController;
 use Illuminate\Support\Facades\Route;
-
-$viewAdminPages = PermissionsEnum::view_admin_pages;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,13 +51,19 @@ Route::group(['middleware' => 'auth'], function() {
 
 Route::group(['prefix' => 'articles'], function() {
     Route::get('/', [ArticleController::class, 'index'])->name('page.articles.index');
-    Route::get('/{article_id}', [ArticleController::class, 'show'])->name('page.articles.single');
+    Route::get('/{article:slug}', [ArticleController::class, 'show'])->name('page.articles.single');
 });
 
 Route::group(['prefix' => 'comments'], function() {
     Route::post('/add', [CommentController::class, 'add'])->name('comments.add');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => "can:$viewAdminPages"], function() {
-    Route::get('/', [AIndexController::class, 'index']);
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
+    $can = PermissionsEnum::manage_articles;
+    
+    Route::get('/', [AIndexController::class, 'index'])->name('admin.index');
+
+    Route::group(['prefix' => 'articles', 'middleware' => "can:$can"], function() {
+        Route::get('/', [AArticleController::class, 'index'])->name('page.admin.articles.index');
+    });
 });
