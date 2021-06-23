@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-
+const path = require('path');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -12,6 +12,8 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/scripts/main.js', 'public/js')
+    .sourceMaps()
+    .vue()
     .sourceMaps()
     .browserSync({
         host: process.env.APP_URL,
