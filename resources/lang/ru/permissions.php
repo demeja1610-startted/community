@@ -21,4 +21,5 @@ return [
    'remove_categories' => 'Удалять категории',
    'remove_tags' => 'Удалять теги',
    'remove_images' => 'Удалять изображения',
+   'view_admin_pages' => 'Заходить в админ-панель',
 ];

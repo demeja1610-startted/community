@@ -17,6 +17,10 @@ class LoginController extends Controller
     }
 
     public function index() {
-        return view('pages.login');
+        if(auth()->check()) {
+            return redirect()->route('page.lk.index');
+        } else {
+            return view('pages.login');
+        }
     }
 }

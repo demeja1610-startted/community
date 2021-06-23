@@ -22,3 +22,6 @@ mix.js('resources/assets/scripts/main.js', 'public/js')
     .sass('resources/assets/scss/main.scss', 'public/css')
     .sourceMaps()
     .copyDirectory('resources/assets/images', 'public/images')
+
+mix.js('resources/assets/scripts/admin/main.js', 'public/admin/js')
+    .sass('resources/assets/scss/admin/main.scss', 'public/admin/css')

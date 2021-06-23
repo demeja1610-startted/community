@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Enum\PermissionsEnum;
 use App\Services\AuthService;
 use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\RegisterRequest;
-use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -45,8 +47,12 @@ class AuthController extends Controller
             return redirect()->back();
         }
 
-        session()->flash('success', 'Вы успешно авторизованы');
-        return redirect()->route('page.lk.index');
+        // if(Gate::check(PermissionsEnum::view_admin_pages)) {
+        //     return redirect()->route('admin.index');
+        // } else {
+            session()->flash('success', 'Вы успешно авторизованы');
+            return redirect()->route('page.lk.index');
+        // }
     }
 
     public function logout(Request $request) {
