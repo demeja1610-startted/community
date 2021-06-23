@@ -2,10 +2,11 @@
 
 namespace App\Services;
 
+use Exception;
+use App\Models\Article;
 use App\Models\Setting;
 use App\Enum\SettingsEnum;
 use App\Repositories\ArticleRepository;
-use Exception;
 
 class ArticleService
 {
@@ -15,6 +16,12 @@ class ArticleService
     public function __construct(ArticleRepository $articleRepository)
     {
         $this->articleRepository = $articleRepository;
+    }
+
+    public function index() {
+        $articles = $this->articleRepository->articleList();
+        $paginate = Setting::where('slug', SettingsEnum::articles_pagination)->first()->value;
+        return $articles->paginate($paginate);
     }
 
     public function show(int $article_id)

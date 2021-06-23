@@ -15,9 +15,9 @@ class ArticleController extends Controller
     }
 
     public function index() {
-        $articles = Article::query()->with(['categories', 'tags', 'images'])->withCount(['comments', 'likes'])->paginate(20);
+        $response = $this->articleService->index();
 
-        return view('pages.articles.index', ['articles' =>  $articles]);
+        return view('pages.articles.index', ['articles' =>  $response]);
     }
 
     public function show($article_id) {
