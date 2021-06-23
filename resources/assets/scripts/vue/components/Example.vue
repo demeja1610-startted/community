@@ -1,13 +1,14 @@
 <template>
     <div class="text-color" v-resize="onResize">
         <div v-if="isActive" class="toggle-component">TOGGLE COMPONENT</div>
+        <p>{{size}}</p>
         <button @click.prevent="clickEvent">Кликни</button>
     </div>
 </template>
 
 <script>
 import resize from 'vue-resize-directive'
-import {mapActions} from 'vuex';
+import {mapActions, mapState} from 'vuex';
 
 export default {
     name: "Example",
@@ -19,6 +20,11 @@ export default {
     }),
     mounted() {
         console.log('mounted')
+    },
+    computed: {
+        ...mapState('common', {
+            size: 'windowSize'
+        })
     },
     methods: {
         ...mapActions({
