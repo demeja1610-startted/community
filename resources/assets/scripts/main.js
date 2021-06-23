@@ -1,3 +1,5 @@
+import VueTemplates from "./vue";
+
 window.addEventListener('DOMContentLoaded', () => {
-    console.log(1);
+    VueTemplates();
 })

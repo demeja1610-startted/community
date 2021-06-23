@@ -3,5 +3,7 @@
 @section('SeoTitle', 'Community - Main page')
 
 @section('content')
-    Main page
+    <div id="example">
+        <example></example>
+    </div>
 @endsection
