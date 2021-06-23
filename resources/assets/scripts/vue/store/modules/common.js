@@ -6,6 +6,7 @@ export default {
 
     mutations: {
         setWindowSize: (state, payLoad) => {
+            console.log(payLoad)
             state.windowSize = payLoad;
         }
     },

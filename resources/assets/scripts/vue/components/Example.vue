@@ -1,25 +1,36 @@
 <template>
     <div class="text-color" v-resize="onResize">
-        <div v-if="isActive" class="toggle-component">TOGGLE COMPONENT</div>
-        <p>{{size}}</p>
-        <button @click.prevent="clickEvent">Кликни</button>
+        <p>{{ size }}</p>
+        {{ someVar }}
+        <button @click.prevent="changeVar">Click</button>
+        <br>
+        -------------------------------------------------
+        <div v-if="values" v-for="(value, index) in values" :key="index">
+            <Test :value="value"/>
+        </div>
     </div>
 </template>
 
 <script>
 import resize from 'vue-resize-directive'
 import {mapActions, mapState} from 'vuex';
+import Test from "./Test";
 
 export default {
     name: "Example",
+    components: {Test},
     directives: {
         resize
     },
     data: () => ({
-        isActive: false
+        isActive: false,
+        someVar: '123'
     }),
+    props: {
+        values: null,
+    },
     mounted() {
-        console.log('mounted')
+        console.log(this.values)
     },
     computed: {
         ...mapState('common', {
@@ -36,6 +47,10 @@ export default {
         },
         onResize() {
             this.windowSize(window.innerWidth)
+        },
+
+        changeVar() {
+            this.someVar = 321;
         }
     }
 }
