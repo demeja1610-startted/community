@@ -3,6 +3,7 @@
 use App\Enum\PermissionsEnum;
 use App\Http\Controllers\Admin\AArticleController;
 use App\Http\Controllers\Admin\AIndexController;
+use App\Http\Controllers\Admin\AQuestionController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
@@ -59,11 +60,9 @@ Route::group(['prefix' => 'comments'], function() {
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
-    $can = PermissionsEnum::manage_articles;
-
     Route::get('/', [AIndexController::class, 'index'])->name('admin.index');
 
-    Route::group(['prefix' => 'articles', 'middleware' => "can:$can"], function() {
+    Route::group(['prefix' => 'articles'], function() {
         Route::get('/', [AArticleController::class, 'index'])->name('page.admin.articles.index');
         Route::get('/create', [AArticleController::class, 'create'])->name('page.admin.articles.create');
         Route::get('/{article_id}', [AArticleController::class, 'edit'])->name('page.admin.articles.edit');
@@ -71,5 +70,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         Route::put('/store', [AArticleController::class, 'store'])->name('admin.articles.store');
         Route::patch('/{article_id}', [AArticleController::class, 'update'])->name('admin.articles.update');
         Route::delete('/{article_id}', [AArticleController::class, 'destroy'])->name('admin.articles.delete');
+    });
+
+    Route::group(['prefix' => 'questions'], function() {
+        Route::get('/', [AQuestionController::class, 'index'])->name('page.admin.questions.index');
+        Route::get('/create', [AQuestionController::class, 'create'])->name('page.admin.questions.create');
+        Route::get('/{question_id}', [AQuestionController::class, 'edit'])->name('page.admin.questions.edit');
+
+        Route::put('/store', [AQuestionController::class, 'store'])->name('admin.questions.store');
+        Route::patch('/{question_id}', [AQuestionController::class, 'update'])->name('admin.questions.update');
+        Route::delete('/{question_id}', [AQuestionController::class, 'destroy'])->name('admin.questions.delete');
     });
 });

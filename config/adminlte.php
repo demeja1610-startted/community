@@ -250,9 +250,28 @@ return [
                     'can' => PermissionsEnum::manage_articles,
                 ],
                 [
-                    'text' => 'Добавить новую',
+                    'text' => 'Добавить статью',
                     'route' => 'page.admin.articles.create',
                     'can' => PermissionsEnum::manage_articles,
+                    'icon' => 'fas fa-plus',
+                ],
+            ],
+        ],
+        [
+            'text' => 'Вопросы',
+            'route' => 'page.admin.questions.index',
+            'icon' => 'far fa-question-circle',
+            'can' => PermissionsEnum::manage_questions,
+            'submenu' => [
+                [
+                    'text' => 'Все вопросы',
+                    'route' => 'page.admin.questions.index',
+                    'can' => PermissionsEnum::manage_questions,
+                ],
+                [
+                    'text' => 'Добавить вопрос',
+                    'route' => 'page.admin.questions.create',
+                    'can' => PermissionsEnum::manage_questions,
                     'icon' => 'fas fa-plus',
                 ],
             ],
