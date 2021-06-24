@@ -21,13 +21,26 @@
     }
 }
 
+a {
+    text-decoration: none;
+}
+
 .page-wrapper {
     display: grid;
     grid-template-columns: 1fr 320px;
-    grid-column-gap: 30px;
+    grid-column-gap: 32px;
+}
 
-    &__sidebar {
-        border: 1px solid green;
+.mrgn12 {
+    margin-top: 12px;
+    margin-bottom: 12px;
+
+    &-top {
+        margin-top: 12px;
+    }
+
+    &-bottom {
+        margin-bottom: 12px;
     }
 }
 
@@ -41,5 +54,18 @@
 
     &-bottom {
         margin-bottom: 16px;
+    }
+}
+
+.mrgn24 {
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    &-top {
+        margin-top: 24px;
+    }
+
+    &-bottom {
+        margin-bottom: 24px;
     }
 }
