@@ -17,7 +17,7 @@
     </div>
 
     <div class="container">
-        <div class="page-wrapper">
+        <div class="page-wrapper mrgn24-top">
 
             <main class="page-wrapper__content">
                 @if(!empty($articles))

@@ -3,8 +3,13 @@
     {{-- юзер, дата, просмотры --}}
     @include('components.article.elements.info')
 
+    <a href="#" class="article-card__title mrgn12-bottom">{!! $article->title !!}</a>
+
     {{-- картинка поста --}}
     @include('components.article.elements.thumbnail')
 
-    <p class="article-card__title">{!! $article->title !!}</p>
+    <div class="article-card__desc mrgn24-bottom">
+        По данным издания Search Engine Journal, Google готовит очередную революцию — ПО на базе искусственного интеллекта, которое сможет блокировать до 99% спамных ссылок в поисковой выдаче.
+    </div>
+
 </div>
