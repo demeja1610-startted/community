@@ -9,3 +9,37 @@
         box-sizing: border-box;
     }
 }
+
+.container {
+    width: 100%;
+    max-width: 1184px;
+    margin: 0 auto;
+
+    @media screen and (max-width: 1214px) {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+.page-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    grid-column-gap: 30px;
+
+    &__sidebar {
+        border: 1px solid green;
+    }
+}
+
+.mrgn16 {
+    margin-top: 16px;
+    margin-bottom: 16px;
+
+    &-top {
+        margin-top: 16px;
+    }
+
+    &-bottom {
+        margin-bottom: 16px;
+    }
+}
