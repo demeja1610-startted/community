@@ -1,0 +1,22 @@
+.button {
+    outline: none;
+    text-decoration: none;
+    appearance: none;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+
+    &_primary {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 20px;
+        color: #fff;
+        background-color: #454754;
+        padding: 8px 12px;
+
+        &:hover {
+            background-color: #686C7D;
+        }
+    }
+}

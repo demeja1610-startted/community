@@ -1,3 +1,3 @@
-<a href="{{ App::make('url')->to('/') }}" class="header-logo">
-    @include('icons.logo', ['iClasses' => 'header-logo__icon'])
+<a href="{{ App::make('url')->to('/') }}" class="{{ isset($iClasses) ? $iClasses : '' }}">
+    @include('icons.logo', ['iClasses' => isset($iClasses) ? $iClasses . '-icon' : ''])
 </a>

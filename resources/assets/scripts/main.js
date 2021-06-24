@@ -1,5 +1,5 @@
-import test from "./test/init";
+import header from "./components/header/init";
 
 window.addEventListener('DOMContentLoaded', () => {
-    test();
-})
+    header();
+});

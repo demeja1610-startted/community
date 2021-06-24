@@ -1,0 +1,12 @@
+.search-form {
+    &__inner {
+        position: relative;
+    }
+
+    &__icon {
+        position: absolute;
+        left: 13.5px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
