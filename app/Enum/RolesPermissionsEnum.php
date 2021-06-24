@@ -28,6 +28,7 @@ class RolesPermissionsEnum {
         PermissionsEnum::remove_tags,
         PermissionsEnum::manage_images,
         PermissionsEnum::remove_images,
+        PermissionsEnum::view_admin_pages,
     ];
 
     public const admin = [
@@ -50,6 +51,7 @@ class RolesPermissionsEnum {
         PermissionsEnum::remove_images,
         PermissionsEnum::manage_users,
         PermissionsEnum::remove_users,
+        PermissionsEnum::view_admin_pages,
     ];
 
     public const super_admin = [
@@ -73,6 +75,7 @@ class RolesPermissionsEnum {
         PermissionsEnum::manage_users,
         PermissionsEnum::remove_users,
         PermissionsEnum::manage_roles_and_permissions,
+        PermissionsEnum::view_admin_pages,
     ];
 
     public static function values() {

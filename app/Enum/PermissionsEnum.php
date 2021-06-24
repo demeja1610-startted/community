@@ -26,6 +26,8 @@ class PermissionsEnum {
     public const remove_tags = 'remove_tags';
     public const remove_images = 'remove_images';
 
+    public const view_admin_pages = 'view_admin_pages';
+
     public static function values() {
         return [
             self::write_articles,
@@ -48,6 +50,7 @@ class PermissionsEnum {
             self::remove_categories,
             self::remove_tags,
             self::remove_images,
+            self::view_admin_pages,
         ];
     }
 }

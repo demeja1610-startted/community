@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-
+const path = require('path');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -13,6 +13,8 @@ const mix = require('laravel-mix');
 
 mix.js('resources/assets/scripts/main.js', 'public/js')
     .sourceMaps()
+    .vue()
+    .sourceMaps()
     .browserSync({
         host: process.env.APP_URL,
         proxy: process.env.APP_URL,
@@ -21,3 +23,6 @@ mix.js('resources/assets/scripts/main.js', 'public/js')
     .sourceMaps()
     .copyDirectory('resources/assets/images', 'public/images')
     .copyDirectory('resources/assets/fonts', 'public/fonts')
+
+mix.js('resources/assets/scripts/admin/main.js', 'public/admin/js')
+    .sass('resources/assets/scss/admin/main.scss', 'public/admin/css')
