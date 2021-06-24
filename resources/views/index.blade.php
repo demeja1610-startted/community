@@ -3,7 +3,7 @@
 @section('SeoTitle', 'Community - Main page')
 
 @section('content')
-    @php
+    {{--@php
         $values = [
     'value1' => [
         'key1' => 1,
@@ -13,6 +13,7 @@
     <div id="app">
         <example :values="{{ json_encode($values) }}"></example>
         <example2></example2>
+    </div>--}}
     </div>
 
     <div class="container">
