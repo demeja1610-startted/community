@@ -29,7 +29,7 @@ class AArticleService
                 throw new Exception('Недостаточно прав для просмотра', 403);
             }
 
-            $articles = $this->articleRepository->articleList()->with('user');
+            $articles = $this->articleRepository->articleList()->with('user')->orderBy('created_at', 'DESC');
             $paginate = Setting::where('slug', SettingsEnum::articles_pagination)->first()->value;
 
             return $articles->paginate($paginate);

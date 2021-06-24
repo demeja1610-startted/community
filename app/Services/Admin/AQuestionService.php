@@ -29,7 +29,7 @@ class AQuestionService
                 throw new Exception('Недостаточно прав для просмотра', 403);
             }
 
-            $questions = $this->questionRepository->questionList()->with('user');
+            $questions = $this->questionRepository->questionList()->with('user')->orderBy('created_at', 'DESC');;
             $paginate = Setting::where('slug', SettingsEnum::articles_pagination)->first()->value;
 
             return $questions->paginate($paginate);
