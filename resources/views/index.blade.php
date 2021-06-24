@@ -14,4 +14,23 @@
         <example :values="{{ json_encode($values) }}"></example>
         <example2></example2>
     </div>
+
+    <div class="container">
+        <div class="page-wrapper">
+
+            <main class="page-wrapper__content">
+                @if(!empty($articles))
+                    @foreach($articles as $article)
+                        @include('components.article.card', compact('article'))
+                    @endforeach
+                @endif
+            </main>
+
+            <aside class="page-wrapper__sidebar">
+                @include('components.sidebar.wrap')
+            </aside>
+
+        </div>
+    </div>
+
 @endsection
