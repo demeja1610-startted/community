@@ -47,12 +47,12 @@ class AuthController extends Controller
             return redirect()->back();
         }
 
-        // if(Gate::check(PermissionsEnum::view_admin_pages)) {
-        //     return redirect()->route('admin.index');
-        // } else {
+        if(Gate::check(PermissionsEnum::view_admin_pages)) {
+            return redirect()->route('admin.index');
+        } else {
             session()->flash('success', 'Вы успешно авторизованы');
             return redirect()->route('page.lk.index');
-        // }
+        }
     }
 
     public function logout(Request $request) {

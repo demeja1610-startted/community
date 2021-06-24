@@ -24,10 +24,10 @@ class ArticleService
         return $articles->paginate($paginate);
     }
 
-    public function show(int $article_id)
+    public function show($slug)
     {
         try {
-            $article = $this->articleRepository->singlePageArticle($article_id)->first();
+            $article = $this->articleRepository->singlePageArticle($slug)->first();
 
             if(!$article) {
                 throw new Exception('Не найдено', 404);
