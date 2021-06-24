@@ -2,6 +2,7 @@
 
 use App\Enum\PermissionsEnum;
 use App\Http\Controllers\Admin\AArticleController;
+use App\Http\Controllers\Admin\ACategoryController;
 use App\Http\Controllers\Admin\AIndexController;
 use App\Http\Controllers\Admin\AQuestionController;
 use App\Http\Controllers\ArticleController;
@@ -80,5 +81,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         Route::put('/store', [AQuestionController::class, 'store'])->name('admin.questions.store');
         Route::patch('/{question_id}', [AQuestionController::class, 'update'])->name('admin.questions.update');
         Route::delete('/{question_id}', [AQuestionController::class, 'destroy'])->name('admin.questions.delete');
+    });
+
+    Route::group(['prefix' => 'categories'], function() {
+        Route::get('/', [ACategoryController::class, 'index'])->name('page.admin.categories.index');
+        Route::get('/{category_id}', [ACategoryController::class, 'edit'])->name('page.admin.categories.edit');
+
+        Route::put('/store', [ACategoryController::class, 'store'])->name('admin.categories.store');
+        Route::patch('/{category_id}', [ACategoryController::class, 'update'])->name('admin.categories.update');
+        Route::delete('/{category_id}', [ACategoryController::class, 'destroy'])->name('admin.categories.delete');
     });
 });

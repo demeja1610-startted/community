@@ -58,11 +58,13 @@
                     </tbody>
                 </table>
             </div>
-            <div class="card-footer px-3 pt-3 pb-0">
-                <div class="card-tools d-flex align-center justify-content-end">
-                    {!! $questions->links('pagination::bootstrap-4') !!}
+            @if($questions->hasPages())
+                <div class="card-footer px-3 pt-3 pb-0">
+                    <div class="card-tools d-flex align-center justify-content-end">
+                        {!! $questions->links('pagination::bootstrap-4') !!}
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
     @component('admin.components/delete-confirm-modal/wrap')

@@ -1,4 +1,4 @@
-<div class="card card-secondary mt-2 w-100">
+<div class="card card-secondary w-100 {{ $formClasses ?? '' }}">
     @isset($title)
         <div class="card-header">
             <h3 class="card-title">{{ $title }}</h3>

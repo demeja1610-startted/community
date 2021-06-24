@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enum\PermissionsEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AArticleRequest;
 use App\Services\Admin\AArticleService;

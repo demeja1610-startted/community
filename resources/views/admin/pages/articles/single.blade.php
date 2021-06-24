@@ -3,6 +3,7 @@
 @section('layoutContent')
     <div class="row">
         @component('admin.components/form/single')
+            @slot('formClasses', 'mt-2')
             @slot('submitText', isset($article) ? __('Сохранить') : __('Опубликовать') )
             @slot('action', isset($article) ?
                 route('admin.articles.update', ['article_id' => $article->id]) :

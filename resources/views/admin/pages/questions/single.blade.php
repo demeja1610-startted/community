@@ -3,6 +3,7 @@
 @section('layoutContent')
     <div class="row">
         @component('admin.components/form/single')
+            @slot('formClasses', 'mt-2')
             @slot('submitText', isset($question) ? __('Сохранить') : __('Опубликовать') )
             @slot('action', isset($question) ?
                 route('admin.questions.update', ['question_id' => $question->id]) :

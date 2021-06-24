@@ -276,6 +276,12 @@ return [
                 ],
             ],
         ],
+        [
+            'text' => 'Категории',
+            'route' => 'page.admin.categories.index',
+            'icon' => 'fas fa-list-ul',
+            'can' => PermissionsEnum::manage_categories,
+        ],
         // ['header' => 'account_settings'],
         // [
         //     'text' => 'profile',
