@@ -16,16 +16,16 @@ export default {
         textMessage: '',
     }),
     mounted() {
-        Echo.channel('socket-channel')
+        window.Echo.channel('socket-channel')
             .listen('Message', ({message}) => {
+                console.log(message)
                 this.messages.push(message)
             })
-
     },
     methods: {
         sendMessage() {
             axios.post('/messages', {body: this.textMessage})
-            this.messages.push(this.textMessage)
+            // this.messages.push(this.textMessage)
             this.textMessage = '';
         }
     }
