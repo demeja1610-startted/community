@@ -9,6 +9,7 @@
 </head>
 <body>
     @include('components.notification/wrap')
+    @include('components.header.wrap')
     @yield('content')
 
     <script src="{{ mix('js/main.js') }}"></script>
