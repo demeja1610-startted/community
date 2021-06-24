@@ -60,10 +60,16 @@ Route::group(['prefix' => 'comments'], function() {
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     $can = PermissionsEnum::manage_articles;
-    
+
     Route::get('/', [AIndexController::class, 'index'])->name('admin.index');
 
     Route::group(['prefix' => 'articles', 'middleware' => "can:$can"], function() {
         Route::get('/', [AArticleController::class, 'index'])->name('page.admin.articles.index');
+        Route::get('/create', [AArticleController::class, 'create'])->name('page.admin.articles.create');
+        Route::get('/{article_id}', [AArticleController::class, 'edit'])->name('page.admin.articles.edit');
+
+        Route::put('/store', [AArticleController::class, 'store'])->name('admin.articles.store');
+        Route::patch('/{article_id}', [AArticleController::class, 'update'])->name('admin.articles.update');
+        Route::delete('/{article_id}', [AArticleController::class, 'destroy'])->name('admin.articles.delete');
     });
 });

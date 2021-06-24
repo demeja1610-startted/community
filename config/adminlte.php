@@ -190,12 +190,12 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/admin',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
-    'password_reset_url' => 'password/reset',
-    'password_email_url' => 'password/email',
+    'password_reset_url' => false,
+    'password_email_url' => false,
     'profile_url' => false,
 
     /*
@@ -238,16 +238,24 @@ return [
         //     'type' => 'sidebar-menu-search',
         //     'text' => 'search',
         // ],
-        // [
-        //     'text' => 'blog',
-        //     'url'  => 'admin/blog',
-        //     'can'  => 'manage-blog',
-        // ],
         [
             'text' => 'Статьи',
             'route' => 'page.admin.articles.index',
             'icon' => 'far fa-newspaper',
             'can' => PermissionsEnum::manage_articles,
+            'submenu' => [
+                [
+                    'text' => 'Все статьи',
+                    'route' => 'page.admin.articles.index',
+                    'can' => PermissionsEnum::manage_articles,
+                ],
+                [
+                    'text' => 'Добавить новую',
+                    'route' => 'page.admin.articles.create',
+                    'can' => PermissionsEnum::manage_articles,
+                    'icon' => 'fas fa-plus',
+                ],
+            ],
         ],
         // ['header' => 'account_settings'],
         // [

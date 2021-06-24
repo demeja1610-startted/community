@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enum\PermissionsEnum;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\AArticleRequest;
 use App\Services\Admin\AArticleService;
 
 class AArticleController extends Controller
@@ -12,14 +13,86 @@ class AArticleController extends Controller
 
     public function __construct(AArticleService $aarticleService)
     {
-        $this->middleware('can:' . PermissionsEnum::manage_articles);
-
         $this->aarticleService = $aarticleService;
     }
 
     public function index() {
         $response = $this->aarticleService->index();
 
-        return view('admin.articles/index', ['articles' => $response]);
+        if(isset($response->error)) {
+            session()->flash('error', $response->error);
+            return redirect()->back();
+        }
+
+        return view('admin.pages/articles/index', ['articles' => $response]);
+    }
+
+    public function create() {
+        $response = $this->aarticleService->create();
+
+        if(isset($response->error)) {
+            session()->flash('error', $response->error);
+            return redirect()->back();
+        }
+
+        return view('admin.pages/articles/single');
+    }
+
+    public function store(AArticleRequest $request) {
+        $data = $request->only([
+            'title',
+            'description',
+            'user_id',
+        ]);
+
+        $response = $this->aarticleService->store($data);
+
+        if(isset($response->error)) {
+            session()->flash('error', $response->error);
+            return redirect()->back()->withInput();
+        } else {
+            session()->flash('success', $response->message);
+            return redirect()->route('page.admin.articles.edit', ['article_id' => $response->data['article_id']]);
+        }
+    }
+
+    public function edit($article_id) {
+        $response = $this->aarticleService->edit($article_id);
+
+        if(isset($response->error)) {
+            session()->flash('error', $response->error);
+            return redirect()->back();
+        }
+
+        return view('admin.pages/articles/single', ['article' => $response]);
+    }
+
+    public function update(AArticleRequest $request, $article_id) {
+        $data = $request->only([
+            'title',
+            'description',
+        ]);
+
+        $response = $this->aarticleService->update($data, $article_id);
+
+        if(isset($response->error)) {
+            session()->flash('error', $response->error);
+        } else {
+            session()->flash('success', $response->message);
+        }
+
+        return redirect()->back();
+    }
+
+    public function destroy($article_id) {
+        $response = $this->aarticleService->destroy($article_id);
+
+        if(isset($response->error)) {
+            session()->flash('error', $response->error);
+        } else {
+            session()->flash('success', $response->message);
+        }
+
+        return redirect()->back();
     }
 }
