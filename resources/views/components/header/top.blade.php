@@ -8,7 +8,7 @@
                 @include('components.logo.wrap', ['iClasses' => 'header-top__logo'])
                 <ul class="header-top__types">
                     <li>
-                        <a href="#" class="text_medium header-top__type">Статьи</a>
+                        <a href="#" class="text_medium header-top__type active">Статьи</a>
                     </li>
                     <li>
                         <a href="#" class="text_medium header-top__type">Вопросы</a>

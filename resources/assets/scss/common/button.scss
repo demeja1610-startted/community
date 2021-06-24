@@ -33,4 +33,10 @@
         align-items: center;
         justify-content: center;
     }
+
+    &_mini {
+        padding: 4px 8px;
+        font-size: 14px;
+        line-height: 20px;
+    }
 }

@@ -1,5 +1,5 @@
 .header-top {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
@@ -61,6 +61,13 @@
         color: $color_text;
         padding: 4px 8px;
         font-weight: 600;
+        border-radius: 8px;
+
+        &.active {
+            cursor: default;
+            border: 2px solid #e9eaec;
+            color: $color_text;
+        }
 
         &:hover {
             color: $color_active;

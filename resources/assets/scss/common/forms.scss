@@ -1,7 +1,7 @@
 .forms {
     &_input {
         padding: 12px;
-        border: 1px solid #BBBCC4;
+        border: 1px solid $color_border;
         background: white;
         letter-spacing: -0.13px;
         line-height: 1.15;
@@ -17,5 +17,17 @@
             font-size: 15px;
             line-height: 1.15;
         }
+    }
+
+    &_select {
+        outline: none;
+        padding: 2px 8px;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 24px;
+        letter-spacing: -0.13px;
+        min-height: auto;
+        border-radius: 8px;
+        border: 1px solid $color_border;
     }
 }
