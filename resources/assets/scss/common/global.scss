@@ -16,7 +16,7 @@
     margin-left: auto;
     margin-right: auto;
 
-    @media screen and (max-width: 1230px) {
+    @media screen and (max-width: 1214px) {
         padding-left: 15px;
         padding-right: 15px;
     }
@@ -48,13 +48,6 @@ body {
             visibility: visible;
             pointer-events: none;
         }
-    }
-}
-    margin: 0 auto;
-
-    @media screen and (max-width: 1214px) {
-        padding-left: 15px;
-        padding-right: 15px;
     }
 }
 
