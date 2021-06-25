@@ -16,4 +16,10 @@ class ArticleRepository
             ->with(['categories', 'tags', 'images'])
             ->withCount(['likes']);
     }
+
+    public function adminSingleArticle($article_id) {
+        return Article::byId($article_id)
+            ->with(['categories', 'tags', 'images'])
+            ->withCount(['likes']);
+    }
 }

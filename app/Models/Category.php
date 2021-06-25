@@ -27,4 +27,8 @@ class Category extends Model
     {
         return $this->morphedByMany(Question::class, 'categorizable');
     }
+
+    public function scopeById($query, $id) {
+        return $query->where('id', $id);
+    }
 }
