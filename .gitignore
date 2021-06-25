@@ -6,6 +6,7 @@
 /public/images
 /public/admin
 /public/vendor
+/public/fonts
 /storage/*.key
 /vendor
 .env
