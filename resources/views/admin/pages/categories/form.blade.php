@@ -21,5 +21,11 @@
             'value' => isset($category) ? $category->description : old('description'),
             'error' => 'description',
         ])
+        @include('admin.components/input/select', [
+            'label' => 'Родительская категория (необязательно)',
+            'name' => 'category_id',
+            'options' => $allCategories,
+            'placeholder' => 'Выберите родительскую категорию',
+        ])
     @endslot
 @endcomponent

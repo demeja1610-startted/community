@@ -2,13 +2,15 @@
 
 namespace App\Services\Admin;
 
-use App\Enum\PermissionsEnum;
 use Exception;
 use App\Models\Setting;
-use App\Enum\SettingsEnum;
 use App\Models\Category;
-use App\Repositories\CategoryRepository;
+use App\Enum\SettingsEnum;
+use App\Enum\PermissionsEnum;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Gate;
+use App\Repositories\CategoryRepository;
+use App\Helpers\General\CollectionHelper;
 
 class ACategoryService
 {
@@ -29,10 +31,14 @@ class ACategoryService
                 throw new Exception('Недостаточно прав для просмотра', 403);
             }
 
-            $categories = $this->categoryRepository->categoryList()->orderBy('created_at', 'DESC');
+            $categories = $this->categoryRepository->categoryList()->orderBy('created_at', 'DESC')->get();
+            $categoriesTree = $this->buildTree($categories);
             $paginate = Setting::where('slug', SettingsEnum::articles_pagination)->first()->value;
 
-            return $categories->paginate($paginate);
+            return [
+                'categories' => CollectionHelper::paginate($categoriesTree, $paginate),
+                'allCategories' => $this->categoriesForSelect($categories),
+            ];
         } catch (Exception $e) {
             return (object) [
                 'error' => $e->getMessage(),
@@ -41,7 +47,8 @@ class ACategoryService
         }
     }
 
-    public function store(array $data) {
+    public function store(array $data)
+    {
         try {
             $can = Gate::check(PermissionsEnum::manage_categories);
 
@@ -52,6 +59,10 @@ class ACategoryService
             $category = new Category();
             $category->title = $data['title'];
             $category->description = $data['description'];
+
+            if($data['category_id']) {
+                $category->category_id = $data['category_id'];
+            }
 
             $success = $category->save();
 
@@ -82,12 +93,16 @@ class ACategoryService
             }
 
             $category = $this->categoryRepository->adminSingleCategory($category_id)->first();
+            $categories = $this->categoryRepository->categoryList()->get();
 
             if (!$category) {
                 throw new Exception('Не найдено', 404);
             }
 
-            return $category;
+            return [
+                'category' => $category,
+                'allCategories' => $this->categoriesForSelect($categories, $category),
+            ];
         } catch (Exception $e) {
             return (object) [
                 'error' => $e->getMessage(),
@@ -113,6 +128,10 @@ class ACategoryService
 
             $category->title = $data['title'];
             $category->description = $data['description'];
+
+            if($data['category_id']) {
+                $category->category_id = $data['category_id'];
+            }
 
             $success = $category->save();
 
@@ -141,7 +160,16 @@ class ACategoryService
                 throw new Exception('Недостаточно прав для удаления', 403);
             }
 
-            $success = Category::destroy($category_id);
+            $category = Category::find($category_id);
+
+            if(!$category) {
+                throw new Exception('Не найдено', 404);
+            }
+
+            $childsNewCategoryId = $category->category_id ?? null;
+            $category->categories()->update(['category_id' => $childsNewCategoryId]);
+
+            $success = $category->delete();
 
             if (!$success) {
                 throw new Exception('Не удалось удалить категорию', 500);
@@ -157,5 +185,41 @@ class ACategoryService
                 'code' => $e->getCode(),
             ];
         }
+    }
+
+    public function buildTree(Collection $elements, $parentId = 0)
+    {
+        $elements = $elements->sortByDesc('depth');
+
+        foreach ($elements as $key => $element) {
+            $childs = $elements->filter(function($el) use ($element) {
+                return $el->category_id === $element->id;
+            });
+
+            if(!$childs->isEmpty()) {
+                $element->childs = $childs;
+
+                foreach ($childs as $key => $child) {
+                    $elements->forget($key);
+                }
+            }
+        }
+
+        return $elements;
+    }
+
+    public function categoriesForSelect($categories, Category $category = null) {
+        return $categories->map(function($cat) use ($category) {
+            $data = [
+                'value' => $cat->id,
+                'name' => $cat->title,
+            ];
+
+            if($category && $category->category_id === $cat->id) {
+                $data['selected'] = true;
+            }
+
+            return $data;
+        });
     }
 }
