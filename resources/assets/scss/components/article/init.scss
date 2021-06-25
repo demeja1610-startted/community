@@ -1,0 +1,20 @@
+@import "info";
+
+.article-thumbnail {
+    position: relative;
+    width: 100%;
+    // задаем автовысоту
+    padding-bottom: 47.36%;
+    border-radius: 4px;
+    overflow: hidden;
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        object-fit: cover;
+    }
+}

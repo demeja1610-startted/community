@@ -3,7 +3,7 @@
 @section('SeoTitle', 'Community - Main page')
 
 @section('content')
-    @php
+    {{--@php
         $values = [
     'value1' => [
         'key1' => 1,
@@ -13,5 +13,25 @@
     <div id="app">
         <example :values="{{ json_encode($values) }}"></example>
         <example2></example2>
+    </div>--}}
     </div>
+
+    <div class="container">
+        <div class="page-wrapper mrgn24-top">
+
+            <main class="page-wrapper__content">
+                @if(!empty($articles))
+                    @foreach($articles as $article)
+                        @include('components.article.card', compact('article'))
+                    @endforeach
+                @endif
+            </main>
+
+            <aside class="page-wrapper__sidebar">
+                @include('components.sidebar.wrap')
+            </aside>
+
+        </div>
+    </div>
+
 @endsection
