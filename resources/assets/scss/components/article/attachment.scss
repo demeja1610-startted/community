@@ -1,0 +1,46 @@
+.article-attachment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__button {
+        padding: 4px 12px;
+        border-radius: 8px;
+    }
+
+    &__like {
+        display: flex;
+        align-items: center;
+
+        &-count {
+            padding: 0 8px;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 24px;
+            letter-spacing: -0.13px;
+            color: #3baf18;
+        }
+
+        &-link {
+            padding: 4px;
+            background: #f7f7f8;
+            border-radius: 50%;
+
+            svg {
+                width: 24px;
+                height: 24px;
+                fill: #686c7d;
+            }
+
+            &:hover {
+                .article-attachment__like-down {
+                    fill: #f23218;
+                }
+
+                .article-attachment__like-top {
+                    fill: #3baf18;
+                }
+            }
+        }
+    }
+}

@@ -13,6 +13,6 @@
     </div>
 
     {{-- кнопка-ссылка, лайки --}}
-    @include('components.article.elements.attachment')
+    @include('components.article.elements.attachment', ['like' => true])
 
 </div>
