@@ -1,5 +1,5 @@
 export default function header() {
-    let body = document.querySelector('body');
+    let body = document.querySelector('.body-wrap');
     let mobileMenu = document.querySelector('.mobile-menu');
     let closeMobileMenuButton = document.querySelector('.mobile-menu__close');
     let searchMobileButton = document.querySelector('.header-top__search-mobile');
