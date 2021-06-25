@@ -1,6 +1,6 @@
 <div class="article-attachment {{ $class ?? '' }}">
     <div class="article-attachment__left">
-        <a href="#" class="button button_light button_mini article-attachment__button">Администрирование</a>
+        <a href="#" class="button button_light button_mini article-attachment__button">Новости</a>
     </div>
 
     @if(!empty($like))

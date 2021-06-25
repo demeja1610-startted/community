@@ -1,1 +1,3 @@
-сайдбар
+<div class="sidebar">
+    сайдбар
+</div>
