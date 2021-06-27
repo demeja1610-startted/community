@@ -3,7 +3,7 @@
     {{-- юзер, дата, просмотры --}}
     @include('components.article.elements.info')
 
-    <a href="#" class="article-card__title mrgn12-bottom">{!! $article->title !!}</a>
+    <a href="/articles/{{ $article->slug }}" class="article-card__title mrgn12-bottom">{!! $article->title !!}</a>
 
     {{-- обсудить, в закладки --}}
     @include('components.article.elements.discuss')
