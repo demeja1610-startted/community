@@ -5,11 +5,14 @@
 
     <h1 class="article-single__title mrgn16-bottom">{!! $article->title !!}</h1>
 
+    {{-- обсудить, в закладки --}}
+    @include('components.article.elements.discuss')
+
     {{-- картинка поста --}}
     @include('components.article.elements.thumbnail')
 
     {{-- кнопка-ссылка, лайки --}}
-    @include('components.article.elements.attachment', ['class' => 'mrgn24-bottom'])
+    @include('components.article.elements.attachment', ['class' => 'mrgn24-bottom', 'tags' => true])
 
 </article>
 

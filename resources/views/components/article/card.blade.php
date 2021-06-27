@@ -5,6 +5,9 @@
 
     <a href="#" class="article-card__title mrgn12-bottom">{!! $article->title !!}</a>
 
+    {{-- обсудить, в закладки --}}
+    @include('components.article.elements.discuss')
+
     {{-- картинка поста --}}
     @include('components.article.elements.thumbnail')
 

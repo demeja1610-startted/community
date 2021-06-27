@@ -1,6 +1,16 @@
 <div class="article-attachment {{ $class ?? '' }}">
     <div class="article-attachment__left">
         <a href="#" class="button button_light button_mini article-attachment__button">Новости</a>
+
+        @if(!empty($tags))
+            {{-- выводим теги только на индивидуалке --}}
+            <div class="article-attachment__tags">
+                <a href="#" class="article-attachment__tags-item">#Google</a>
+                <a href="#" class="article-attachment__tags-item">#Microsoft</a>
+                <a href="#" class="article-attachment__tags-item">#WordPress</a>
+                <a href="#" class="article-attachment__tags-item">#SEO</a>
+            </div>
+        @endif
     </div>
 
     @if(!empty($like))
