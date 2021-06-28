@@ -1,0 +1,29 @@
+.text {
+    &_medium {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 24px;
+        letter-spacing: -0.13px;
+    }
+
+    &_bold {
+        font-weight: 800;
+        font-size: 26px;
+        line-height: 36px;
+        letter-spacing: -0.53px;
+    }
+
+    &_small {
+        font-size: 13px;
+        line-height: 16px;
+        letter-spacing: -0.04px;
+    }
+
+    &_big {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 28px;
+        letter-spacing: -0.26px;
+    }
+
+}

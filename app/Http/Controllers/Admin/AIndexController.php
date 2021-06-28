@@ -7,6 +7,6 @@ use App\Http\Controllers\Controller;
 class AIndexController extends Controller
 {
     public function index() {
-        return view('admin.index');
+        return view('admin.pages/index');
     }
 }

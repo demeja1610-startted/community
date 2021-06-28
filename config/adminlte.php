@@ -190,12 +190,12 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/admin',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
-    'password_reset_url' => 'password/reset',
-    'password_email_url' => 'password/email',
+    'password_reset_url' => false,
+    'password_email_url' => false,
     'profile_url' => false,
 
     /*
@@ -238,16 +238,49 @@ return [
         //     'type' => 'sidebar-menu-search',
         //     'text' => 'search',
         // ],
-        // [
-        //     'text' => 'blog',
-        //     'url'  => 'admin/blog',
-        //     'can'  => 'manage-blog',
-        // ],
         [
             'text' => 'Статьи',
             'route' => 'page.admin.articles.index',
             'icon' => 'far fa-newspaper',
             'can' => PermissionsEnum::manage_articles,
+            'submenu' => [
+                [
+                    'text' => 'Все статьи',
+                    'route' => 'page.admin.articles.index',
+                    'can' => PermissionsEnum::manage_articles,
+                ],
+                [
+                    'text' => 'Добавить статью',
+                    'route' => 'page.admin.articles.create',
+                    'can' => PermissionsEnum::manage_articles,
+                    'icon' => 'fas fa-plus',
+                ],
+            ],
+        ],
+        [
+            'text' => 'Вопросы',
+            'route' => 'page.admin.questions.index',
+            'icon' => 'far fa-question-circle',
+            'can' => PermissionsEnum::manage_questions,
+            'submenu' => [
+                [
+                    'text' => 'Все вопросы',
+                    'route' => 'page.admin.questions.index',
+                    'can' => PermissionsEnum::manage_questions,
+                ],
+                [
+                    'text' => 'Добавить вопрос',
+                    'route' => 'page.admin.questions.create',
+                    'can' => PermissionsEnum::manage_questions,
+                    'icon' => 'fas fa-plus',
+                ],
+            ],
+        ],
+        [
+            'text' => 'Категории',
+            'route' => 'page.admin.categories.index',
+            'icon' => 'fas fa-list-ul',
+            'can' => PermissionsEnum::manage_categories,
         ],
         // ['header' => 'account_settings'],
         // [
@@ -372,16 +405,16 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
                 ],
             ],

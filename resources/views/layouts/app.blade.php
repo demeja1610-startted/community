@@ -7,9 +7,12 @@
     <title>@yield('SeoTitle')</title>
     <link rel="stylesheet" href="{{ mix('css/main.css') }}">
 </head>
-<body>
+<body class="body-wrap">
+
     @include('components.notification/wrap')
+    @include('components.header.wrap')
     @yield('content')
+    @include('components.mobile-menu.wrap')
 
     <script src="{{ mix('js/main.js') }}"></script>
 </body>

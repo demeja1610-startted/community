@@ -1,0 +1,37 @@
+.post-actions {
+    display: flex;
+    align-items: center;
+
+    @media screen and (max-width: 767px) {
+        margin-top: 16px;
+    }
+
+    &__action {
+        display: flex;
+        align-items: center;
+        padding: 6px 8px;
+        margin-right: 8px;
+        color: #686C7D;
+        position: relative;
+        z-index: 2;
+        cursor: pointer;
+        border-radius: 6px;
+
+        &:hover {
+            color: $color_text;
+            background: $color_bg;
+        }
+    }
+
+    &__answers {
+        span {
+            margin-left: 4px;
+        }
+    }
+
+    &__bookmark {
+        span {
+            margin-left: 8px;
+        }
+    }
+}
