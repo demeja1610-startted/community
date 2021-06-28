@@ -11,12 +11,13 @@
                 <table class="table table-responsive-xl">
                     <thead>
                         <tr>
-                            <th class="text-center">{{ __('ID') }}</th>
+                            <th class="text-center" style="width: 10px">{{ __('ID') }}</th>
                             <th class="text-center">{{ __('Название') }}</th>
                             <th class="text-center">{{ __('Автор') }}</th>
-                            <th class="text-center">{{ __('Кол-во просмотров') }}</th>
+                            {{-- <th class="text-center">{{ __('Кол-во просмотров') }}</th> --}}
                             <th class="text-center">{{ __('Дата создания') }}</th>
-                            <th class="text-center">{{ __('Дата редактирования') }}</th>
+                            {{-- <th class="text-center">{{ __('Дата редактирования') }}</th> --}}
+                            <th class="text-center">{{ __('Опубликовано') }}</th>
                             <th class="text-center">{{ __('Действия') }}</th>
                         </tr>
                     </thead>
@@ -30,9 +31,9 @@
                                     </a>
                                 </td>
                                 <td class="text-center">{{ $article->user->name }}</td>
-                                <td class="text-center"><span class="badge bg-primary">{{ $article->views }}</span></td>
+                                {{-- <td class="text-center"><span class="badge bg-primary">{{ $article->views }}</span></td> --}}
                                 <td class="text-center">{{ $article->created_at }}</td>
-                                <td class="text-center">{{ $article->updated_at }}</td>
+                                <td class="text-center">{{ $article->is_published ? __('Да') : __('Нет') }}</td>
                                 <td class="text-center">
                                     <a
                                         href="{{ route('page.admin.articles.edit', ['article_id' => $article->id]) }}"
@@ -53,7 +54,7 @@
                                 </td>
                             </tr>
                         @empty
-
+                            <p class="text">{{ __('Статей не найдено') }}</p>
                         @endforelse
                     </tbody>
                 </table>

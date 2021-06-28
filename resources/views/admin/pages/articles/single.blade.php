@@ -28,6 +28,13 @@
                     'value' => isset($article) ? $article->description : old('description'),
                     'error' => 'description',
                 ])
+                @include('admin.components/input/toggler', [
+                    'name' => 'is_published',
+                    'label' => 'Опубликовать',
+                    'id' => 'publish_toggler',
+                    'labelClasses' => 'curp',
+                    'checked' => $article->is_published ? true : false,
+                ])
             @endslot
         @endcomponent
     </div>

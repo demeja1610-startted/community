@@ -42,6 +42,7 @@ class AArticleController extends Controller
             'title',
             'description',
             'user_id',
+            'is_published',
         ]);
 
         $response = $this->aarticleService->store($data);
@@ -70,6 +71,7 @@ class AArticleController extends Controller
         $data = $request->only([
             'title',
             'description',
+            'is_published',
         ]);
 
         $response = $this->aarticleService->update($data, $article_id);
