@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ mix('css/main.css') }}">
 </head>
 <body class="body-wrap">
-
+@include('components.auth.login')
 @include('components.notification/wrap')
 @include('components.header.wrap')
 @yield('content')
