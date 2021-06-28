@@ -1,0 +1,40 @@
+.article-mini {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+        text-decoration: none;
+        color: #0E0E0F;
+        margin-bottom: 12px;
+    }
+
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__discuss {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-decoration: none;
+        color: $color_gery;
+
+        &-title {
+            margin-left: 5px;
+            font-weight: 500;
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+            fill: $color_gery;
+        }
+    }
+
+    &__date {
+        color: $color_gery;
+        font-weight: 500;
+    }
+}

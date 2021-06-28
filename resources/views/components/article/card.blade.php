@@ -1,9 +1,10 @@
 <div class="article-card">
 
     {{-- юзер, дата, просмотры --}}
-    @include('components.article.elements.info')
+{{--    @include('components.article.elements.info')--}}
+    @include('components.question-information.wrap', ['avatar' => URL::asset('/images/no-avatar.svg'), 'name' => 'Александра Черенкова', 'date' => '14 июня в 19:26', 'viewsCount' => '497'])
 
-    <a href="#" class="article-card__title mrgn12-bottom">{!! $article->title !!}</a>
+    <a href="{{ route('page.articles.single', ['article' => $article]) }}" class="article-card__title mrgn12-bottom">{!! $article->title !!}</a>
 
     {{-- картинка поста --}}
     @include('components.article.elements.thumbnail')

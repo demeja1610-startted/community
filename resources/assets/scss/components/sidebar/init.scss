@@ -1,0 +1,13 @@
+@import "popular";
+
+.sidebar {
+    &__item {
+        padding: 20px;
+        background-color: #E7F3F9;
+        border-radius: 10px;
+    }
+
+    &__title {
+        font-weight: 600;
+    }
+}

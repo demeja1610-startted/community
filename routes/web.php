@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ACategoryController;
 use App\Http\Controllers\Admin\AIndexController;
 use App\Http\Controllers\Admin\AQuestionController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\IndexController;
@@ -54,6 +55,11 @@ Route::group(['middleware' => 'auth'], function() {
 Route::group(['prefix' => 'articles'], function() {
     Route::get('/', [ArticleController::class, 'index'])->name('page.articles.index');
     Route::get('/{article:slug}', [ArticleController::class, 'show'])->name('page.articles.single');
+});
+
+Route::group(['prefix' => 'questions'], function() {
+    Route::get('/', [QuestionController::class, 'index'])->name('page.questions.index');
+    Route::get('/{question:slug}', [QuestionController::class, 'show'])->name('page.questions.single');
 });
 
 Route::group(['prefix' => 'comments'], function() {

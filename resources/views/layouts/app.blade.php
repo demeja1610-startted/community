@@ -11,7 +11,19 @@
 
     @include('components.notification/wrap')
     @include('components.header.wrap')
-    @yield('content')
+    <div class="container">
+        <div class="page-wrapper mrgn24-top">
+
+            <main class="page-wrapper__content">
+                @yield('content')
+            </main>
+
+            <aside class="page-wrapper__sidebar">
+                @include('components.sidebar.wrap')
+            </aside>
+
+        </div>
+    </div>
     @include('components.mobile-menu.wrap')
 
     <script src="{{ mix('js/main.js') }}"></script>
