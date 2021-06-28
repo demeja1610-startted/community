@@ -16,7 +16,7 @@
     margin-left: auto;
     margin-right: auto;
 
-    @media screen and (max-width: 1230px) {
+    @media screen and (max-width: 1214px) {
         padding-left: 15px;
         padding-right: 15px;
     }
@@ -48,5 +48,54 @@
             visibility: visible;
             pointer-events: none;
         }
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+.page-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    grid-column-gap: 32px;
+}
+
+.mrgn12 {
+    margin-top: 12px;
+    margin-bottom: 12px;
+
+    &-top {
+        margin-top: 12px;
+    }
+
+    &-bottom {
+        margin-bottom: 12px;
+    }
+}
+
+.mrgn16 {
+    margin-top: 16px;
+    margin-bottom: 16px;
+
+    &-top {
+        margin-top: 16px;
+    }
+
+    &-bottom {
+        margin-bottom: 16px;
+    }
+}
+
+.mrgn24 {
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    &-top {
+        margin-top: 24px;
+    }
+
+    &-bottom {
+        margin-bottom: 24px;
     }
 }
