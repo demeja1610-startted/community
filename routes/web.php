@@ -64,7 +64,6 @@ Route::group(['prefix' => 'questions'], function() {
     Route::get('/{question:slug}', [QuestionController::class, 'show'])->name('page.questions.single');
 });
 
-Route::group(['prefix' => 'comments'], function() {
 Route::group(['prefix' => 'comments'], function () {
     Route::post('/add', [CommentController::class, 'add'])->name('comments.add');
 });
