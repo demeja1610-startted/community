@@ -9,11 +9,11 @@
 </head>
 <body class="body-wrap">
 
-    @include('components.notification/wrap')
-    @include('components.header.wrap')
-    @yield('content')
-    @include('components.mobile-menu.wrap')
+@include('components.notification/wrap')
+@include('components.header.wrap')
+@yield('content')
+@include('components.mobile-menu.wrap')
 
-    <script src="{{ mix('js/main.js') }}"></script>
+<script src="{{ mix('js/main.js') }}"></script>
 </body>
 </html>
