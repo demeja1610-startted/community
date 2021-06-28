@@ -7,11 +7,11 @@ use App\Models\Tag;
 class TagRepository
 {
     public function tagList() {
-        $categories =  Tag::query();
+        $tags =  Tag::query();
 
-        $categories->withCount(['articles', 'questions']);
+        $tags->withCount(['articles', 'questions']);
 
-        return $categories;
+        return $tags;
     }
 
     public function adminSingleTag($tag_id) {

@@ -3,6 +3,7 @@
 use App\Enum\PermissionsEnum;
 use App\Http\Controllers\Admin\AArticleController;
 use App\Http\Controllers\Admin\ACategoryController;
+use App\Http\Controllers\Admin\ACommentController;
 use App\Http\Controllers\Admin\AIndexController;
 use App\Http\Controllers\Admin\AQuestionController;
 use App\Http\Controllers\Admin\ATagController;
@@ -100,5 +101,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         Route::put('/store', [ATagController::class, 'store'])->name('admin.tags.store');
         Route::patch('/{tag_id}', [ATagController::class, 'update'])->name('admin.tags.update');
         Route::delete('/{tag_id}', [ATagController::class, 'destroy'])->name('admin.tags.delete');
+    });
+
+    Route::group(['prefix' => 'comments'], function() {
+        Route::get('/', [ACommentController::class, 'index'])->name('page.admin.comments.index');
+        Route::get('/{comment_id}', [ACommentController::class, 'edit'])->name('page.admin.comments.edit');
+
+        Route::patch('/{comment_id}', [ACommentController::class, 'update'])->name('admin.comments.update');
+        Route::delete('/{comment_id}', [ACommentController::class, 'destroy'])->name('admin.comments.delete');
     });
 });
