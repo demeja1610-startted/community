@@ -14,9 +14,8 @@
                             <th class="text-center">{{ __('ID') }}</th>
                             <th class="text-center">{{ __('Название') }}</th>
                             <th class="text-center">{{ __('Автор') }}</th>
-                            <th class="text-center">{{ __('Кол-во просмотров') }}</th>
                             <th class="text-center">{{ __('Дата создания') }}</th>
-                            <th class="text-center">{{ __('Дата редактирования') }}</th>
+                            <th class="text-center">{{ __('Опубликовано') }}</th>
                             <th class="text-center">{{ __('Действия') }}</th>
                         </tr>
                     </thead>
@@ -30,9 +29,8 @@
                                     </a>
                                 </td>
                                 <td class="text-center">{{ $question->user->name }}</td>
-                                <td class="text-center"><span class="badge bg-primary">{{ $question->views }}</span></td>
                                 <td class="text-center">{{ $question->created_at }}</td>
-                                <td class="text-center">{{ $question->updated_at }}</td>
+                                <td class="text-center">{{ $question->is_published ? __('Да') : __('Нет') }}</td>
                                 <td class="text-center">
                                     <a
                                         href="{{ route('page.admin.questions.edit', ['question_id' => $question->id]) }}"
