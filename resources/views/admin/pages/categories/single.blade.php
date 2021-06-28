@@ -2,6 +2,6 @@
 
 @section('layoutContent')
     <div class="row">
-        @include('admin.pages/categories/form', ['category' => $category])
+        @include('admin.components/categories/form', ['category' => $category])
     </div>
 @endsection
