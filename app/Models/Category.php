@@ -11,6 +11,12 @@ class Category extends Model
 {
     use HasFactory, HasSlug;
 
+    protected $fillable = [
+        'title',
+        'description',
+        'category_id',
+    ];
+
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()
@@ -31,4 +37,14 @@ class Category extends Model
     public function scopeById($query, $id) {
         return $query->where('id', $id);
     }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
+
+    public function childrenCategories()
+{
+    return $this->hasMany(Category::class)->with('categories');
+}
 }

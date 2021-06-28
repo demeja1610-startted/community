@@ -58,4 +58,8 @@ class User extends Authenticatable
     public function voices() {
         return $this->hasMany(Voice::class);
     }
+
+    public function avatar() {
+        return $this->belongsTo(Image::class, 'avatar', 'id');
+    }
 }
