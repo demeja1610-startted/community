@@ -32,6 +32,10 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
+
+        &:hover {
+            background-color: $color_bg;
+        }
     }
 
     &_mini {

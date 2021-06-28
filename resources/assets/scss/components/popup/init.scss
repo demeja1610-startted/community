@@ -1,0 +1,38 @@
+.popup {
+    position: fixed;
+    opacity: 0;
+    visibility: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &__title {
+        font-size: 23px;
+    }
+
+    &__cross {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+
+        path {
+            fill: $color_grey;
+        }
+
+        &-item {
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    &_auth {
+        width: 440px;
+        background-color: #fff;
+        padding: 16px 24px;
+        border-radius: 10px;
+
+        @media screen and (max-width: 767px) {
+            width: 95%;
+        }
+    }
+}
