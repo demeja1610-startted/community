@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./resources/assets/scripts/admin/main.js"],"names":["window","addEventListener","console","log","$"],"mappings":"AAAAA,OAAOC,iBAAiB,oBAAoB,WACxCC,QAAQC,IAAIC,EAAE","file":"/admin/js/main.js","sourcesContent":["window.addEventListener('DOMContentLoaded', () => {\n    console.log($('a'));\n})\n"],"sourceRoot":""}
