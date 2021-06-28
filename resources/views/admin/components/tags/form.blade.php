@@ -22,4 +22,7 @@
             'error' => 'description',
         ])
     @endslot
+    @isset($formWrapperClasses)
+        @slot('formWrapperClasses', $formWrapperClasses )
+    @endisset
 @endcomponent

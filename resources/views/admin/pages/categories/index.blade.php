@@ -6,9 +6,9 @@
 
 @section('layoutContent')
     <div class="row">
-        <div class="col-12 col-xl-6">
-            @include('admin.components/categories/form')
-        </div>
+        @include('admin.components/categories/form', [
+            'formWrapperClasses' => 'col-12 col-xl-6',
+        ])
         <div class="col-12 col-xl-6">
             <div class="card">
                 <div class="card-header">

@@ -33,7 +33,7 @@
                     'label' => 'Опубликовать',
                     'id' => 'publish_toggler',
                     'labelClasses' => 'curp',
-                    'checked' => $question->is_published ? true : false,
+                    'checked' => isset($question) &&  $question->is_published ? true : false,
                 ])
             @endslot
         @endcomponent
