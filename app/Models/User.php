@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -47,15 +48,38 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    public function bookmarks() {
+    public function answers()
+    {
+        return $this->comments()->where('commentable_type', Question::class);
+    }
+
+    public function articleComments()
+    {
+        return $this->comments()->where('commentable_type', Article::class);
+    }
+
+    public function commentsByCommentableType(Model $model)
+    {
+        return $this->comments()->where('commentable_type', get_class($model));
+    }
+
+    public function bookmarks()
+    {
         return $this->hasMany(Bookmark::class);
     }
 
-    public function likes() {
+    public function likes()
+    {
         return $this->hasMany(Like::class);
     }
 
-    public function voices() {
+    public function voices()
+    {
         return $this->hasMany(Voice::class);
+    }
+
+    public function avatar()
+    {
+        return $this->belongsTo(Image::class, 'avatar', 'id');
     }
 }

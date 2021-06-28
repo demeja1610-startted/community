@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ACategoryRequest;
+use App\Models\Category;
 use App\Services\Admin\ACategoryService;
 
 class ACategoryController extends Controller
@@ -23,24 +24,14 @@ class ACategoryController extends Controller
             return redirect()->back();
         }
 
-        return view('admin.pages/categories/index', ['categories' => $response]);
+        return view('admin.pages/categories/index', $response);
     }
-
-    // public function create() {
-    //     $response = $this->aarticleService->create();
-
-    //     if(isset($response->error)) {
-    //         session()->flash('error', $response->error);
-    //         return redirect()->back();
-    //     }
-
-    //     return view('admin.pages/articles/single');
-    // }
 
     public function store(ACategoryRequest $request) {
         $data = $request->only([
             'title',
             'description',
+            'category_id',
         ]);
 
         $response = $this->aCategoryService->store($data);
@@ -62,13 +53,14 @@ class ACategoryController extends Controller
             return redirect()->back();
         }
 
-        return view('admin.pages/categories/single', ['category' => $response]);
+        return view('admin.pages/categories/single', $response);
     }
 
     public function update(ACategoryRequest $request, $category_id) {
         $data = $request->only([
             'title',
             'description',
+            'category_id',
         ]);
 
         $response = $this->aCategoryService->update($data, $category_id);

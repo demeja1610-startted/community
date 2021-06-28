@@ -1,0 +1,50 @@
+.article-discuss {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    &__icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 4px;
+        fill: #686c7d;
+    }
+
+    &__link {
+        padding: 6px 8px;
+        border: none;
+        background: none;
+        border-radius: 6px;
+        font-size: 15px;
+        line-height: 24px;
+        letter-spacing: -0.13px;
+        font-weight: 500;
+        color: #686c7d;
+
+        &-message {
+            padding-left: 0;
+            margin-right: 8px;
+
+            &:hover {
+                background: none;
+                color: #075f88;
+
+                .article-discuss__icon {
+                    fill: #075f88;
+                }
+            }
+        }
+
+        &-bookmark {
+            &:hover {
+                background: #f7f7f8;
+            }
+
+            .article-discuss__icon {
+                width: 24px;
+                height: 24px;
+                margin-right: 6px;
+            }
+        }
+    }
+}
