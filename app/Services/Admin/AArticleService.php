@@ -71,6 +71,7 @@ class AArticleService
             $article->title = $data['title'];
             $article->description = $data['description'];
             $article->user_id = $data['user_id'];
+            $article->is_published = isset($data['is_published']) ? true : false;
 
             $success = $article->save();
 
@@ -135,6 +136,7 @@ class AArticleService
 
             $article->title = $data['title'];
             $article->description = $data['description'];
+            $article->is_published = isset($data['is_published']) ? true : false;
 
             $success = $article->save();
 

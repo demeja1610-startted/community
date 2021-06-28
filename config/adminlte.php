@@ -282,6 +282,18 @@ return [
             'icon' => 'fas fa-list-ul',
             'can' => PermissionsEnum::manage_categories,
         ],
+        [
+            'text' => 'Теги',
+            'route' => 'page.admin.tags.index',
+            'icon' => 'fas fa-tags',
+            'can' => PermissionsEnum::manage_tags,
+        ],
+        [
+            'text' => 'Комментарии',
+            'route' => 'page.admin.comments.index',
+            'icon' => 'fas fa-comments',
+            'can' => PermissionsEnum::manage_comments,
+        ],
         // ['header' => 'account_settings'],
         // [
         //     'text' => 'profile',

@@ -1,0 +1,12 @@
+.text {
+    &-clamp {
+        @for $var from 1 to 9 {
+            &-#{$var} {
+                display: -webkit-box;
+                -webkit-line-clamp: #{$var};
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+        }
+    }
+}

@@ -3,7 +3,11 @@
 use App\Enum\PermissionsEnum;
 use App\Events\Message;
 use App\Http\Controllers\Admin\AArticleController;
+use App\Http\Controllers\Admin\ACategoryController;
+use App\Http\Controllers\Admin\ACommentController;
 use App\Http\Controllers\Admin\AIndexController;
+use App\Http\Controllers\Admin\AQuestionController;
+use App\Http\Controllers\Admin\ATagController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
@@ -92,6 +96,23 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::put('/store', [ACategoryController::class, 'store'])->name('admin.categories.store');
         Route::patch('/{category_id}', [ACategoryController::class, 'update'])->name('admin.categories.update');
         Route::delete('/{category_id}', [ACategoryController::class, 'destroy'])->name('admin.categories.delete');
+    });
+
+    Route::group(['prefix' => 'tags'], function() {
+        Route::get('/', [ATagController::class, 'index'])->name('page.admin.tags.index');
+        Route::get('/{tag_id}', [ATagController::class, 'edit'])->name('page.admin.tags.edit');
+
+        Route::put('/store', [ATagController::class, 'store'])->name('admin.tags.store');
+        Route::patch('/{tag_id}', [ATagController::class, 'update'])->name('admin.tags.update');
+        Route::delete('/{tag_id}', [ATagController::class, 'destroy'])->name('admin.tags.delete');
+    });
+
+    Route::group(['prefix' => 'comments'], function() {
+        Route::get('/', [ACommentController::class, 'index'])->name('page.admin.comments.index');
+        Route::get('/{comment_id}', [ACommentController::class, 'edit'])->name('page.admin.comments.edit');
+
+        Route::patch('/{comment_id}', [ACommentController::class, 'update'])->name('admin.comments.update');
+        Route::delete('/{comment_id}', [ACommentController::class, 'destroy'])->name('admin.comments.delete');
     });
 });
 
