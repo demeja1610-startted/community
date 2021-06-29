@@ -39,16 +39,22 @@
                                 @include('admin.components/loop-table/table-cell', ['cellContent' => $article->created_at, 'cellClasses' => 'w-10'])
                                 @include('admin.components/loop-table/table-cell', ['cellContent' => $article->is_published ? __('Да') : __('Нет'), 'cellClasses' => 'w-10'])
                                 @component('admin.components/loop-table/table-cell', ['cellClasses' => 'w-10'])
-                                    @slot('cellContent')
-                                        @include('admin.components/loop-table/edit-button', [
-                                            'url' => route('page.admin.articles.edit', ['article_id' => $article->id]),
-                                            'title' => __('Редактировать'),
-                                        ])
-                                        @include('admin.components/loop-table/delete-button', [
-                                            'url' => route('admin.articles.delete', ['article_id' => $article->id]),
-                                            'title' => __('Удалить'),
-                                        ])
-                                    @endslot
+                                    <div class="d-flex align--items-center no-wrap w-100 justify-content-center">
+                                        @slot('cellContent')
+                                            @include('admin.components/loop-table/edit-button', [
+                                                'url' => route('page.admin.articles.edit', ['article_id' => $article->id]),
+                                                'title' => __('Редактировать'),
+                                                'buttonClasses' => 'mr-2',
+                                            ])
+                                            @include('admin.components/confirm/button', [
+                                                'url' => route('admin.articles.delete', ['article_id' => $article->id]),
+                                                'title' => __('Удалить статью'),
+                                                'icon' => '<i class="fas fa-trash-alt"></i>',
+                                                'confirmText' => 'Вы действительно хотите удалить эту статью?',
+                                                'method' => 'delete',
+                                            ])
+                                        @endslot
+                                    </div>
                                 @endcomponent
                             @endslot
                         @endcomponent
@@ -74,10 +80,5 @@
             @endcomponent
         </div>
     </div>
-    @component('admin.components/delete-confirm-modal/wrap')
-        @slot('title', __('Удаление статьи'))
-        @slot('content')
-            <p class="text">{!! __('Вы действительно хотите удалить эту статью?') !!}</p>
-        @endslot
-    @endcomponent
+    @include('admin.components/confirm/modal')
 @endsection

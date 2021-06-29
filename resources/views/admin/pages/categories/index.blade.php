@@ -26,10 +26,5 @@
             </div>
         </div>
     </div>
-    @component('admin.components/delete-confirm-modal/wrap')
-        @slot('title', __('Удаление категории'))
-        @slot('content')
-            <p class="text">{!! __('Вы действительно хотите удалить эту категорию?') !!}</p>
-        @endslot
-    @endcomponent
+    @include('admin.components/confirm/modal')
 @endsection

@@ -6,14 +6,12 @@
     <a href="{{ route('page.admin.tags.edit', ['tag_id' => $tag->id]) }}" class="link w-100">{{ $tag->title }}</a>
     <span class="badge badge-primary badge-pill mr-3">{{ $tag->article_count + $tag->question_count }}</span>
     <div>
-        <button
-            class="btn btn-outline-primary btn-sm"
-            data-toggle="modal"
-            data-target="#deleteConfirmModal"
-            title="{{ __('Удалить') }}"
-            data-href="{{ route('admin.tags.delete', ['tag_id' => $tag->id]) }}"
-        >
-            <i class="fas fa-trash-alt"></i>
-        </button>
+        @include('admin.components/confirm/button', [
+            'url' => route('admin.tags.delete', ['tag_id' => $tag->id]),
+            'title' => __('Удалить тег'),
+            'icon' => '<i class="fas fa-trash-alt"></i>',
+            'confirmText' => 'Вы действительно хотите удалить этот тег?',
+            'method' => 'delete',
+        ])
     </div>
 </li>

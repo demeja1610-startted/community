@@ -7,15 +7,13 @@
     </a>
     <span class="badge badge-primary badge-pill mr-3">{{ $childrenCategory->article_count + $childrenCategory->question_count }}</span>
     <div>
-        <button
-            class="btn btn-outline-primary btn-sm"
-            data-toggle="modal"
-            data-target="#deleteConfirmModal"
-            title="{{ __('Удалить') }}"
-            data-href="{{ route('admin.categories.delete', ['category_id' => $childrenCategory->id]) }}"
-        >
-            <i class="fas fa-trash-alt"></i>
-        </button>
+        @include('admin.components/confirm/button', [
+            'url' => route('admin.categories.delete', ['category_id' => $childrenCategory->id]),
+            'title' => __('Удалить категорию'),
+            'icon' => '<i class="fas fa-trash-alt"></i>',
+            'confirmText' => 'Вы действительно хотите удалить эту категорию?',
+            'method' => 'delete',
+        ])
     </div>
 </li>
 @if (isset($childrenCategory->childs) && !$childrenCategory->childs->isEmpty())
