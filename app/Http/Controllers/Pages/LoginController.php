@@ -16,11 +16,14 @@ class LoginController extends Controller
         $this->authService = $authService;
     }
 
-    public function index() {
-        if(auth()->check()) {
-            return redirect()->route('page.lk.index');
-        } else {
-            return view('pages.login');
+    public function index(Request $request)
+    {
+        $user = $request->user()->first();
+
+        if ($user) {
+            return redirect()->route('user.bookmarks', ['user_id' => $user->id]);
         }
+
+        return view('pages.login');
     }
 }

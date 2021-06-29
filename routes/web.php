@@ -51,11 +51,8 @@ Route::group(['prefix' => 'register'], function () {
 });
 
 
-// Личный кабинет пользователя
 Route::group(['middleware' => 'auth'], function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-
-    Route::get('/user/{user_id}', [LKController::class, 'index'])->name('user.page');
 });
 
 Route::group(['prefix' => 'articles'], function () {
@@ -63,7 +60,7 @@ Route::group(['prefix' => 'articles'], function () {
     Route::get('/{article:slug}', [ArticleController::class, 'show'])->name('page.articles.single');
 });
 
-Route::group(['prefix' => 'questions'], function() {
+Route::group(['prefix' => 'questions'], function () {
     Route::get('/', [QuestionController::class, 'index'])->name('page.questions.index');
     Route::get('/{question:slug}', [QuestionController::class, 'show'])->name('page.questions.single');
 });
@@ -104,7 +101,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::delete('/{category_id}', [ACategoryController::class, 'destroy'])->name('admin.categories.delete');
     });
 
-    Route::group(['prefix' => 'tags'], function() {
+    Route::group(['prefix' => 'tags'], function () {
         Route::get('/', [ATagController::class, 'index'])->name('page.admin.tags.index');
         Route::get('/{tag_id}', [ATagController::class, 'edit'])->name('page.admin.tags.edit');
 
@@ -113,7 +110,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::delete('/{tag_id}', [ATagController::class, 'destroy'])->name('admin.tags.delete');
     });
 
-    Route::group(['prefix' => 'comments'], function() {
+    Route::group(['prefix' => 'comments'], function () {
         Route::get('/', [ACommentController::class, 'index'])->name('page.admin.comments.index');
         Route::get('/{comment_id}', [ACommentController::class, 'edit'])->name('page.admin.comments.edit');
 

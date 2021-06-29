@@ -20,9 +20,9 @@ class LKController extends Controller
         $this->lkService = $lkService;
     }
 
-    public function index($user_id)
+    public function bookmarks($user_id)
     {
         $user = $this->lkService->index($user_id);
-        return view('pages.lk.index', ['user' => $user]);
+        return view('lk.pages.bookmarks', ['user' => $user]);
     }
 }
