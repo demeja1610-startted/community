@@ -16,7 +16,7 @@
                                 @include('admin.components/loop-table/header-cell', ['cellContent' => __('Название')])
                                 @include('admin.components/loop-table/header-cell', ['cellContent' => __('Автор')])
                                 @include('admin.components/loop-table/header-cell', ['cellContent' => __('Дата создания')])
-                                @include('admin.components/loop-table/header-cell', ['cellContent' => __('Опубликовано')])
+                                @include('admin.components/loop-table/header-cell', ['cellContent' => __('Одобрен')])
                                 @include('admin.components/loop-table/header-cell', ['cellContent' => __('Действия')])
                             @endslot
                         @endcomponent
@@ -37,7 +37,10 @@
                                 @endcomponent
                                 @include('admin.components/loop-table/table-cell', ['cellContent' => $comment->user->name, 'cellClasses' => 'w-10'])
                                 @include('admin.components/loop-table/table-cell', ['cellContent' => $comment->created_at, 'cellClasses' => 'w-10'])
-                                @include('admin.components/loop-table/table-cell', ['cellContent' => $comment->is_published ? __('Да') : __('Нет'), 'cellClasses' => 'w-10'])
+                                @include('admin.components/loop-table/table-cell', [
+                                    'cellContent' => $comment->is_published ? __('Да') : __('Нет'),
+                                    'cellClasses' => 'w-10 ' . ($comment->is_published ? 'text-success' : 'text-danger')
+                                ])
                                 @component('admin.components/loop-table/table-cell', ['cellClasses' => 'w-10'])
                                     @slot('cellContent')
                                         <div class="d-flex align--items-center no-wrap w-100 justify-content-center">

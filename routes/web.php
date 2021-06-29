@@ -109,7 +109,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 
         Route::patch('/{comment_id}', [ACommentController::class, 'update'])->name('admin.comments.update');
         Route::patch('/{comment_id}/approve', [ACommentController::class, 'approve'])->name('admin.comments.approve');
-        Route::patch('/{comment_id}/unapprove', [ACommentController::class, 'approve'])->name('admin.comments.unapprove');
+        Route::patch('/{comment_id}/unapprove', [ACommentController::class, 'unapprove'])->name('admin.comments.unapprove');
         Route::delete('/{comment_id}', [ACommentController::class, 'destroy'])->name('admin.comments.delete');
     });
 });
