@@ -11,15 +11,15 @@
         align-items: center;
         padding: 6px 8px;
         margin-right: 8px;
-        color: #686C7D;
+        color: var(--secondary-6);
         position: relative;
         z-index: 2;
         cursor: pointer;
         border-radius: 6px;
 
         &:hover {
-            color: $color_text;
-            background: $color_bg;
+            color: var(--secondary-7);
+            background: var(--secondary-1);
         }
     }
 

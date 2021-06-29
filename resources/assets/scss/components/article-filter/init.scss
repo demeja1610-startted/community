@@ -1,4 +1,95 @@
 .article-filter {
     display: flex;
-    padding: 12px 20px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    background-color: var(--secondary-1);
+    margin-bottom: 24px;
+    padding: 5.5px 20px;
+
+    .choices {
+        margin-bottom: 0;
+        z-index: 3;
+
+        &::after {
+            border: none;
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid var(--secondary);
+            border-bottom: 2px solid var(--secondary);
+            margin: 0;
+            transform: translateY(-68%) rotate(45deg);
+            border-radius: 1px;
+        }
+
+        &__list {
+            border: none;
+
+            &--dropdown {
+                width: auto;
+            }
+
+            &--single {
+                .choices__item {
+                    padding-left: 0;
+                }
+            }
+
+            .choices__list {
+                border: 1px solid var(--secondary-2);
+                box-shadow: var(--shadow-2);
+                border-radius: var(--radius-8);
+                min-width: 220px;
+                padding: var(--spacing-8);
+            }
+        }
+
+        &__inner {
+            border: none;
+            padding: 0 !important;
+        }
+
+        &__item {
+            white-space: nowrap;
+            padding: var(--spacing-8) var(--spacing-12);
+            font-size: 15px;
+            font-weight: 500;
+            border-radius: var(--radius-8);
+            margin-bottom: 2px;
+
+            &:hover {
+                color: var(--secondary-9);
+                background: var(--secondary-1);
+            }
+
+            &::after {
+                display: none;
+            }
+        }
+
+        &__input {
+            display: none !important;
+        }
+
+        &.is-open {
+            &::after {
+                transform: translateY(48%) rotate(225deg);
+                border-color: var(--secondary);
+            }
+        }
+    }
+
+    &__answer {
+        display: flex;
+        align-items: center;
+
+        &-text {
+            color: var(--secondary-6);
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 500;
+            margin-right: 16px;
+            letter-spacing: -0.09px;
+        }
+    }
 }

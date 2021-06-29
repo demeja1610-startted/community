@@ -1,0 +1,12 @@
+@import "card";
+@import "information";
+
+.question {
+    &-card {
+        margin-bottom: 24px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

@@ -4,8 +4,10 @@
         <a href="#" class="text_small question-information__name">{!! $name !!}</a>
     </div>
     <time class="text_small question-information__date">{!! $date !!}</time>
-    <div class="question-information__views">
-        @include('icons.eye')
-        <span class="text_small question-information__views-count">{!! $viewsCount !!}</span>
-    </div>
+    @isset($viewsCount)
+        <div class="question-information__views">
+            @include('icons.eye')
+            <span class="text_small question-information__views-count">{!! $viewsCount !!}</span>
+        </div>
+    @endif
 </div>

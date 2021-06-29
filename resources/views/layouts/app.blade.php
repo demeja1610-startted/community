@@ -11,6 +11,7 @@
 
     @include('components.notification/wrap')
     @include('components.header.wrap')
+    @include('components.categories-menu.wrap')
     <div class="container">
         <div class="page-wrapper mrgn24-top">
 
@@ -25,6 +26,7 @@
         </div>
     </div>
     @include('components.mobile-menu.wrap')
+    @include('components.auth-modal.wrap')
 
     <script src="{{ mix('js/main.js') }}"></script>
 </body>

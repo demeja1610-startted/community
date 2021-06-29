@@ -7,7 +7,7 @@
         width: 20px;
         height: 20px;
         margin-right: 4px;
-        fill: #686c7d;
+        fill: var(--secondary-6);
     }
 
     &__link {
@@ -19,7 +19,7 @@
         line-height: 24px;
         letter-spacing: -0.13px;
         font-weight: 500;
-        color: #686c7d;
+        color: var(--secondary-6);
 
         &-message {
             padding-left: 0;
@@ -27,17 +27,17 @@
 
             &:hover {
                 background: none;
-                color: #075f88;
+                color: var(--primary-6);
 
                 .article-discuss__icon {
-                    fill: #075f88;
+                    fill: var(--primary-6);
                 }
             }
         }
 
         &-bookmark {
             &:hover {
-                background: #f7f7f8;
+                background: var(--secondary-1);
             }
 
             .article-discuss__icon {

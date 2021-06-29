@@ -8,10 +8,10 @@
                 @include('components.logo.wrap', ['iClasses' => 'header-top__logo'])
                 <ul class="header-top__types">
                     <li>
-                        <a href="{{ route('page.articles.index') }}" class="text_medium header-top__type active">Статьи</a>
+                        <a href="{{ route('page.articles.index') }}" class="text_medium header-top__type {{ RouteHelper::active('page.articles.index') ? 'active' : '' }}">Статьи</a>
                     </li>
                     <li>
-                        <a href="{{ route('page.questions.index') }}" class="text_medium header-top__type">Вопросы</a>
+                        <a href="{{ route('page.questions.index') }}" class="text_medium header-top__type {{ RouteHelper::active('page.questions.index') ? 'active' : '' }}">Вопросы</a>
                     </li>
                 </ul>
             </div>
