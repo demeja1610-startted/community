@@ -71,6 +71,7 @@ class AQuestionService
             $question->title = $data['title'];
             $question->description = $data['description'];
             $question->user_id = $data['user_id'];
+            $question->is_published = isset($data['is_published']) ? true : false;
 
             $success = $question->save();
 
@@ -135,6 +136,7 @@ class AQuestionService
 
             $question->title = $data['title'];
             $question->description = $data['description'];
+            $question->is_published = isset($data['is_published']) ? true : false;
 
             $success = $question->save();
 

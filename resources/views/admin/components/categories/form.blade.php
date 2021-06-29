@@ -28,4 +28,10 @@
             'placeholder' => 'Выберите родительскую категорию',
         ])
     @endslot
+    @isset($formWrapperClasses)
+        @slot('formWrapperClasses', $formWrapperClasses )
+    @endisset
+    @isset($formClasses)
+        @slot('formClasses', $formClasses )
+    @endisset
 @endcomponent
