@@ -8,12 +8,24 @@
     <link rel="stylesheet" href="{{ mix('css/main.css') }}">
 </head>
 <body class="body-wrap">
-@include('components.auth.login')
-@include('components.notification/wrap')
-@include('components.header.wrap')
-@yield('content')
-@include('components.mobile-menu.wrap')
 
-<script src="{{ mix('js/main.js') }}"></script>
+    @include('components.notification/wrap')
+    @include('components.header.wrap')
+    <div class="container">
+        <div class="page-wrapper mrgn24-top">
+
+            <main class="page-wrapper__content">
+                @yield('content')
+            </main>
+
+            <aside class="page-wrapper__sidebar">
+                @include('components.sidebar.wrap')
+            </aside>
+
+        </div>
+    </div>
+    @include('components.mobile-menu.wrap')
+
+    <script src="{{ mix('js/main.js') }}"></script>
 </body>
 </html>

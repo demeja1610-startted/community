@@ -6,6 +6,12 @@ use App\Models\Comment;
 
 trait HasComments
 {
+
+    public function commentable()
+    {
+        return $this->morphTo();
+    }
+
     public function comments()
     {
         /**

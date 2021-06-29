@@ -1,54 +1,16 @@
 .sidebar-popular {
-    &__title {
-        color: #0e0e0f;
-        font-size: 15px;
-        font-weight: 600;
-        line-height: 24px;
-        letter-spacing: -0.13px;
-
-        &:hover {
-            color: #075f88;
-        }
-    }
-
-    &__bottom {
+    &__top {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 24px;
+    }
 
-        &-date {
-            font-size: 13px;
-            line-height: 16px;
-            letter-spacing: -0.04px;
-            font-weight: 600;
-            color: #9194a1;
-        }
+    .article-mini {
+        margin-bottom: 24px;
 
-        &-message {
-            padding: 6px 0;
-            border: none;
-            background: none;
-            font-size: 13px;
-            line-height: 16px;
-            letter-spacing: -0.04px;
-            font-weight: 600;
-            color: #686c7d;
-
-            svg {
-                width: 20px;
-                height: 20px;
-                margin-right: 4px;
-                fill: #686c7d;
-            }
-
-            &:hover {
-                background: none;
-                color: #075f88;
-
-                svg {
-                    fill: #075f88;
-                }
-            }
+        &:last-child {
+            margin-bottom: 0;
         }
     }
 }

@@ -1,4 +1,8 @@
 .text {
+    &_normal {
+        font-weight: 500;
+    }
+
     &_medium {
         font-weight: 500;
         font-size: 15px;
@@ -14,6 +18,7 @@
     }
 
     &_small {
+        font-weight: 500;
         font-size: 13px;
         line-height: 16px;
         letter-spacing: -0.04px;
