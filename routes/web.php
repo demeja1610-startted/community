@@ -1,6 +1,7 @@
 <?php
 
 use App\Enum\PermissionsEnum;
+use App\Events\Message;
 use App\Http\Controllers\Admin\AArticleController;
 use App\Http\Controllers\Admin\ACategoryController;
 use App\Http\Controllers\Admin\ACommentController;
@@ -8,12 +9,14 @@ use App\Http\Controllers\Admin\AIndexController;
 use App\Http\Controllers\Admin\AQuestionController;
 use App\Http\Controllers\Admin\ATagController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Pages\LKController;
 use App\Http\Controllers\Pages\LoginController;
 use App\Http\Controllers\Pages\RegisterController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,37 +38,44 @@ Route::get('/', [IndexController::class, 'index'])->name('page.index');
 /**
  * GROUP
  */
-Route::group(['prefix' => 'login'], function() {
+Route::group(['prefix' => 'login'], function () {
     Route::get('/', [LoginController::class, 'index'])->name('page.login');
 
     Route::post('/', [AuthController::class, 'login'])->name('auth.login');
 });
 
-Route::group(['prefix' => 'register'], function() {
+Route::group(['prefix' => 'register'], function () {
     Route::get('/', [RegisterController::class, 'index'])->name('page.register');
 
     Route::post('/', [AuthController::class, 'register'])->name('auth.register');
 });
 
-Route::group(['middleware' => 'auth'], function() {
+
+// Личный кабинет пользователя
+Route::group(['middleware' => 'auth'], function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
-    Route::get('lk', [LKController::class, 'index'])->name('page.lk.index');
+    Route::get('/user/{user_id}', [LKController::class, 'index'])->name('user.page');
 });
 
-Route::group(['prefix' => 'articles'], function() {
+Route::group(['prefix' => 'articles'], function () {
     Route::get('/', [ArticleController::class, 'index'])->name('page.articles.index');
     Route::get('/{article:slug}', [ArticleController::class, 'show'])->name('page.articles.single');
 });
 
-Route::group(['prefix' => 'comments'], function() {
+Route::group(['prefix' => 'questions'], function() {
+    Route::get('/', [QuestionController::class, 'index'])->name('page.questions.index');
+    Route::get('/{question:slug}', [QuestionController::class, 'show'])->name('page.questions.single');
+});
+
+Route::group(['prefix' => 'comments'], function () {
     Route::post('/add', [CommentController::class, 'add'])->name('comments.add');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/', [AIndexController::class, 'index'])->name('admin.index');
 
-    Route::group(['prefix' => 'articles'], function() {
+    Route::group(['prefix' => 'articles'], function () {
         Route::get('/', [AArticleController::class, 'index'])->name('page.admin.articles.index');
         Route::get('/create', [AArticleController::class, 'create'])->name('page.admin.articles.create');
         Route::get('/{article_id}', [AArticleController::class, 'edit'])->name('page.admin.articles.edit');
@@ -75,7 +85,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         Route::delete('/{article_id}', [AArticleController::class, 'destroy'])->name('admin.articles.delete');
     });
 
-    Route::group(['prefix' => 'questions'], function() {
+    Route::group(['prefix' => 'questions'], function () {
         Route::get('/', [AQuestionController::class, 'index'])->name('page.admin.questions.index');
         Route::get('/create', [AQuestionController::class, 'create'])->name('page.admin.questions.create');
         Route::get('/{question_id}', [AQuestionController::class, 'edit'])->name('page.admin.questions.edit');
@@ -85,7 +95,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         Route::delete('/{question_id}', [AQuestionController::class, 'destroy'])->name('admin.questions.delete');
     });
 
-    Route::group(['prefix' => 'categories'], function() {
+    Route::group(['prefix' => 'categories'], function () {
         Route::get('/', [ACategoryController::class, 'index'])->name('page.admin.categories.index');
         Route::get('/{category_id}', [ACategoryController::class, 'edit'])->name('page.admin.categories.edit');
 
@@ -113,3 +123,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         Route::delete('/{comment_id}', [ACommentController::class, 'destroy'])->name('admin.comments.delete');
     });
 });
+
+
+Route::get('/socket', function () {
+    return view('pages.socket');
+});
+
+Route::post('/messages', function (Request $request) {
+    Message::dispatch($request->input('body'));
+});
+

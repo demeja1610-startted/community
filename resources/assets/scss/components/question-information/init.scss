@@ -1,0 +1,46 @@
+.question-information {
+    &__head {
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+
+        @media screen and (max-width: 480px) {
+            flex-wrap: wrap;
+        }
+    }
+
+    &__author {
+        display: flex;
+        align-items: center;
+        margin-right: 8px;
+    }
+
+    &__avatar {
+        width: 24px;
+        height: 24px;
+        border-radius: 100%;
+        min-width: 24px;
+        object-fit: cover;
+        margin-right: 4px;
+    }
+
+    &__name {
+        color: #454755;
+        text-decoration: none;
+    }
+
+    &__date {
+        color: $color_grey;
+        margin-right: 8px;
+    }
+
+    &__views {
+        display: flex;
+        align-items: center;
+
+        &-count {
+            color: $color_grey;
+            margin-left: 4px;
+        }
+    }
+}
