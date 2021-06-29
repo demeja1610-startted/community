@@ -27,4 +27,8 @@ class Tag extends Model
     {
         return $this->morphedByMany(Question::class, 'taggable');
     }
+
+    public function scopeById($query, $id) {
+        return $query->where('id', $id);
+    }
 }

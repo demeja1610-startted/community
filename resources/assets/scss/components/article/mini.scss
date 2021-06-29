@@ -19,7 +19,7 @@
         justify-content: space-between;
         align-items: center;
         text-decoration: none;
-        color: $color_gery;
+        color: $color_grey;
 
         &-title {
             margin-left: 5px;
@@ -29,12 +29,12 @@
         svg {
             width: 20px;
             height: 20px;
-            fill: $color_gery;
+            fill: $color_grey;
         }
     }
 
     &__date {
-        color: $color_gery;
+        color: $color_grey;
         font-weight: 500;
     }
 }
