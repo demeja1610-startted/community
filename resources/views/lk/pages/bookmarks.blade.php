@@ -1,5 +1,5 @@
 @extends('layouts.lk')
 
 @section('content')
-    Контент
+    Закладки
 @endsection
