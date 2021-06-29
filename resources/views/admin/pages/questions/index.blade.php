@@ -25,7 +25,7 @@
                                 <tr>
                                     <td class="text-center">{{ $question->id }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('page.admin.questions.edit', ['question_id' => $question->id]) }}" class="link text-truncate">
+                                        <a href="{{ route('page.admin.questions.edit', ['question_id' => $question->id]) }}" class="link text-clamp-2">
                                             {{ $question->title }}
                                         </a>
                                     </td>
@@ -88,7 +88,7 @@
                                 @include('admin.components/loop-table/table-cell', ['cellContent' => $question->id, 'cellClasses' => 'w-px-10'])
                                 @component('admin.components/loop-table/table-cell')
                                     @slot('cellContent')
-                                        <a href="{{ route('page.admin.questions.edit', ['question_id' => $question->id]) }}" class="link text-truncate">
+                                        <a href="{{ route('page.admin.questions.edit', ['question_id' => $question->id]) }}" class="link text-clamp-2">
                                             {{ $question->title }}
                                         </a>
                                     @endslot

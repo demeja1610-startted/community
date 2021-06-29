@@ -30,7 +30,7 @@
                                 @include('admin.components/loop-table/table-cell', ['cellContent' => $article->id, 'cellClasses' => 'w-px-10'])
                                 @component('admin.components/loop-table/table-cell')
                                     @slot('cellContent')
-                                        <a href="{{ route('page.admin.articles.edit', ['article_id' => $article->id]) }}" class="link text-truncate">
+                                        <a href="{{ route('page.admin.articles.edit', ['article_id' => $article->id]) }}" class="link text-clamp-2">
                                             {{ $article->title }}
                                         </a>
                                     @endslot

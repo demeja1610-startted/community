@@ -7,7 +7,7 @@
 @section('layoutContent')
     <div class="row">
         <div class="col-12">
-            <div class="card w-100 my-2">
+            {{-- <div class="card w-100 my-2">
                 <div class="card-body p-0">
                     <table class="table table-responsive-xl">
                         <thead>
@@ -64,7 +64,72 @@
                         </div>
                     </div>
                 @endif
-            </div>
+            </div> --}}
+            @component('admin.components/loop-table/wrap')
+                @if (!$comments->isEmpty())
+                    @slot('headerContent')
+                        @component('admin.components/loop-table/header-row')
+                            @slot('rowContent')
+                                @include('admin.components/loop-table/header-cell', ['cellContent' => __('ID')])
+                                @include('admin.components/loop-table/header-cell', ['cellContent' => __('Название')])
+                                @include('admin.components/loop-table/header-cell', ['cellContent' => __('Автор')])
+                                @include('admin.components/loop-table/header-cell', ['cellContent' => __('Дата создания')])
+                                @include('admin.components/loop-table/header-cell', ['cellContent' => __('Опубликовано')])
+                                @include('admin.components/loop-table/header-cell', ['cellContent' => __('Действия')])
+                            @endslot
+                        @endcomponent
+                    @endslot
+                @endif
+
+                @slot('tableContent')
+                    @forelse ($comments as $comment)
+                        @component('admin.components/loop-table/table-row')
+                            @slot('rowContent')
+                                @include('admin.components/loop-table/table-cell', ['cellContent' => $comment->id, 'cellClasses' => 'w-px-10'])
+                                @component('admin.components/loop-table/table-cell')
+                                    @slot('cellContent')
+                                        <a href="{{ route('page.admin.comments.edit', ['comment_id' => $comment->id]) }}" class="link text-clamp-2">
+                                            {{ $comment->body }}
+                                        </a>
+                                    @endslot
+                                @endcomponent
+                                @include('admin.components/loop-table/table-cell', ['cellContent' => $comment->user->name, 'cellClasses' => 'w-10'])
+                                @include('admin.components/loop-table/table-cell', ['cellContent' => $comment->created_at, 'cellClasses' => 'w-10'])
+                                @include('admin.components/loop-table/table-cell', ['cellContent' => $comment->is_published ? __('Да') : __('Нет'), 'cellClasses' => 'w-10'])
+                                @component('admin.components/loop-table/table-cell', ['cellClasses' => 'w-10'])
+                                    @slot('cellContent')
+                                        @include('admin.components/loop-table/edit-button', [
+                                            'url' => route('page.admin.comments.edit', ['comment_id' => $comment->id]),
+                                            'title' => __('Редактировать'),
+                                        ])
+                                        @include('admin.components/loop-table/delete-button', [
+                                            'url' => route('admin.comments.delete', ['comment_id' => $comment->id]),
+                                            'title' => __('Удалить'),
+                                        ])
+                                    @endslot
+                                @endcomponent
+                            @endslot
+                        @endcomponent
+                    @empty
+                        @component('admin.components/loop-table/table-row')
+                            @slot('rowContent')
+                                @component('admin.components/loop-table/table-cell')
+                                    @slot('cellContent')
+                                        {!! __('Статей не найдено') !!}
+                                    @endslot
+                                @endcomponent
+                            @endslot
+                        @endcomponent
+                    @endforelse
+                @endslot
+
+                @if($comments->hasPages())
+                    @slot('footerClasses', 'd-flex align-center justify-content-end')
+                    @slot('footerContent')
+                        {!! $comments->links('pagination::bootstrap-4') !!}
+                    @endslot
+                @endif
+            @endcomponent
         </div>
     </div>
     @component('admin.components/delete-confirm-modal/wrap')
