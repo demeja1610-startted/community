@@ -2,6 +2,7 @@
     "/js/main.js": "/js/main.js",
     "/admin/js/main.js": "/admin/js/main.js",
     "/admin/css/main.css": "/admin/css/main.css",
+    "/css/main.css": "/css/main.css",
     "/images/favicon.ico": "/images/favicon.ico",
     "/images/no-avatar.svg": "/images/no-avatar.svg",
     "/fonts/Inter-Bold.eot": "/fonts/Inter-Bold.eot",
@@ -23,6 +24,5 @@
     "/fonts/Inter-SemiBold.eot": "/fonts/Inter-SemiBold.eot",
     "/fonts/Inter-SemiBold.ttf": "/fonts/Inter-SemiBold.ttf",
     "/fonts/Inter-SemiBold.woff": "/fonts/Inter-SemiBold.woff",
-    "/fonts/Inter-SemiBold.woff2": "/fonts/Inter-SemiBold.woff2",
-    "/css/main.css": "/css/main.css"
+    "/fonts/Inter-SemiBold.woff2": "/fonts/Inter-SemiBold.woff2"
 }
