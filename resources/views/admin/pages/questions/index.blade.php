@@ -85,7 +85,7 @@
                     @forelse ($questions as $question)
                         @component('admin.components/loop-table/table-row')
                             @slot('rowContent')
-                                @include('admin.components/loop-table/table-cell', ['cellContent' => $question->id])
+                                @include('admin.components/loop-table/table-cell', ['cellContent' => $question->id, 'cellClasses' => 'w-px-10'])
                                 @component('admin.components/loop-table/table-cell')
                                     @slot('cellContent')
                                         <a href="{{ route('page.admin.questions.edit', ['question_id' => $question->id]) }}" class="link text-truncate">
@@ -93,10 +93,10 @@
                                         </a>
                                     @endslot
                                 @endcomponent
-                                @include('admin.components/loop-table/table-cell', ['cellContent' => $question->user->name])
-                                @include('admin.components/loop-table/table-cell', ['cellContent' => $question->created_at])
-                                @include('admin.components/loop-table/table-cell', ['cellContent' => $question->is_published ? __('Да') : __('Нет')])
-                                @component('admin.components/loop-table/table-cell')
+                                @include('admin.components/loop-table/table-cell', ['cellContent' => $question->user->name, 'cellClasses' => 'w-10'])
+                                @include('admin.components/loop-table/table-cell', ['cellContent' => $question->created_at, 'cellClasses' => 'w-10'])
+                                @include('admin.components/loop-table/table-cell', ['cellContent' => $question->is_published ? __('Да') : __('Нет'), 'cellClasses' => 'w-10'])
+                                @component('admin.components/loop-table/table-cell', ['cellClasses' => 'w-10'])
                                     @slot('cellContent')
                                         @include('admin.components/loop-table/edit-button', [
                                             'url' => route('page.admin.questions.edit', ['question_id' => $question->id]),

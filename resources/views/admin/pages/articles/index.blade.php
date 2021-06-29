@@ -27,7 +27,7 @@
                     @forelse ($articles as $article)
                         @component('admin.components/loop-table/table-row')
                             @slot('rowContent')
-                                @include('admin.components/loop-table/table-cell', ['cellContent' => $article->id])
+                                @include('admin.components/loop-table/table-cell', ['cellContent' => $article->id, 'cellClasses' => 'w-px-10'])
                                 @component('admin.components/loop-table/table-cell')
                                     @slot('cellContent')
                                         <a href="{{ route('page.admin.articles.edit', ['article_id' => $article->id]) }}" class="link text-truncate">
@@ -35,10 +35,10 @@
                                         </a>
                                     @endslot
                                 @endcomponent
-                                @include('admin.components/loop-table/table-cell', ['cellContent' => $article->user->name])
-                                @include('admin.components/loop-table/table-cell', ['cellContent' => $article->created_at])
-                                @include('admin.components/loop-table/table-cell', ['cellContent' => $article->is_published ? __('Да') : __('Нет')])
-                                @component('admin.components/loop-table/table-cell')
+                                @include('admin.components/loop-table/table-cell', ['cellContent' => $article->user->name, 'cellClasses' => 'w-10'])
+                                @include('admin.components/loop-table/table-cell', ['cellContent' => $article->created_at, 'cellClasses' => 'w-10'])
+                                @include('admin.components/loop-table/table-cell', ['cellContent' => $article->is_published ? __('Да') : __('Нет'), 'cellClasses' => 'w-10'])
+                                @component('admin.components/loop-table/table-cell', ['cellClasses' => 'w-10'])
                                     @slot('cellContent')
                                         @include('admin.components/loop-table/edit-button', [
                                             'url' => route('page.admin.articles.edit', ['article_id' => $article->id]),
