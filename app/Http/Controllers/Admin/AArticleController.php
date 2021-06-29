@@ -24,7 +24,6 @@ class AArticleController extends Controller
         }
 
         return view('admin.pages/articles/index', ['articles' => $response]);
-        // return view('admin.pages/articles/index', ['articles' => collect([])]);
     }
 
     public function create() {
