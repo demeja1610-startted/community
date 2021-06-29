@@ -6,7 +6,7 @@
 
         {{-- Icon (optional) --}}
         @isset($item['icon'])
-            <i class="{{ $item['icon'] }} {{
+            <i class="mr-1 {{ $item['icon'] }} {{
                 isset($item['icon_color']) ? 'text-' . $item['icon_color'] : ''
             }}"></i>
         @endisset
