@@ -7,5 +7,9 @@
 
     &__question {
         color: var(--secondary-6);
+
+        &:hover {
+            color: var(--link-color-hover);
+        }
     }
 }
