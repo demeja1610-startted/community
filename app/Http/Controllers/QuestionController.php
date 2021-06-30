@@ -27,6 +27,6 @@ class QuestionController extends Controller
             abort(404, 'Не найдено');
         }
 
-        return view('pages.questions/single', $response);
+        return view('pages.questions.single', $response);
     }
 }
