@@ -4,14 +4,13 @@ use App\Http\Controllers\LK\LKAnswerController;
 use App\Http\Controllers\LK\LKArticleController;
 use App\Http\Controllers\LK\LKBookmarkController;
 use App\Http\Controllers\LK\LKCommentController;
-use App\Http\Controllers\LK\LKIndexController;
 use App\Http\Controllers\LK\LKQuestionController;
 use App\Http\Controllers\LK\LKSubscriberController;
 use App\Http\Controllers\LK\LKSubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 // Личный кабинет пользователя
-Route::group(['middleware' => 'auth', 'prefix' => '{user_id}'], function () {
+Route::group(['prefix' => '{user_id}'], function () {
     Route::get('/bookmarks', [LKBookmarkController::class, 'index'])->name('user.bookmarks');
     Route::get('/articles', [LKArticleController::class, 'index'])->name('user.articles');
     Route::get('/comments', [LKCommentController::class, 'index'])->name('user.comments');

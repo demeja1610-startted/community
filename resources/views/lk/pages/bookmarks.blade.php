@@ -1,5 +1,5 @@
 @extends('layouts.lk')
 
 @section('content')
-    @dump($bookmarks)
+    @include('lk.components.bookmarks.wrap')
 @endsection

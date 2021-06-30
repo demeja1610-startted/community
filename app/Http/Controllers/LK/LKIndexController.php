@@ -23,6 +23,9 @@ class LKIndexController extends Controller
     {
         $this->lkService = $lkService;
         $this->user = $this->lkService->user($request->user_id);
+        if (isset($this->user->error)) {
+            return redirect(404)->send();
+        }
         View::share('user', $this->user);
     }
 }
