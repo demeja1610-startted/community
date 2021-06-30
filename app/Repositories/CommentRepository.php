@@ -19,6 +19,6 @@ class CommentRepository
     }
 
     public function popularComments() {
-        return Comment::with(['user.avatar'])->withCount('plusVoices')->orderByDesc('plus_voices_count');
+        return Comment::with(['user.avatar', 'commentable'])->withCount('plusVoices')->orderByDesc('plus_voices_count');
     }
 }

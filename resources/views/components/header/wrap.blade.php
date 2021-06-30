@@ -8,10 +8,10 @@
                 @include('components.logo.wrap', ['iClasses' => 'header__logo'])
                 <ul class="header__types">
                     <li>
-                        <a href="{{ route('page.articles.index') }}" class="text_medium header__type active">Статьи</a>
+                        <a href="{{ route('page.articles.index') }}" class="text_medium header__type @routeActive('page.index')">Статьи</a>
                     </li>
                     <li>
-                        <a href="{{ route('page.questions.index') }}" class="text_medium header__type ">Вопросы</a>
+                        <a href="{{ route('page.questions.index') }}" class="text_medium header__type @routeActive('page.questions.index')">Вопросы</a>
                     </li>
                 </ul>
             </div>

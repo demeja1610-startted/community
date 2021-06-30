@@ -23,5 +23,11 @@ export default function header() {
     dropdownOpen?.addEventListener('click', function () {
         document.querySelector('.header-bottom__dropdown').classList.toggle('active');
     });
+
+    document.addEventListener('click', function (event) {
+        if (event.target.matches('.body-wrap.overlay')) {
+            body.classList.remove('overlay');
+        }
+    });
 }
 
