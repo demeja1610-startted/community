@@ -1,0 +1,53 @@
+.save-widget {
+    &-wrapper {
+        @media screen and (max-width: $xl) {
+            order: 1;
+        }
+    }
+
+    &__buttons {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: calc(var(--spacer) * -1);
+
+        @media screen and (max-width: $xxl) {
+            flex-direction: column;
+        }
+
+        @media screen and (max-width: $xl) {
+            flex-direction: row;
+        }
+
+        @media screen and (max-width: $sm) {
+            flex-direction: column;
+        }
+    }
+
+    &__button {
+        flex-grow: 1;
+        margin-right: var(--spacer);
+        margin-bottom: var(--spacer);
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        @media screen and (max-width: $xxl) {
+            width: 100%;
+            margin-right: 0;
+        }
+
+        @media screen and (max-width: $xl) {
+            width: unset;
+            margin-right: var(--spacer);
+        }
+
+        @media screen and (max-width: $sm) {
+            width: 100%;
+            margin-right: 0;
+        }
+    }
+}
