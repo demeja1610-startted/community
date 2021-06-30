@@ -1,16 +1,22 @@
 <?php
 
+use App\Http\Controllers\LK\LKAnswerController;
+use App\Http\Controllers\LK\LKArticleController;
 use App\Http\Controllers\LK\LKBookmarkController;
+use App\Http\Controllers\LK\LKCommentController;
 use App\Http\Controllers\LK\LKIndexController;
+use App\Http\Controllers\LK\LKQuestionController;
+use App\Http\Controllers\LK\LKSubscriberController;
+use App\Http\Controllers\LK\LKSubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 // Личный кабинет пользователя
 Route::group(['middleware' => 'auth', 'prefix' => '{user_id}'], function () {
     Route::get('/bookmarks', [LKBookmarkController::class, 'index'])->name('user.bookmarks');
-//    Route::get('/articles', [LKController::class, 'articles'])->name('user.articles');
-//    Route::get('/comments', [LKController::class, 'comments'])->name('user.comments');
-//    Route::get('/questions', [LKController::class, 'questions'])->name('user.questions');
-//    Route::get('/answers', [LKController::class, 'answers'])->name('user.answers');
-//    Route::get('/subscribes', [LKController::class, 'subscribes'])->name('user.subscribes');
-//    Route::get('/subscriptions', [LKController::class, 'subscriptions'])->name('user.subscriptions');
+    Route::get('/articles', [LKArticleController::class, 'index'])->name('user.articles');
+    Route::get('/comments', [LKCommentController::class, 'index'])->name('user.comments');
+    Route::get('/questions', [LKQuestionController::class, 'index'])->name('user.questions');
+    Route::get('/answers', [LKAnswerController::class, 'index'])->name('user.answers');
+    Route::get('/subscribers', [LKSubscriberController::class, 'index'])->name('user.subscribers');
+    Route::get('/subscriptions', [LKSubscriptionController::class, 'index'])->name('user.subscriptions');
 });

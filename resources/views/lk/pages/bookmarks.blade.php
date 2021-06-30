@@ -1,5 +1,5 @@
 @extends('layouts.lk')
 
 @section('content')
-    Закладки
+    @dump($bookmarks)
 @endsection
