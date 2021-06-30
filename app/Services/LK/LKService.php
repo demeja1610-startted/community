@@ -44,7 +44,9 @@ class LKService
 
     public function bookmarks()
     {
-        return $this->user->bookmarks()->with(['user', 'bookmarkable']);
+        return $this->user->bookmarks()->with(['user', 'bookmarkable' => function ($q) {
+            $q->with('images');
+        }]);
     }
 
     public function articles()
