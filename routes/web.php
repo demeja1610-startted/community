@@ -1,6 +1,7 @@
 <?php
 
 use App\Enum\RouteNames\AdminRouteNamesEnum;
+use App\Enum\RouteNames\SiteRouteNamesEnum;
 use App\Events\Message;
 use App\Http\Controllers\Admin\AArticleController;
 use App\Http\Controllers\Admin\ACategoryController;
@@ -32,40 +33,40 @@ use Illuminate\Support\Facades\Route;
 /**
  * GET
  */
-Route::get('/', [IndexController::class, 'index'])->name('page.index');
+Route::get('/', [IndexController::class, 'index'])->name(SiteRouteNamesEnum::page_index);
 
 /**
  * GROUP
  */
 Route::group(['prefix' => 'login'], function () {
-    Route::get('/', [LoginController::class, 'index'])->name('page.login');
+    Route::get('/', [LoginController::class, 'index'])->name(SiteRouteNamesEnum::page_login);
 
-    Route::post('/', [AuthController::class, 'login'])->name('auth.login');
+    Route::post('/', [AuthController::class, 'login'])->name(SiteRouteNamesEnum::auth_login);
 });
 
 Route::group(['prefix' => 'register'], function () {
-    Route::get('/', [RegisterController::class, 'index'])->name('page.register');
+    Route::get('/', [RegisterController::class, 'index'])->name(SiteRouteNamesEnum::page_register);
 
-    Route::post('/', [AuthController::class, 'register'])->name('auth.register');
+    Route::post('/', [AuthController::class, 'register'])->name(SiteRouteNamesEnum::auth_register);
 });
 
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::post('/logout', [AuthController::class, 'logout'])->name(SiteRouteNamesEnum::auth_logout);
 });
 
 Route::group(['prefix' => 'articles'], function () {
-    Route::get('/', [ArticleController::class, 'index'])->name('page.articles.index');
-    Route::get('/{article:slug}', [ArticleController::class, 'show'])->name('page.articles.single');
+    Route::get('/', [ArticleController::class, 'index'])->name(SiteRouteNamesEnum::page_articles_index);
+    Route::get('/{article:slug}', [ArticleController::class, 'show'])->name(SiteRouteNamesEnum::page_articles_single);
 });
 
 Route::group(['prefix' => 'questions'], function () {
-    Route::get('/', [QuestionController::class, 'index'])->name('page.questions.index');
-    Route::get('/{question:slug}', [QuestionController::class, 'show'])->name('page.questions.single');
+    Route::get('/', [QuestionController::class, 'index'])->name(SiteRouteNamesEnum::page_questions_index);
+    Route::get('/{question:slug}', [QuestionController::class, 'show'])->name(SiteRouteNamesEnum::page_questions_single);
 });
 
 Route::group(['prefix' => 'comments'], function () {
-    Route::post('/add', [CommentController::class, 'add'])->name('comments.add');
+    Route::post('/add', [CommentController::class, 'add'])->name(SiteRouteNamesEnum::comments_add);
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
