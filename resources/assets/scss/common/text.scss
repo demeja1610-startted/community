@@ -31,4 +31,12 @@
         letter-spacing: -0.26px;
     }
 
+    &_link {
+        color: var(--link-color);
+        transition: color ease 200ms;
+
+        &:hover {
+            color: var(--link-color-hover);
+        }
+    }
 }

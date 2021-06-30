@@ -1,5 +1,5 @@
 @extends('layouts.lk')
 
 @section('content')
-    Закладки
+    @include('lk.components.bookmarks.wrap')
 @endsection

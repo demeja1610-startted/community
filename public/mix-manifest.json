@@ -1,6 +1,7 @@
 {
     "/js/main.js": "/js/main.js",
     "/admin/js/main.js": "/admin/js/main.js",
+    "/css/bootstrap.css": "/css/bootstrap.css",
     "/admin/css/main.css": "/admin/css/main.css",
     "/css/main.css": "/css/main.css",
     "/images/favicon.ico": "/images/favicon.ico",
