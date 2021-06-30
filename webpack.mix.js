@@ -20,6 +20,7 @@ mix.js('resources/assets/scripts/main.js', 'public/js')
         proxy: process.env.APP_URL,
     })
     .sass('resources/assets/scss/main.scss', 'public/css')
+    .sass('resources/assets/scss/common/bootstrap.scss', 'public/css')
     .sourceMaps()
     .copyDirectory('resources/assets/images', 'public/images')
     .copyDirectory('resources/assets/fonts', 'public/fonts')

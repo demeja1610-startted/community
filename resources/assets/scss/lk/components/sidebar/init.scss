@@ -17,6 +17,7 @@
         align-items: center;
         justify-content: flex-start;
         transition: color ease 200ms, background-color ease 200ms;
+        margin-bottom: 3px;
 
         &:hover {
             color: var(--primary-7);

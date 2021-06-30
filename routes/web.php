@@ -129,4 +129,3 @@ Route::get('/socket', function () {
 Route::post('/messages', function (Request $request) {
     Message::dispatch($request->input('body'));
 });
-
