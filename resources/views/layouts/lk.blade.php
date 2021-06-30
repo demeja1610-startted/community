@@ -6,6 +6,7 @@
     <link rel="icon" href="{{ mix('images/favicon.ico') }}" type="image/x-icon"/>
     <title>@yield('SeoTitle')</title>
     <link rel="stylesheet" href="{{ mix('css/main.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/bootstrap.css') }}">
 </head>
 <body class="body-wrap">
 @include('components.header.wrap')

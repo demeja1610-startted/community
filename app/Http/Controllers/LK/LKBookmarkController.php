@@ -8,7 +8,7 @@ class LKBookmarkController extends LKIndexController
 {
     public function index()
     {
-        $bookmarks = $this->user->bookmarks();
+        $bookmarks = $this->lkService->bookmarks()->get();
         return view('lk.pages.bookmarks', ['bookmarks' => $bookmarks]);
     }
 }
