@@ -80,6 +80,6 @@ class User extends Authenticatable
 
     public function avatar()
     {
-        return $this->belongsTo(Image::class, 'avatar', 'id');
+        return $this->belongsTo(Image::class, 'avatar_id', 'id');
     }
 }
