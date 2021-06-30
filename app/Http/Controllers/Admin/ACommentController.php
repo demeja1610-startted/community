@@ -69,4 +69,28 @@ class ACommentController extends Controller
 
         return redirect()->back();
     }
+
+    public function approve($comment_id) {
+        $response = $this->aCommentService->approve($comment_id);
+
+        if (isset($response->error)) {
+            session()->flash('error', $response->error);
+        } else {
+            session()->flash('success', $response->message);
+        }
+
+        return redirect()->back();
+    }
+
+    public function unapprove($comment_id) {
+        $response = $this->aCommentService->unapprove($comment_id);
+
+        if (isset($response->error)) {
+            session()->flash('error', $response->error);
+        } else {
+            session()->flash('success', $response->message);
+        }
+
+        return redirect()->back();
+    }
 }

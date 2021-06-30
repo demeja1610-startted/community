@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $articles = Article::get();
         return view('index', compact('articles'));
     }

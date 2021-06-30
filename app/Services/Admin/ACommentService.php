@@ -136,4 +136,70 @@ class ACommentService
             ];
         }
     }
+
+    public function approve($comment_id) {
+        try {
+            $can = Gate::check(PermissionsEnum::manage_comments);
+
+            if (!$can) {
+                throw new Exception('Недостаточно прав для одобрения', 403);
+            }
+
+            $comment = Comment::find($comment_id);
+
+            if(!$comment) {
+                throw new Exception('Не найдено', 404);
+            }
+
+            $comment->is_published = true;
+            $success = $comment->save();
+
+            if (!$success) {
+                throw new Exception('Не удалось одобрить комментарий', 500);
+            }
+
+            return (object) [
+                'message' => 'Комментарий успешно одобрен',
+                'code' => 200,
+            ];
+        } catch (Exception $e) {
+            return (object) [
+                'error' => $e->getMessage(),
+                'code' => $e->getCode(),
+            ];
+        }
+    }
+
+    public function unapprove($comment_id) {
+        try {
+            $can = Gate::check(PermissionsEnum::manage_comments);
+
+            if (!$can) {
+                throw new Exception('Недостаточно прав для отклонения', 403);
+            }
+
+            $comment = Comment::find($comment_id);
+
+            if(!$comment) {
+                throw new Exception('Не найдено', 404);
+            }
+
+            $comment->is_published = false;
+            $success = $comment->save();
+
+            if (!$success) {
+                throw new Exception('Не удалось отклонить комментарий', 500);
+            }
+
+            return (object) [
+                'message' => 'Комментарий успешно отклонен',
+                'code' => 200,
+            ];
+        } catch (Exception $e) {
+            return (object) [
+                'error' => $e->getMessage(),
+                'code' => $e->getCode(),
+            ];
+        }
+    }
 }

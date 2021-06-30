@@ -4,6 +4,14 @@
             width: #{$var * 10%};
         }
     }
+
+    &-px {
+        @for $var from 1 to 10 {
+            &-#{$var * 10} {
+                width: #{$var * 10px};
+            }
+        }
+    }
 }
 
 .min-w {
@@ -12,12 +20,12 @@
             min-width: #{$var * 10%};
         }
     }
-}
 
-.min-w-px {
-    @for $var from 1 to 10 {
-        &-#{$var * 100} {
-            min-width: #{$var * 100px};
+    &-px {
+        @for $var from 1 to 10 {
+            &-#{$var * 100} {
+                min-width: #{$var * 100px};
+            }
         }
     }
 }

@@ -6,14 +6,16 @@ import Socket from "./components/Socket";
 import store from './store'
 
 export default function VueTemplates() {
-    new Vue({
-        el: '#app',
-        ...plugins,
-        store,
-        components: {
-            Example,
-            Example2,
-            Socket
-        },
-    });
+    const app = document.getElementById('app');
+    if (app)
+        new Vue({
+            el: '#app',
+            ...plugins,
+            store,
+            components: {
+                Example,
+                Example2,
+                Socket
+            },
+        });
 }

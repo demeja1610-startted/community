@@ -20,10 +20,13 @@ class LKService
         $this->userRepository = $userRepository;
     }
 
-    public function index($user_id)
+    public function user($user_id)
     {
-        return $this->userRepository->lkUser($user_id)->first();
+        $user = $this->userRepository->lkUser($user_id)->first();
+        if ($user == null) {
+           abort(404);
+        }
+
+        return $user;
     }
-
-
 }
