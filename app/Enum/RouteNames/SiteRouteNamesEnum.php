@@ -1,7 +1,12 @@
 <?php
+
 namespace App\Enum\RouteNames;
 
-class SiteRouteNamesEnum {
+use ReflectionClass;
+
+class SiteRouteNamesEnum
+{
+
     public const page_index = 'page.index';
 
     public const page_login = 'page.login';
@@ -19,4 +24,10 @@ class SiteRouteNamesEnum {
     public const page_questions_single = 'page.questions.single';
 
     public const comments_add = 'comments.add';
+
+//    public static function getConstants()
+//    {
+//        $oClass = new ReflectionClass(__CLASS__);
+//        return (object)$oClass->getConstants();
+//    }
 }
