@@ -8,24 +8,14 @@
     <link rel="stylesheet" href="{{ mix('css/main.css') }}">
 </head>
 <body class="body-wrap">
-@component('components.header.wrap')
-    @slot('headerBottom')
-        @include('components.header.bottom')
-    @endslot
-@endcomponent
-
+@include('components.header.wrap')
 <div class="container">
     @include('components.notification/wrap')
-    <div class="page-wrapper mrgn24-top">
-
-        <main class="page-wrapper__content">
+    <div class="lk">
+        @include('lk.components.sidebar.wrap')
+        <main class="lk__content">
             @yield('content')
         </main>
-
-        <aside class="page-wrapper__sidebar">
-            @include('components.sidebar.wrap')
-        </aside>
-
     </div>
 </div>
 @include('components.mobile-menu.wrap')

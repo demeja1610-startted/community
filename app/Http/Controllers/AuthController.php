@@ -35,7 +35,7 @@ class AuthController extends Controller
         }
 
         session()->flash('success', 'Вы успешно зарегистрированы');
-        return redirect()->route('page.lk.index');
+        return redirect()->route('user.bookmarks', ['user_id' => $request->user()->id]);
     }
 
     public function login(LoginRequest $request) {
@@ -51,7 +51,7 @@ class AuthController extends Controller
             return redirect()->route('admin.index');
         } else {
             session()->flash('success', 'Вы успешно авторизованы');
-            return redirect()->route('page.lk.index');
+            return redirect()->route('user.bookmarks', ['user_id' => $request->user()->id]);
         }
     }
 
