@@ -9,7 +9,7 @@
             {{ $attributes->merge(['class' => $makeItemClass()]) }}>
 
         {{-- Custom file label --}}
-        <label class="custom-file-label text-truncate" for="{{ $id }}"
+        <label class="custom-file-label text-clamp-2" for="{{ $id }}"
             @isset($legend) data-browse="{{ $legend }}" @endisset>
             {{ $placeholder }}
         </label>

@@ -6,21 +6,22 @@ export default function header() {
     let hamburger = document.querySelector('.header__hamburger');
     let dropdownOpen = document.querySelector('.categories-menu__edit');
 
-    searchMobileButton.addEventListener('click', function() {
-        document.querySelector('.header__search').classList.toggle('active');
+    searchMobileButton?.addEventListener('click', function() {
+        document.querySelector('.header-top__search').classList.toggle('active');
     });
 
-    hamburger.addEventListener('click', function() {
+    hamburger?.addEventListener('click', function() {
         body.classList.add('overlay');
         mobileMenu.classList.add('open');
     });
 
-    closeMobileMenuButton.addEventListener('click', function () {
+    closeMobileMenuButton?.addEventListener('click', function () {
         body.classList.remove('overlay');
         mobileMenu.classList.remove('open');
     });
 
-    dropdownOpen.addEventListener('click', function () {
-        document.querySelector('.categories-menu__dropdown').classList.toggle('active');
+    dropdownOpen?.addEventListener('click', function () {
+        document.querySelector('.header-bottom__dropdown').classList.toggle('active');
     });
 }
+

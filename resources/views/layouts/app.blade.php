@@ -13,6 +13,7 @@
     @include('components.header.wrap')
     @include('components.categories-menu.wrap')
     <div class="container">
+        @include('components.notification/wrap')
         <div class="page-wrapper mrgn24-top">
 
             <main class="page-wrapper__content">
