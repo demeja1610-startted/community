@@ -48,7 +48,7 @@ class AuthController extends Controller
         }
 
         if(Gate::check(PermissionsEnum::view_admin_pages)) {
-            return redirect()->route('admin.index');
+            return redirect()->route('page.admin.index');
         } else {
             session()->flash('success', 'Вы успешно авторизованы');
             return redirect()->route('user.bookmarks', ['user_id' => $request->user()->id]);
