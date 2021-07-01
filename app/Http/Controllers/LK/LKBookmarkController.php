@@ -14,7 +14,7 @@ class LKBookmarkController extends LKIndexController
             abort(403, 'У вас нет доступа к просмотру данной информации');
         }
 
-        $bookmarks = $this->lkService->bookmarks()->get();
+        $bookmarks = $this->lkService->bookmarks()->paginate(20);
         return view('lk.pages.bookmarks', ['bookmarks' => $bookmarks]);
     }
 }

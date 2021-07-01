@@ -13,7 +13,7 @@
 
     @include('lk.components.sidebar.item', [
        'title' => 'Комментарии',
-       'count' => $user->articleComments_count,
+       'count' => $user->article_comments_count,
        'routeName' => lkRouterNames()::page_comments_index,
    ])
 

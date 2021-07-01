@@ -1,4 +1,4 @@
-.lk-bookmarks {
+.lk-entity {
     &__empty {
         padding-top: 4px;
         padding-bottom: 4px;
@@ -6,6 +6,12 @@
 
         &-img {
             font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        &-text {
+            font-size: 18px;
+            line-height: 24px;
         }
     }
 }

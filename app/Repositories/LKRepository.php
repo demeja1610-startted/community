@@ -6,7 +6,7 @@ namespace App\Repositories;
 
 use App\Models\User;
 
-class UserRepository
+class LKRepository
 {
     public function lkUser($user_id)
     {

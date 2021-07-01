@@ -20,3 +20,5 @@ Route::group(['prefix' => '{user_id}'], function () {
     Route::get('/subscribers', [LKSubscriberController::class, 'index'])->name(LKRouteNamesEnum::page_subscribers_index);
     Route::get('/subscriptions', [LKSubscriptionController::class, 'index'])->name(LKRouteNamesEnum::page_subscriptions_index);
 });
+
+//Route::get('/settings', []);

@@ -1,5 +1,5 @@
 @extends('layouts.lk')
 
 @section('content')
-    Подписки
+    @include('lk.components.subscribers.wrap')
 @endsection

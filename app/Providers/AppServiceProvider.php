@@ -7,7 +7,7 @@ use App\Repositories\CommentRepository;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
 use App\Models\Comment;
-use App\Repositories\UserRepository;
+use App\Repositories\LKRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;

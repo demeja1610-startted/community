@@ -1,6 +1,5 @@
 @extends('layouts.lk')
 
 @section('content')
-    Ответы
-
+    @include('lk.components.answers.wrap')
 @endsection
