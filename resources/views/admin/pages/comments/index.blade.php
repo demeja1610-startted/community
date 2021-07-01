@@ -30,7 +30,7 @@
                                 @include('admin.components/loop-table/table-cell', ['cellContent' => $comment->id, 'cellClasses' => 'w-px-10'])
                                 @component('admin.components/loop-table/table-cell')
                                     @slot('cellContent')
-                                        <a href="{{ route('page.admin.comments.edit', ['comment_id' => $comment->id]) }}" class="link text-clamp-2">
+                                        <a href="{{ route(AdminRouterNames()::page_comments_edit, ['comment_id' => $comment->id]) }}" class="link text-clamp-2">
                                             {{ $comment->body }}
                                         </a>
                                     @endslot
@@ -45,12 +45,12 @@
                                     @slot('cellContent')
                                         <div class="d-flex align--items-center no-wrap w-100 justify-content-center">
                                             @include('admin.components/loop-table/edit-button', [
-                                                'url' => route('page.admin.comments.edit', ['comment_id' => $comment->id]),
+                                                'url' => route(AdminRouterNames()::page_comments_edit, ['comment_id' => $comment->id]),
                                                 'title' => __('Редактировать'),
                                                 'buttonClasses' => 'mr-2',
                                             ])
                                             @include('admin.components/confirm/button', [
-                                                'url' => route('admin.comments.delete', ['comment_id' => $comment->id]),
+                                                'url' => route(AdminRouterNames()::page_comments_destroy, ['comment_id' => $comment->id]),
                                                 'title' => __('Удалить комментарий'),
                                                 'icon' => '<i class="fas fa-trash-alt"></i>',
                                                 'confirmText' => 'Вы действительно хотите удалить этот комментарий?',
@@ -59,7 +59,7 @@
                                             ])
                                             @if ( !$comment->is_published)
                                                 @include('admin.components/confirm/button', [
-                                                    'url' => route('admin.comments.approve', ['comment_id' => $comment->id]),
+                                                    'url' => route(AdminRouterNames()::page_comments_approve, ['comment_id' => $comment->id]),
                                                     'title' => __('Одобрить комментарий'),
                                                     'icon' => '<i class="fas fa-thumbs-up"></i>',
                                                     'confirmText' => 'Вы действительно хотите одобрить этот комментарий?',
@@ -67,7 +67,7 @@
                                                 ])
                                             @else
                                                 @include('admin.components/confirm/button', [
-                                                    'url' => route('admin.comments.unapprove', ['comment_id' => $comment->id]),
+                                                    'url' => route(AdminRouterNames()::page_comments_unapprove, ['comment_id' => $comment->id]),
                                                     'title' => __('Отклонить комментарий'),
                                                     'icon' => '<i class="fas fa-thumbs-down"></i>',
                                                     'confirmText' => 'Вы действительно хотите отклонить этот комментарий?',

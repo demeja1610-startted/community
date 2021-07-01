@@ -1,7 +1,10 @@
 <form
     autocomplete="off"
     method="POST"
-    action="{{ isset($article) ? route('admin.articles.update', ['article_id' => $article->id]) : route('admin.articles.store') }}"
+    action="{{
+        isset($article) ?
+        route(AdminRouterNames()::page_articles_edit, ['article_id' => $article->id]) :
+        route(AdminRouterNames()::page_articles_store) }}"
     class="col-12 {{ $formClasses ?? '' }}"
 >
     @csrf

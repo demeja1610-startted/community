@@ -30,7 +30,7 @@
                                 @include('admin.components/loop-table/table-cell', ['cellContent' => $question->id, 'cellClasses' => 'w-px-10'])
                                 @component('admin.components/loop-table/table-cell')
                                     @slot('cellContent')
-                                        <a href="{{ route('page.admin.questions.edit', ['question_id' => $question->id]) }}" class="link text-clamp-2">
+                                        <a href="{{ route(AdminRouterNames()::page_questions_edit, ['question_id' => $question->id]) }}" class="link text-clamp-2">
                                             {{ $question->title }}
                                         </a>
                                     @endslot
@@ -42,12 +42,12 @@
                                     <div class="d-flex align--items-center no-wrap w-100 justify-content-center">
                                         @slot('cellContent')
                                             @include('admin.components/loop-table/edit-button', [
-                                                'url' => route('page.admin.questions.edit', ['question_id' => $question->id]),
+                                                'url' => route(AdminRouterNames()::page_questions_edit, ['question_id' => $question->id]),
                                                 'title' => __('Редактировать'),
                                                 'buttonClasses' => 'mr-2',
                                             ])
                                             @include('admin.components/confirm/button', [
-                                                'url' => route('admin.questions.delete', ['question_id' => $question->id]),
+                                                'url' => route(AdminRouterNames()::page_questions_destroy, ['question_id' => $question->id]),
                                                 'title' => __('Удалить вопрос'),
                                                 'icon' => '<i class="fas fa-trash-alt"></i>',
                                                 'confirmText' => 'Вы действительно хотите удалить этот вопрос?',

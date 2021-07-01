@@ -6,8 +6,8 @@
             @slot('formClasses', 'mt-2')
             @slot('submitText', isset($question) ? __('Сохранить') : __('Опубликовать') )
             @slot('action', isset($question) ?
-                route('admin.questions.update', ['question_id' => $question->id]) :
-                route('admin.questions.store')
+                route(AdminRouterNames()::page_questions_update, ['question_id' => $question->id]) :
+                route(AdminRouterNames()::page_questions_store)
             )
             @slot('method', isset($question) ? 'PATCH' : 'PUT' )
             @slot('title', isset($question) ? __('Редактирование вопроса') : __('Создание вопроса') )
