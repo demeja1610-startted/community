@@ -6,7 +6,6 @@ class RolesPermissionsEnum {
         PermissionsEnum::write_articles,
         PermissionsEnum::write_questions,
         PermissionsEnum::write_comments,
-        PermissionsEnum::like,
         PermissionsEnum::vote,
     ];
 
@@ -14,7 +13,6 @@ class RolesPermissionsEnum {
         PermissionsEnum::write_articles,
         PermissionsEnum::write_questions,
         PermissionsEnum::write_comments,
-        PermissionsEnum::like,
         PermissionsEnum::vote,
         PermissionsEnum::manage_articles,
         PermissionsEnum::remove_articles,
@@ -35,7 +33,6 @@ class RolesPermissionsEnum {
         PermissionsEnum::write_articles,
         PermissionsEnum::write_questions,
         PermissionsEnum::write_comments,
-        PermissionsEnum::like,
         PermissionsEnum::vote,
         PermissionsEnum::manage_articles,
         PermissionsEnum::remove_articles,
@@ -58,7 +55,6 @@ class RolesPermissionsEnum {
         PermissionsEnum::write_articles,
         PermissionsEnum::write_questions,
         PermissionsEnum::write_comments,
-        PermissionsEnum::like,
         PermissionsEnum::vote,
         PermissionsEnum::manage_articles,
         PermissionsEnum::remove_articles,

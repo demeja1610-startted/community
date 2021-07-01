@@ -5,7 +5,6 @@ class PermissionsEnum {
     public const write_articles = 'write_articles';
     public const write_questions = 'write_questions';
     public const write_comments = 'write_comments';
-    public const like = 'like';
     public const vote = 'vote';
 
     public const manage_articles = 'manage_articles';
@@ -33,7 +32,6 @@ class PermissionsEnum {
             self::write_articles,
             self::write_questions,
             self::write_comments,
-            self::like,
             self::vote,
             self::manage_articles,
             self::manage_questions,
