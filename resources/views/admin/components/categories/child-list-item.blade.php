@@ -3,9 +3,9 @@
         @for ($i = 0; $i < $dashes; $i++)
             &#8209;
         @endfor
-        {{ $childrenCategory->title }}
+        {!! $childrenCategory->title !!}
     </a>
-    <span class="badge badge-primary badge-pill mr-3">{{ $childrenCategory->article_count + $childrenCategory->question_count }}</span>
+    <span class="badge badge-primary badge-pill mr-3">{!! $childrenCategory->article_count + $childrenCategory->question_count !!}</span>
     <div>
         @include('admin.components/confirm/button', [
             'url' => route(AdminRouterNames()::page_categories_destroy, ['category_id' => $childrenCategory->id]),

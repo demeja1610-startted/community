@@ -4,9 +4,9 @@
 
 <li class="list-group-item d-flex justify-content-start align-items-center categories-list__item">
     <a href="{{ route(AdminRouterNames()::page_categories_edit, ['category_id' => $category->id]) }}" class="link w-100">
-        {{ $category->title }}
+        {!! $category->title !!}
     </a>
-    <span class="badge badge-primary badge-pill mr-3">{{ $category->article_count + $category->question_count }}</span>
+    <span class="badge badge-primary badge-pill mr-3">{!! $category->article_count + $category->question_count !!}</span>
     <div>
         @include('admin.components/confirm/button', [
             'url' => route(AdminRouterNames()::page_categories_destroy, ['category_id' => $category->id]),

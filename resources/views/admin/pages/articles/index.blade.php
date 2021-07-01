@@ -31,7 +31,7 @@
                                 @component('admin.components/loop-table/table-cell')
                                     @slot('cellContent')
                                         <a href="{{ route(AdminRouterNames()::page_articles_edit, ['article_id' => $article->id]) }}" class="link text-clamp-2">
-                                            {{ $article->title }}
+                                            {!! $article->title !!}
                                         </a>
                                     @endslot
                                 @endcomponent

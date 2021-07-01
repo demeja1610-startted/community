@@ -1,7 +1,7 @@
 <div class="categories-widget-wrapper {{ $wrapperClasses ?? '' }}">
     <div class="card card-secondary w-100 categories-widget">
         <div class="card-header categories-widget__header">
-            <h3 class="card-title">{{ $title }}</h3>
+            <h3 class="card-title">{!! $title !!}</h3>
         </div>
 
         <div class="card-body categories-widget__body">

@@ -14,11 +14,11 @@
                 <!-- Modal text content here -->
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">{{ __('Нет') }}</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">{!! __('Нет') !!}</button>
                 <form action="#" method="POST">
                     @csrf
                     <input type="hidden" name="_method" value="{{ $method ?? 'post' }}">
-                    <button type="submit" class="btn btn-danger">{{ __('Да') }}</button>
+                    <button type="submit" class="btn btn-danger">{!! __('Да') !!}</button>
                 </form>
             </div>
         </div>

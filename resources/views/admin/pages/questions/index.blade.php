@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content_header')
-    <h1>{{ __('Консоль - вопросы') }}</h1>
+    <h1>{!! __('Консоль - вопросы') !!}</h1>
 @stop
 
 @section('layoutContent')
@@ -31,7 +31,7 @@
                                 @component('admin.components/loop-table/table-cell')
                                     @slot('cellContent')
                                         <a href="{{ route(AdminRouterNames()::page_questions_edit, ['question_id' => $question->id]) }}" class="link text-clamp-2">
-                                            {{ $question->title }}
+                                            {!! $question->title !!}
                                         </a>
                                     @endslot
                                 @endcomponent

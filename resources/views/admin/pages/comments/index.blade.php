@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content_header')
-    <h1>{{ __('Консоль - комментарии') }}</h1>
+    <h1>{!! __('Консоль - комментарии') !!}</h1>
 @stop
 
 @section('layoutContent')
@@ -31,7 +31,7 @@
                                 @component('admin.components/loop-table/table-cell')
                                     @slot('cellContent')
                                         <a href="{{ route(AdminRouterNames()::page_comments_edit, ['comment_id' => $comment->id]) }}" class="link text-clamp-2">
-                                            {{ $comment->body }}
+                                            {!! $comment->body !!}
                                         </a>
                                     @endslot
                                 @endcomponent
