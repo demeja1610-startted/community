@@ -9,6 +9,7 @@ use App\Enum\SettingsEnum;
 use App\Enum\PermissionsEnum;
 use App\Repositories\TagRepository;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Database\Eloquent\Model;
 
 class ATagService
 {
@@ -159,6 +160,26 @@ class ATagService
 
             return (object) [
                 'message' => 'Тег успешно удален',
+                'code' => 200,
+            ];
+        } catch (Exception $e) {
+            return (object) [
+                'error' => $e->getMessage(),
+                'code' => $e->getCode(),
+            ];
+        }
+    }
+
+    public function saveTagsToModel(Model $model, array $tags_ids) {
+        try {
+            if(!$model->isRelation('tags')) {
+                throw new Exception('Модель не имеет связи с тегами', 404);
+            }
+
+            $model->tags()->sync($tags_ids);
+
+            return (object) [
+                'message' => 'success',
                 'code' => 200,
             ];
         } catch (Exception $e) {

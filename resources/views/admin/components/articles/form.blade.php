@@ -58,6 +58,16 @@
 
                     @slot('categories', $categories)
                 @endcomponent
+
+                @component('admin.components/form-wigets/tags')
+                    @slot('title', __('Теги'))
+
+                    @isset($article)
+                        @slot('model', $article)
+                    @endisset
+
+                    @slot('tags', $tags)
+                @endcomponent
             </div>
         </div>
     </div>

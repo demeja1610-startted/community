@@ -45,6 +45,7 @@ class AArticleController extends Controller
             'save',
             'stash',
             'categories',
+            'tags',
         ]);
 
         $response = $this->aarticleService->store($data);
@@ -76,6 +77,7 @@ class AArticleController extends Controller
             'save',
             'stash',
             'categories',
+            'tags',
         ]);
 
         $response = $this->aarticleService->update($data, $article_id);

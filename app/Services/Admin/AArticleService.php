@@ -2,27 +2,31 @@
 
 namespace App\Services\Admin;
 
-use App\Enum\PermissionsEnum;
 use Exception;
-use App\Models\Setting;
-use App\Enum\SettingsEnum;
+use App\Models\Tag;
 use App\Models\Article;
+use App\Models\Setting;
 use App\Models\Category;
-use App\Repositories\ArticleRepository;
+use App\Enum\SettingsEnum;
+use App\Enum\PermissionsEnum;
 use Illuminate\Support\Facades\Gate;
+use App\Repositories\ArticleRepository;
 
 class AArticleService
 {
 
     protected $articleRepository;
     protected $acategoryService;
+    protected $aTagService;
 
     public function __construct(
         ArticleRepository $articleRepository,
-        ACategoryService $aCategoryService
+        ACategoryService $aCategoryService,
+        ATagService $aTagService
     ) {
         $this->articleRepository = $articleRepository;
         $this->acategoryService = $aCategoryService;
+        $this->aTagService = $aTagService;
     }
 
     public function index()
@@ -56,9 +60,11 @@ class AArticleService
             }
 
             $categories = Category::all();
+            $tags = Tag::all();
 
             return [
                 'categories' => $categories,
+                'tags' => $tags,
             ];
         } catch (Exception $e) {
             return (object) [
@@ -106,6 +112,14 @@ class AArticleService
                 }
             }
 
+            if(!empty($data['tags'])) {
+                $response = $this->aTagService->saveTagsToModel($article, $data['tags']);
+
+                if(isset($response->error)) {
+                    throw new Exception($response->error, $response->code);
+                }
+            }
+
             return (object) [
                 'message' => 'Статья успешно сохранена',
                 'code' => 200,
@@ -137,10 +151,12 @@ class AArticleService
             }
 
             $categories = Category::all();
+            $tags = Tag::all();
 
             return [
                 'article' => $article,
                 'categories' => $categories,
+                'tags' => $tags,
             ];
         } catch (Exception $e) {
             return (object) [
@@ -180,6 +196,14 @@ class AArticleService
 
             if(!empty($data['categories'])) {
                 $response = $this->acategoryService->saveCategoriesToModel($article, $data['categories']);
+
+                if(isset($response->error)) {
+                    throw new Exception($response->error, $response->code);
+                }
+            }
+
+            if(!empty($data['tags'])) {
+                $response = $this->aTagService->saveTagsToModel($article, $data['tags']);
 
                 if(isset($response->error)) {
                     throw new Exception($response->error, $response->code);
