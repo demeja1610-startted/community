@@ -34,7 +34,7 @@ class AQuestionController extends Controller
             return redirect()->back();
         }
 
-        return view('admin.pages/questions/single');
+        return view('admin.pages/questions/single', $response);
     }
 
     public function store(AQuestionRequest $request) {
@@ -42,7 +42,10 @@ class AQuestionController extends Controller
             'title',
             'description',
             'user_id',
-            'is_published',
+            'save',
+            'stash',
+            'categories',
+            'tags',
         ]);
 
         $response = $this->aQuestionService->store($data);
@@ -64,14 +67,17 @@ class AQuestionController extends Controller
             return redirect()->back();
         }
 
-        return view('admin.pages/questions/single', ['question' => $response]);
+        return view('admin.pages/questions/single', $response);
     }
 
     public function update(AQuestionRequest $request, $question_id) {
         $data = $request->only([
             'title',
             'description',
-            'is_published',
+            'save',
+            'stash',
+            'categories',
+            'tags',
         ]);
 
         $response = $this->aQuestionService->update($data, $question_id);
