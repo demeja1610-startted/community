@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Repositories\LKRepository;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -32,6 +33,12 @@ class ComposerServiceProvider extends ServiceProvider
             $currentUserID = $userID ?? $authUserID;
             $userData = (new LKRepository())->lkUser($currentUserID)->first();
             $view->with('user', $userData);
+        });
+
+        Blade::if('currentUser', function () {
+            $userID = request()->user_id;
+            $authUserID = request()->user()->id;
+            return $userID == $authUserID;
         });
     }
 }

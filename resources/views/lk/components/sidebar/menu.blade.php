@@ -1,9 +1,11 @@
 <div class="lk-sidebar__content">
+    @currentUser
     @include('lk.components.sidebar.item', [
-    'title' => 'Закладки',
-    'count' => $user->bookmarks_count,
-    'routeName' => lkRouterNames()::page_index,
-])
+        'title' => 'Закладки',
+        'count' => $user->bookmarks_count,
+        'routeName' => lkRouterNames()::page_index,
+    ])
+    @endif
 
     @include('lk.components.sidebar.item', [
         'title' => 'Статьи',
