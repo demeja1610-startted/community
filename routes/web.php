@@ -33,7 +33,9 @@ use Illuminate\Support\Facades\Route;
 /**
  * GET
  */
-Route::get('/', [IndexController::class, 'index'])->name(SiteRouteNamesEnum::page_index);
+Route::get('/', [IndexController::class, function() {
+    return redirect()->route(SiteRouteNamesEnum::page_articles_index);
+} , 'index'])->name(SiteRouteNamesEnum::page_index);
 
 /**
  * GROUP

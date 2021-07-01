@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enum\AllowedFiltersEnum;
 use Exception;
 use App\Models\Article;
 use App\Models\Setting;
@@ -18,8 +19,13 @@ class ArticleService
         $this->articleRepository = $articleRepository;
     }
 
-    public function index() {
-        $articles = $this->articleRepository->articleList();
+    public function index(array $data) {
+        if (in_array($data['filter'], AllowedFiltersEnum::values())) {
+            $filter['filter'] = $data['filter'];
+        } else {
+            $filter['filter'] = 'fresh';
+        }
+        $articles = $this->articleRepository->articleList($filter);
         $paginate = Setting::where('slug', SettingsEnum::articles_pagination)->first()->value;
         return $articles->paginate($paginate);
     }

@@ -2,7 +2,11 @@
 
     {{-- юзер, дата, просмотры --}}
 {{--    @include('components.article.elements.info')--}}
-    @include('components.question-information.wrap', ['avatar' => URL::asset('/images/no-avatar.svg'), 'name' => 'Александра Черенкова', 'date' => '14 июня в 19:26', 'viewsCount' => '497'])
+    @include('components.question-information.wrap', [
+    'avatar' => $article->user->avatar->url ? $article->user->avatar->url : URL::asset('/images/no-avatar.svg'),
+    'name' => $article->user->name,
+    'date' => $article->created_at,
+    'viewsCount' => $article->views])
 
     <a href="{{ route('page.articles.single', $article) }}" class="article-card__title mrgn12-bottom">{!! $article->title !!}</a>
 
@@ -10,7 +14,7 @@
     @include('components.article.elements.thumbnail')
 
     <div class="article-card__desc mrgn24-bottom">
-        По данным издания Search Engine Journal, Google готовит очередную революцию — ПО на базе искусственного интеллекта, которое сможет блокировать до 99% спамных ссылок в поисковой выдаче.
+        {!! Str::words($article->description, 50, '...') !!}
     </div>
 
     {{-- кнопка-ссылка, лайки --}}

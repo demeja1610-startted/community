@@ -7,7 +7,7 @@ use App\Models\Question;
 class QuestionRepository
 {
     public function questionList() {
-        return Question::query()->with(['categories', 'tags', 'user', 'images'])->withCount('comments');
+        return Question::query()->with(['categories', 'tags', 'user', 'user.avatar', 'images'])->withCount('comments');
     }
 
     public function singlePageQuestion($slug)
