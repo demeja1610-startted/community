@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Pages;
 
+use App\Enum\RouteNames\LKRouteNamesEnum;
 use Illuminate\Http\Request;
 use App\Services\AuthService;
 use App\Http\Controllers\Controller;
@@ -21,7 +22,7 @@ class LoginController extends Controller
         $user = $request->user();
 
         if ($user) {
-            return redirect()->route('user.bookmarks', ['user_id' => $user->id]);
+            return redirect()->route(LKRouteNamesEnum::page_index, ['user_id' => $user->id]);
         }
 
         return view('pages.login');

@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\LK;
 
 
+use App\Enum\RouteNames\SiteRouteNamesEnum;
 use App\Http\Controllers\Controller;
 use App\Services\LK\LKService;
 use Illuminate\Http\Request;
@@ -26,6 +27,7 @@ class LKIndexController extends Controller
         if (isset($this->user->error)) {
             return redirect(404)->send();
         }
+
         View::share('user', $this->user);
     }
 }

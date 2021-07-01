@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\RouteNames\LKRouteNamesEnum;
 use Illuminate\Http\Request;
 use App\Enum\PermissionsEnum;
 use App\Services\AuthService;
@@ -35,7 +36,7 @@ class AuthController extends Controller
         }
 
         session()->flash('success', 'Вы успешно зарегистрированы');
-        return redirect()->route('user.bookmarks', ['user_id' => $request->user()->id]);
+        return redirect()->route(LKRouteNamesEnum::page_index, ['user_id' => $request->user()->id]);
     }
 
     public function login(LoginRequest $request) {
@@ -51,7 +52,7 @@ class AuthController extends Controller
             return redirect()->route('page.admin.index');
         } else {
             session()->flash('success', 'Вы успешно авторизованы');
-            return redirect()->route('user.bookmarks', ['user_id' => $request->user()->id]);
+            return redirect()->route(LKRouteNamesEnum::page_index, ['user_id' => $request->user()->id]);
         }
     }
 
