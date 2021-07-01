@@ -1,8 +1,10 @@
 <?php
 
+use App\Enum\RolesEnum;
+
 return [
-   'user' => 'Пользователь',
-   'editor' => 'Редактор',
-   'admin' => 'Администратор',
-   'super_admin' => 'Главный администратор',
+    RolesEnum::user => 'Пользователь',
+    RolesEnum::editor => 'Редактор',
+    RolesEnum::admin => 'Администратор',
+    RolesEnum::super_admin => 'Главный администратор',
 ];

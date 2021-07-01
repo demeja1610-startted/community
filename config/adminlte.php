@@ -289,6 +289,12 @@ return [
             'icon' => 'fas fa-comments',
             'can' => PermissionsEnum::manage_comments,
         ],
+        [
+            'text' => 'Пользователи',
+            'route' => AdminRouteNamesEnum::page_users_index,
+            'icon' => 'fas fa-users',
+            'can' => PermissionsEnum::manage_users,
+        ],
     ],
 
     /*

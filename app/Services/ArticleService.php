@@ -55,4 +55,8 @@ class ArticleService
             ];
         }
     }
+
+    public function userDeleted () {
+
+    }
 }
