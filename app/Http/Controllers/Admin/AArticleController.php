@@ -34,7 +34,7 @@ class AArticleController extends Controller
             return redirect()->back();
         }
 
-        return view('admin.pages/articles/single');
+        return view('admin.pages/articles/single', $response);
     }
 
     public function store(AArticleRequest $request) {
@@ -44,6 +44,7 @@ class AArticleController extends Controller
             'user_id',
             'save',
             'stash',
+            'categories',
         ]);
 
         $response = $this->aarticleService->store($data);
@@ -65,7 +66,7 @@ class AArticleController extends Controller
             return redirect()->back();
         }
 
-        return view('admin.pages/articles/single', ['article' => $response]);
+        return view('admin.pages/articles/single', $response);
     }
 
     public function update(AArticleRequest $request, $article_id) {
@@ -74,6 +75,7 @@ class AArticleController extends Controller
             'description',
             'save',
             'stash',
+            'categories',
         ]);
 
         $response = $this->aarticleService->update($data, $article_id);

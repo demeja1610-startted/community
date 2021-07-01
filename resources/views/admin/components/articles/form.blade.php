@@ -39,13 +39,26 @@
             </div>
         </div>
 
-        @component('admin.components/form-wigets/save')
-            @slot('title', __('Действия'))
-            @slot('wrapperClasses', 'col-12 col-xl-3')
+        <div class="col-12 col-xl-3">
+            <div class="d-flex flex-column w-100">
+                @component('admin.components/form-wigets/save')
+                    @slot('title', __('Действия'))
 
-            @isset($article)
-                @slot('model', $article)
-            @endisset
-        @endcomponent
+                    @isset($article)
+                        @slot('model', $article)
+                    @endisset
+                @endcomponent
+
+                @component('admin.components/form-wigets/categories')
+                    @slot('title', __('Категории'))
+
+                    @isset($article)
+                        @slot('model', $article)
+                    @endisset
+
+                    @slot('categories', $categories)
+                @endcomponent
+            </div>
+        </div>
     </div>
 </form>

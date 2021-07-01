@@ -7,6 +7,7 @@ use Exception;
 use App\Models\Setting;
 use App\Enum\SettingsEnum;
 use App\Models\Article;
+use App\Models\Category;
 use App\Repositories\ArticleRepository;
 use Illuminate\Support\Facades\Gate;
 
@@ -14,10 +15,14 @@ class AArticleService
 {
 
     protected $articleRepository;
+    protected $acategoryService;
 
-    public function __construct(ArticleRepository $articleRepository)
-    {
+    public function __construct(
+        ArticleRepository $articleRepository,
+        ACategoryService $aCategoryService
+    ) {
         $this->articleRepository = $articleRepository;
+        $this->acategoryService = $aCategoryService;
     }
 
     public function index()
@@ -50,7 +55,11 @@ class AArticleService
                 throw new Exception('Недостаточно прав для создания', 403);
             }
 
-            return 1;
+            $categories = Category::all();
+
+            return [
+                'categories' => $categories,
+            ];
         } catch (Exception $e) {
             return (object) [
                 'error' => $e->getMessage(),
@@ -59,7 +68,8 @@ class AArticleService
         }
     }
 
-    public function store(array $data) {
+    public function store(array $data)
+    {
         try {
             $can = Gate::check(PermissionsEnum::manage_articles);
 
@@ -72,11 +82,11 @@ class AArticleService
             $article->description = $data['description'];
             $article->user_id = $data['user_id'];
 
-            if(!isset($data['save'])) {
+            if (!isset($data['save'])) {
                 $article->is_published = true;
             }
 
-            if(isset($data['stash'])) {
+            if (isset($data['stash'])) {
                 $article->is_published = false;
             }
 
@@ -87,6 +97,14 @@ class AArticleService
             }
 
             $article->refresh();
+
+            if(!empty($data['categories'])) {
+                $response = $this->acategoryService->saveCategoriesToModel($article, $data['categories']);
+
+                if(isset($response->error)) {
+                    throw new Exception($response->error, $response->code);
+                }
+            }
 
             return (object) [
                 'message' => 'Статья успешно сохранена',
@@ -118,7 +136,12 @@ class AArticleService
                 throw new Exception('Не найдено', 404);
             }
 
-            return $article;
+            $categories = Category::all();
+
+            return [
+                'article' => $article,
+                'categories' => $categories,
+            ];
         } catch (Exception $e) {
             return (object) [
                 'error' => $e->getMessage(),
@@ -145,15 +168,23 @@ class AArticleService
             $article->title = $data['title'];
             $article->description = $data['description'];
 
-            if(!isset($data['save'])) {
+            if (!isset($data['save'])) {
                 $article->is_published = true;
             }
 
-            if(isset($data['stash'])) {
+            if (isset($data['stash'])) {
                 $article->is_published = false;
             }
 
             $success = $article->save();
+
+            if(!empty($data['categories'])) {
+                $response = $this->acategoryService->saveCategoriesToModel($article, $data['categories']);
+
+                if(isset($response->error)) {
+                    throw new Exception($response->error, $response->code);
+                }
+            }
 
             if (!$success) {
                 throw new Exception('Не удалось редактировать статью', 500);
