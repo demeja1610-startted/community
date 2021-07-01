@@ -1,21 +1,37 @@
 import Vue from 'vue';
 import plugins from './plugins'
-import Example from "./components/Example";
-import Example2 from "./components/Example2";
+
+/* Components */
 import Socket from "./components/Socket";
+import LKSettings from "./components/LK/LKSettings";
+
+/* Store */
 import store from './store'
 
 export default function VueTemplates() {
-    const app = document.getElementById('app');
-    if (app)
+    // const app = document.getElementById('app');
+    const settings = document.getElementById('lk-settings');
+    // if (app) {
+    //     new Vue({
+    //         el: '#app',
+    //         ...plugins,
+    //         store,
+    //         components: {
+    //             Socket
+    //         },
+    //     });
+    // }
+
+    if (settings) {
         new Vue({
-            el: '#app',
+            el: '#lk-settings',
             ...plugins,
             store,
             components: {
-                Example,
-                Example2,
-                Socket
+                LKSettings
             },
         });
+    }
+
+
 }
