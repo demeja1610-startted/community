@@ -1,0 +1,15 @@
+.comment-mini {
+    &__content {
+        margin: 12px 0 8px 0;
+        color: var(--secondary-9);
+        word-wrap: break-word;
+    }
+
+    &__question {
+        color: var(--secondary-6);
+
+        &:hover {
+            color: var(--link-color-hover);
+        }
+    }
+}

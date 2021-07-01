@@ -16,7 +16,7 @@
         right: 20px;
 
         path {
-            fill: $color_grey;
+            fill: var(--secondary);
         }
 
         &-item {

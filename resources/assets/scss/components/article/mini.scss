@@ -4,8 +4,12 @@
 
     &__title {
         text-decoration: none;
-        color: #0E0E0F;
+        color: var(--secondary-9);
         margin-bottom: 12px;
+
+        &:hover {
+            color: var(--link-color-hover);
+        }
     }
 
     &__bottom {
@@ -19,22 +23,30 @@
         justify-content: space-between;
         align-items: center;
         text-decoration: none;
-        color: $color_grey;
+        color: var(--secondary);
+
+        &:hover {
+            color: var(--link-color-hover);
+
+            svg {
+                fill: var(--link-color-hover);
+            }
+        }
 
         &-title {
-            margin-left: 5px;
+            margin-left: 4px;
             font-weight: 500;
         }
 
         svg {
             width: 20px;
             height: 20px;
-            fill: $color_grey;
+            fill: var(--secondary);
         }
     }
 
     &__date {
-        color: $color_grey;
+        color: var(--secondary);
         font-weight: 500;
     }
 }

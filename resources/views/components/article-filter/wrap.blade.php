@@ -5,6 +5,9 @@
     </select>
     <div class="article-filter__answer">
         <span class="article-filter__answer-text">Только без ответа</span>
-        <input type="checkbox">
+        <div class="forms_checkbox">
+            <input type="checkbox" class="forms_checkbox-input">
+            <span class="forms_checkbox-span"></span>
+        </div>
     </div>
 </div>

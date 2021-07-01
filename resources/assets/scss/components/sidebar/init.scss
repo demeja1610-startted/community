@@ -1,4 +1,6 @@
 @import "popular";
+@import "digest";
+@import "comments";
 
 .sidebar {
     @media screen and (max-width: 1023px) {
@@ -9,18 +11,24 @@
         padding: 20px;
         border-radius: 10px;
         background: #e7f3f9;
+        margin-bottom: 24px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 
     &__title {
         display: flex;
         justify-content: space-between;
+        font-weight: 600;
 
         &-text {
             font-weight: 700;
             font-size: 18px;
             line-height: 28px;
             letter-spacing: -0.26px;
-            color: #0e0e0f;
+            color: var(--secondary-9);
         }
 
         &-icon {

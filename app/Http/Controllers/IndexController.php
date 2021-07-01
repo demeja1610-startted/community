@@ -2,14 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
 use App\Http\Controllers\Controller;
+use App\Models\Article;
+use App\Services\ArticleService;
+use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    public function index()
+    protected $articleService;
+
+    public function __construct(ArticleService $articleService)
     {
-        $articles = Article::get();
+        $this->articleService = $articleService;
+    }
+
+    public function index() {
+        $articles = $this->articleService->index();
         return view('index', compact('articles'));
     }
 }

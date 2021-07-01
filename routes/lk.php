@@ -1,5 +1,6 @@
 <?php
 
+use App\Enum\RouteNames\LKRouteNamesEnum;
 use App\Http\Controllers\LK\LKAnswerController;
 use App\Http\Controllers\LK\LKArticleController;
 use App\Http\Controllers\LK\LKBookmarkController;
@@ -11,11 +12,11 @@ use Illuminate\Support\Facades\Route;
 
 // Личный кабинет пользователя
 Route::group(['prefix' => '{user_id}'], function () {
-    Route::get('/bookmarks', [LKBookmarkController::class, 'index'])->name('user.bookmarks');
-    Route::get('/articles', [LKArticleController::class, 'index'])->name('user.articles');
-    Route::get('/comments', [LKCommentController::class, 'index'])->name('user.comments');
-    Route::get('/questions', [LKQuestionController::class, 'index'])->name('user.questions');
-    Route::get('/answers', [LKAnswerController::class, 'index'])->name('user.answers');
-    Route::get('/subscribers', [LKSubscriberController::class, 'index'])->name('user.subscribers');
-    Route::get('/subscriptions', [LKSubscriptionController::class, 'index'])->name('user.subscriptions');
+    Route::get('/bookmarks', [LKBookmarkController::class, 'index'])->name(LKRouteNamesEnum::page_index);
+    Route::get('/articles', [LKArticleController::class, 'index'])->name(LKRouteNamesEnum::page_articles_index);
+    Route::get('/comments', [LKCommentController::class, 'index'])->name(LKRouteNamesEnum::page_comments_index);
+    Route::get('/questions', [LKQuestionController::class, 'index'])->name(LKRouteNamesEnum::page_questions_index);
+    Route::get('/answers', [LKAnswerController::class, 'index'])->name(LKRouteNamesEnum::page_answers_index);
+    Route::get('/subscribers', [LKSubscriberController::class, 'index'])->name(LKRouteNamesEnum::page_subscribers_index);
+    Route::get('/subscriptions', [LKSubscriptionController::class, 'index'])->name(LKRouteNamesEnum::page_subscriptions_index);
 });
