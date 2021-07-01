@@ -18,6 +18,6 @@ class ArticleRepository
 
     public function adminSingleArticle($article_id) {
         return Article::byId($article_id)
-            ->with(['categories', 'tags', 'images']);
+            ->with(['categories', 'tags']);
     }
 }
