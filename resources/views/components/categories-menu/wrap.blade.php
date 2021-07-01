@@ -29,28 +29,28 @@
     ],
 ]
 @endphp
-<div class="header-bottom">
+<div class="categories-menu">
     <div class="container">
-        <div class="header-bottom__inner">
-            <ul class="header-bottom__items">
+        <div class="categories-menu__inner">
+            <ul class="categories-menu__items">
                 @foreach($items as $item)
                     <li>
-                        <a href="{{ $item['link']  }}" class="text_medium header-bottom__item">{!! $item['name'] !!}</a>
+                        <a href="{{ $item['link']  }}" class="text_medium categories-menu__item">{!! $item['name'] !!}</a>
                     </li>
                 @endforeach
             </ul>
-            <select size="1" class="forms_select header-bottom__items-mobile">
+            <select size="1" class="forms_select categories-menu__items-mobile">
                 @foreach($items as $item)
                     <option value="{{ $item['name'] }}">{!! $item['name'] !!}</option>
                 @endforeach
             </select>
-            <div class="header-bottom__buttons">
-                <div class="header-bottom__edit">
+            <div class="categories-menu__buttons">
+                <div class="categories-menu__edit">
                     @include('icons.edit')
                 </div>
-                <div class="header-bottom__dropdown">
-                    <a href="#" class="button button_light button_mini header-bottom__button">Задать вопрос</a>
-                    <a href="#" class="button button_light button_mini header-bottom__button">Написать статью</a>
+                <div class="categories-menu__dropdown">
+                    <a href="#" class="button button_light button_mini categories-menu__button">Задать вопрос</a>
+                    <a href="#" class="button button_light button_mini categories-menu__button">Написать статью</a>
                 </div>
             </div>
         </div>

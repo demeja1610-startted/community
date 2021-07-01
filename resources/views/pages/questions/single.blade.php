@@ -1,3 +1,7 @@
-<div class="question-single">
+@extends('layouts.app')
 
-</div>
+@section('content')
+    <div class="question-single">
+        Single question
+    </div>
+@endsection

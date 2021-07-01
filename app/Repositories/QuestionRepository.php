@@ -13,13 +13,11 @@ class QuestionRepository
     public function singlePageQuestion($slug)
     {
         return Question::where('slug', $slug)
-            ->with(['categories', 'tags', 'images'])
-            ->withCount(['likes']);
+            ->with(['categories', 'tags', 'images']);
     }
 
     public function adminSingleQuestion($article_id) {
         return Question::byId($article_id)
-            ->with(['categories', 'tags', 'images'])
-            ->withCount(['likes']);
+            ->with(['categories', 'tags', 'images']);
     }
 }

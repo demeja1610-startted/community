@@ -12,29 +12,29 @@
         font-size: 14px;
         line-height: 20px;
         color: #fff;
-        background-color: #454754;
+        background-color: var(--secondary-7);
         padding: 8px 12px;
 
         &:hover {
-            background-color: #686C7D;
+            background-color: var(--secondary-6);
         }
     }
 
     &_light {
         border-radius: 10px;
-        border: 1px solid #D3D4D9;
+        border: 1px solid var(--secondary-3);
         padding: 12px 20px;
         font-size: 16px;
         letter-spacing: -0.18px;
         line-height: 24px;
-        color: #686C7D;
+        color: var(--secondary-6);
         font-weight: 600;
         display: inline-flex;
         align-items: center;
         justify-content: center;
 
         &:hover {
-            background-color: $color_bg;
+            background-color: var(--secondary-1);
         }
     }
 

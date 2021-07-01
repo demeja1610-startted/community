@@ -31,14 +31,14 @@
             font-size: 15px;
             line-height: 24px;
             letter-spacing: -0.13px;
-            color: #9194a1;
+            color: var(--secondary);
 
             &:last-child {
                 margin-right: 0;
             }
 
             &:hover {
-                color: #075f88;
+                color: var(--primary-6);
             }
         }
     }
@@ -58,13 +58,13 @@
 
         &-link {
             padding: 4px;
-            background: #f7f7f8;
+            background: var(--secondary-1);
             border-radius: 50%;
 
             svg {
                 width: 24px;
                 height: 24px;
-                fill: #686c7d;
+                fill: var(--secondary-6);
             }
 
             &:hover {

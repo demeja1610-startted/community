@@ -7,7 +7,7 @@
         font-size: 34px;
         line-height: 40px;
         letter-spacing: -0.74px;
-        color: #0e0e0f;
+        color: var(--secondary-9);
     }
 
     &__desc {
@@ -15,6 +15,6 @@
         font-size: 18px;
         line-height: 28px;
         letter-spacing: -0.26px;
-        color: #0e0e0f;
+        color: var(--secondary-9);
     }
 }
