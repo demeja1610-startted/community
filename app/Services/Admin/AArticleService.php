@@ -76,11 +76,16 @@ class AArticleService
                 $article->is_published = true;
             }
 
+            if(isset($data['stash'])) {
+                $article->is_published = false;
+            }
+
             $success = $article->save();
 
             if (!$success) {
                 throw new Exception('Не удалось сохранить статью', 500);
             }
+
             $article->refresh();
 
             return (object) [
@@ -142,6 +147,10 @@ class AArticleService
 
             if(!isset($data['save'])) {
                 $article->is_published = true;
+            }
+
+            if(isset($data['stash'])) {
+                $article->is_published = false;
             }
 
             $success = $article->save();

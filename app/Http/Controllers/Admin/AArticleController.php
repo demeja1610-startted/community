@@ -43,6 +43,7 @@ class AArticleController extends Controller
             'description',
             'user_id',
             'save',
+            'stash',
         ]);
 
         $response = $this->aarticleService->store($data);
@@ -72,6 +73,7 @@ class AArticleController extends Controller
             'title',
             'description',
             'save',
+            'stash',
         ]);
 
         $response = $this->aarticleService->update($data, $article_id);

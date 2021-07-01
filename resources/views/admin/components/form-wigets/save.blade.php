@@ -16,6 +16,12 @@
                     <button class="btn btn-primary save-widget__button" type="submit">
                         {{ __('Опубликовать') }}
                     </button>
+                @elseif(isset($model) && $model->is_published)
+                <input
+                    class="btn btn-outline-danger save-widget__button"
+                    type="submit" name="stash"
+                    value="{{ __('В черновик') }}"
+                >
                 @endif
             </div>
         </div>
