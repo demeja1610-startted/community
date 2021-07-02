@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="questions">
-        @include('components.article-filter.wrap')
+        @include('components.article-filter.wrap', ['question' => true])
         @forelse ($questions as $question)
             @include('components.question-card.wrap', ['question' => $question])
         @empty

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Services\ArticleService;
+use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
@@ -14,8 +15,14 @@ class ArticleController extends Controller
         $this->articleService = $articleService;
     }
 
-    public function index() {
-        $response = $this->articleService->index();
+    public function index(Request $request) {
+        /*if (!empty($request->filled('filter'))) {
+            dd($request->input());
+        }*/
+        $data = [
+            'filter' => $request->input('filter') ? $request->input('filter') : 'default'
+        ];
+        $response = $this->articleService->index($data);
 
         return view('pages.articles.index', ['articles' =>  $response]);
     }

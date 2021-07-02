@@ -9,8 +9,8 @@
             </li>
         </ul>
         <div class="mobile-menu__buttons">
-            <a href="" class="button button_light mobile-menu__button">Написать статью</a>
-            <a href="" class="button button_light mobile-menu__button">Задать вопрос</a>
+            <a href="" class="button button_light button_large mobile-menu__button">Написать статью</a>
+            <a href="" class="button button_light button_large mobile-menu__button">Задать вопрос</a>
         </div>
     </div>
 

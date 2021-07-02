@@ -14,8 +14,12 @@ class QuestionController extends Controller
         $this->questionService = $questionService;
     }
 
-    public function index() {
-        $response = $this->questionService->index();
+    public function index(Request $request) {
+        $data = [
+            'filter' => $request->input('filter') ? $request->input('filter') : 'default',
+            'answered' => $request->input('answered') ? $request->input('answered') : 'default',
+        ];
+        $response = $this->questionService->index($data);
 
         return view('pages.questions.index', ['questions' =>  $response]);
     }

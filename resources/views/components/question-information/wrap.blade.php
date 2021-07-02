@@ -3,7 +3,7 @@
         <img src="{{ $avatar }}" alt="avatar" class="question-information__avatar">
         <a href="#" class="text_small question-information__name">{!! $name !!}</a>
     </div>
-    <time class="text_small question-information__date">{!! $date !!}</time>
+    <time class="text_small question-information__date">{!! date_format($date, 'j F \в H:i') !!}</time>
     @isset($viewsCount)
         <div class="question-information__views">
             @include('icons.eye')
