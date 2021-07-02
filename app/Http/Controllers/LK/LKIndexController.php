@@ -17,17 +17,13 @@ class LKIndexController extends Controller
 
     /**
      * LKIndexController constructor.
-     * @param $userID
      * @param LKService $lkService
      */
-    public function __construct(Request $request, LKService $lkService)
+    public function __construct(LKService $lkService)
     {
         $this->lkService = $lkService;
-        $this->user = $this->lkService->user($request->user_id);
-        if (isset($this->user->error)) {
-            return redirect(404)->send();
-        }
-
+        $this->user = $this->lkService->user();
         View::share('user', $this->user);
     }
+
 }

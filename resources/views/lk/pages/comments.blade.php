@@ -1,5 +1,5 @@
 @extends('layouts.lk')
 
 @section('content')
-    Комментарии
+    @include('lk.components.comments.wrap')
 @endsection

@@ -1,9 +1,11 @@
 <div class="lk-sidebar__content">
+    @currentUser
     @include('lk.components.sidebar.item', [
-    'title' => 'Закладки',
-    'count' => $user->bookmarks_count,
-    'routeName' => lkRouterNames()::page_index,
-])
+        'title' => 'Закладки',
+        'count' => $user->bookmarks_count,
+        'routeName' => lkRouterNames()::page_index,
+    ])
+    @endif
 
     @include('lk.components.sidebar.item', [
         'title' => 'Статьи',
@@ -13,7 +15,7 @@
 
     @include('lk.components.sidebar.item', [
        'title' => 'Комментарии',
-       'count' => $user->articleComments_count,
+       'count' => $user->article_comments_count,
        'routeName' => lkRouterNames()::page_comments_index,
    ])
 
@@ -31,13 +33,13 @@
 
     @include('lk.components.sidebar.item', [
        'title' => 'Подписки',
-       'count' => $user->subscribers_count,
+       'count' => $user->subscriptions_count,
        'routeName' => lkRouterNames()::page_subscriptions_index,
    ])
 
     @include('lk.components.sidebar.item', [
      'title' => 'Подписчики',
-     'count' => $user->subscriptions_count,
+     'count' => $user->subscribers_count,
      'routeName' => lkRouterNames()::page_subscribers_index,
  ])
 </div>
