@@ -39,7 +39,12 @@
             color: var(--link-color-hover);
         }
     }
+
     &_center {
         text-align: center;
+    }
+
+    &_secondary-6 {
+        color: var(--secondary-6);
     }
 }

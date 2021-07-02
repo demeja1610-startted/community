@@ -11,6 +11,7 @@
 <body class="body-wrap">
 @include('components.header.wrap')
 <div class="container">
+{{--    @include('components.user-component')--}}
     @include('components.notification/wrap')
     <div class="lk">
         @include('lk.components.sidebar.wrap')

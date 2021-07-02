@@ -1,6 +1,6 @@
 @if($bookmarks->count())
-@dump($bookmarks)
+    @dump($bookmarks)
 @else
     @include('lk.components.bookmarks.empty')
 @endif
-2
+

@@ -13,4 +13,7 @@ class LKRouteNamesEnum
     public const page_answers_index = 'page.user.answers';
     public const page_subscribers_index = 'page.user.subscribers';
     public const page_subscriptions_index = 'page.user.subscriptions';
+
+    public const page_settings = 'page.user.settings';
+
 }

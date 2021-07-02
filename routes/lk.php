@@ -6,6 +6,7 @@ use App\Http\Controllers\LK\LKArticleController;
 use App\Http\Controllers\LK\LKBookmarkController;
 use App\Http\Controllers\LK\LKCommentController;
 use App\Http\Controllers\LK\LKQuestionController;
+use App\Http\Controllers\LK\LKSettingController;
 use App\Http\Controllers\LK\LKSubscriberController;
 use App\Http\Controllers\LK\LKSubscriptionController;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +21,5 @@ Route::group(['prefix' => '{user_id}'], function () {
     Route::get('/subscribers', [LKSubscriberController::class, 'index'])->name(LKRouteNamesEnum::page_subscribers_index);
     Route::get('/subscriptions', [LKSubscriptionController::class, 'index'])->name(LKRouteNamesEnum::page_subscriptions_index);
 });
+
+Route::get('/settings', [LKSettingController::class, 'index'])->name(LKRouteNamesEnum::page_settings);
