@@ -1,7 +1,7 @@
 .w {
-    @for $var from 1 to 9 {
-        &-#{$var * 10} {
-            width: #{$var * 10%};
+    @for $var from 1 to 100 {
+        &-#{$var} {
+            width: #{$var * 1%};
         }
     }
 

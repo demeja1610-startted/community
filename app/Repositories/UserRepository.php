@@ -22,4 +22,9 @@ class UserRepository
             ->with(['roles'])
             ->withCount(['articles', 'questions', 'comments', 'voices']);
     }
+
+    public function adminSingleUser($user_id) {
+        return User::byId($user_id)->with(['roles', 'permissions']);
+    }
+
 }

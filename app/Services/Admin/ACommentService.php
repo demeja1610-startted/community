@@ -137,12 +137,12 @@ class ACommentService
         }
     }
 
-    public function approve($comment_id) {
+    public function toggleApprove($comment_id) {
         try {
             $can = Gate::check(PermissionsEnum::manage_comments);
 
             if (!$can) {
-                throw new Exception('Недостаточно прав для одобрения', 403);
+                throw new Exception('Недостаточно прав для редактирования', 403);
             }
 
             $comment = Comment::find($comment_id);
@@ -151,48 +151,21 @@ class ACommentService
                 throw new Exception('Не найдено', 404);
             }
 
-            $comment->is_published = true;
+            $comment->is_published = !(bool) $comment->is_published;
+
             $success = $comment->save();
 
             if (!$success) {
-                throw new Exception('Не удалось одобрить комментарий', 500);
+                $text = 'Не удалось ' . $comment->is_published ? 'отклонить' : 'одобрить';
+
+                throw new Exception($text . ' комментарий', 500);
             }
+
+            $text = 'Комментарий успешно ';
+            $text .= $comment->is_published ? 'одобрен' : 'отклонен';
 
             return (object) [
-                'message' => 'Комментарий успешно одобрен',
-                'code' => 200,
-            ];
-        } catch (Exception $e) {
-            return (object) [
-                'error' => $e->getMessage(),
-                'code' => $e->getCode(),
-            ];
-        }
-    }
-
-    public function unapprove($comment_id) {
-        try {
-            $can = Gate::check(PermissionsEnum::manage_comments);
-
-            if (!$can) {
-                throw new Exception('Недостаточно прав для отклонения', 403);
-            }
-
-            $comment = Comment::find($comment_id);
-
-            if(!$comment) {
-                throw new Exception('Не найдено', 404);
-            }
-
-            $comment->is_published = false;
-            $success = $comment->save();
-
-            if (!$success) {
-                throw new Exception('Не удалось отклонить комментарий', 500);
-            }
-
-            return (object) [
-                'message' => 'Комментарий успешно отклонен',
+                'message' => $text,
                 'code' => 200,
             ];
         } catch (Exception $e) {

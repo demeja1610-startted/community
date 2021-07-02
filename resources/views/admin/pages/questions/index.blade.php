@@ -27,7 +27,12 @@
                     @forelse ($questions as $question)
                         @component('admin.components/loop-table/table-row')
                             @slot('rowContent')
-                                @include('admin.components/loop-table/table-cell', ['cellContent' => $question->id, 'cellClasses' => 'w-px-10'])
+                                @include('admin.components/loop-table/table-cell', [
+                                    'cellContent' => $question->id,
+                                    'cellClasses' => implode(' ', [
+                                        'w-5', 'pl-3 ', 'highlighted', $question->is_published ? 'success' : '',
+                                    ])
+                                ])
                                 @component('admin.components/loop-table/table-cell')
                                     @slot('cellContent')
                                         <a href="{{ route(AdminRouterNames()::page_questions_edit, ['question_id' => $question->id]) }}" class="link text-clamp-2">
@@ -47,11 +52,12 @@
                                                 'buttonClasses' => 'mr-2',
                                             ])
                                             @include('admin.components/confirm/button', [
-                                                'url' => route(AdminRouterNames()::page_questions_destroy, ['question_id' => $question->id]),
+                                                'url' => route(AdminRouterNames()::questions_destroy, ['question_id' => $question->id]),
                                                 'title' => __('Удалить вопрос'),
                                                 'icon' => '<i class="fas fa-trash-alt"></i>',
                                                 'confirmText' => 'Вы действительно хотите удалить этот вопрос?',
                                                 'method' => 'delete',
+                                                'buttonClasses' => 'btn-outline-danger',
                                             ])
                                         @endslot
                                     </div>

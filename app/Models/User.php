@@ -77,4 +77,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Image::class, 'avatar_id', 'id');
     }
+
+    public function scopeById($query, $id) {
+        return $query->where('id', $id);
+    }
+
+    public function scopeByEmail($query, $email) {
+        return $query->where('email', $email);
+    }
 }
