@@ -4,7 +4,7 @@
 namespace App\Services\LK;
 
 
-use App\Repositories\LKRepository;
+use App\Repositories\UserRepository;
 use Exception;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -17,7 +17,7 @@ class LKService
      * LKService constructor.
      * @param $lkRepository
      */
-    public function __construct(LKRepository $lkRepository)
+    public function __construct(UserRepository $lkRepository)
     {
         $this->lkRepository = $lkRepository;
     }
@@ -28,7 +28,7 @@ class LKService
         $request = request();
         $userID = $request->user_id ?? $request->user()->id;
 
-        $user = $this->lkRepository->lkUser($userID)->first();
+        $user = $this->lkRepository->user($userID)->first();
         if ($user === null) {
             return redirect(404)->send();
         }

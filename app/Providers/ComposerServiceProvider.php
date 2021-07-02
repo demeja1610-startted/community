@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Repositories\LKRepository;
+use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
@@ -29,7 +29,7 @@ class ComposerServiceProvider extends ServiceProvider
     {
         View::composer('lk.pages.page-*', function ($view) {
             $currentUserID = request()->user_id ?? request()->user()->id;
-            $userData = (new LKRepository())->lkUser($currentUserID)->first();
+            $userData = (new UserRepository())->user($currentUserID)->first();
             $view->with('user', $userData);
         });
 
