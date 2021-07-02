@@ -3,7 +3,7 @@
     {{-- юзер, дата, просмотры --}}
 {{--    @include('components.article.elements.info')--}}
     @include('components.question-information.wrap', [
-    'avatar' => $article->user->avatar->url ? $article->user->avatar->url : URL::asset('/images/no-avatar.svg'),
+    'avatar' => $article->user->avatar ? $article->user->avatar->url : URL::asset('/images/no-avatar.svg'),
     'name' => $article->user->name,
     'date' => $article->created_at,
     'viewsCount' => $article->views])

@@ -1,0 +1,37 @@
+.comment-block {
+    padding: var(--spacing-20);
+    border: 2px solid  var(--secondary-2);
+    border-radius: var(--radius-10);
+    width: 100%;
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+    }
+
+    &__likes {
+        display: flex;
+        align-items: center;
+        margin-right: 16px;
+
+        &-button {
+            width: 32px;
+            height: 32px;
+            background-color: var(--secondary-1);
+            display: flex;
+            align-items: center;
+            border-radius: 100%;
+            justify-content: center;
+        }
+
+        &-count {
+            margin: 0 8px;
+        }
+    }
+}

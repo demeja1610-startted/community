@@ -15,18 +15,10 @@
 
     &__item {
         margin-bottom: 20px;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 10px;
         width: 100%;
 
         &:last-child {
             margin-bottom: 0;
-        }
-
-        .comments-list {
-            margin-top: 20px;
-            margin-left: 20px;
         }
     }
 }

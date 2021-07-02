@@ -19,6 +19,6 @@ trait HasComments
          */
         return $this->morphMany(Comment::class, 'commentable')
             ->whereNull('parent_id')
-            ->with(['user', 'replies.replyTo', 'replies.user']);
+            ->with(['user', 'user.avatar', 'replies.replyTo', 'replies.user']);
     }
 }

@@ -1,0 +1,28 @@
+.author {
+    display: flex;
+    align-items: center;
+
+    &__avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 12px;
+        margin-right: 12px;
+    }
+
+    &__name {
+        display: flex;
+        align-items: center;
+        margin-bottom: 4px;
+        font-weight: 600;
+        color: var(--secondary-9);
+    }
+
+    &__rating {
+        color: var(--secondary-6);
+        margin-left: 2px;
+    }
+
+    &__date {
+        color: var(--secondary);
+    }
+}
