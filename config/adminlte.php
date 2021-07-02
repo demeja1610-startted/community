@@ -305,6 +305,13 @@ return [
                 ],
             ],
         ],
+
+        [
+            'text' => 'Галлерея',
+            'route' => AdminRouteNamesEnum::page_gallery_index,
+            'icon' => 'fas fa-image',
+            'can' => PermissionsEnum::manage_images,
+        ],
     ],
 
     /*
