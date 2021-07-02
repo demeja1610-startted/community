@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content_header')
-    <h1>{{ __('Консоль - категории') }}</h1>
+    <h1>{!! __('Консоль - категории') !!}</h1>
 @stop
 
 @section('layoutContent')
@@ -14,7 +14,7 @@
                 <div class="card-header">
                     <h3 class="card-title">
                         <i class="fas fa-text-width"></i>
-                        {{ __('Список категорий') }}
+                        {!! __('Список категорий') !!}
                     </h3>
                 </div>
                 <div class="card-body p-0">

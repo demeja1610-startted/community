@@ -1,3 +1,3 @@
 <tr class="{{ $rowClasses ?? '' }}">
-    {{ $rowContent }}
+    {!! $rowContent !!}
 </tr>

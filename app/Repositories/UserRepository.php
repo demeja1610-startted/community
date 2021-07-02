@@ -20,4 +20,10 @@ class UserRepository
         return User::query()->findOrFail($user_id)
             ->withCount('articles', 'comments', 'questions', 'answers', 'subscribers');
     }
+
+    public function adminUsersList() {
+        return User::query()
+            ->with(['roles'])
+            ->withCount(['articles', 'questions', 'comments', 'voices']);
+    }
 }

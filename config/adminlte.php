@@ -1,6 +1,7 @@
 <?php
 
 use App\Enum\PermissionsEnum;
+use App\Enum\RouteNames\AdminRouteNamesEnum;
 
 return [
 
@@ -232,26 +233,20 @@ return [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
-
-        // Sidebar items:
-        // [
-        //     'type' => 'sidebar-menu-search',
-        //     'text' => 'search',
-        // ],
         [
             'text' => 'Статьи',
-            'route' => 'page.admin.articles.index',
+            'route' =>  AdminRouteNamesEnum::page_articles_index,
             'icon' => 'far fa-newspaper',
             'can' => PermissionsEnum::manage_articles,
             'submenu' => [
                 [
                     'text' => 'Все статьи',
-                    'route' => 'page.admin.articles.index',
+                    'route' => AdminRouteNamesEnum::page_articles_index,
                     'can' => PermissionsEnum::manage_articles,
                 ],
                 [
                     'text' => 'Добавить статью',
-                    'route' => 'page.admin.articles.create',
+                    'route' => AdminRouteNamesEnum::page_articles_create,
                     'can' => PermissionsEnum::manage_articles,
                     'icon' => 'fas fa-plus',
                 ],
@@ -259,18 +254,18 @@ return [
         ],
         [
             'text' => 'Вопросы',
-            'route' => 'page.admin.questions.index',
+            'route' => AdminRouteNamesEnum::page_questions_index,
             'icon' => 'far fa-question-circle',
             'can' => PermissionsEnum::manage_questions,
             'submenu' => [
                 [
                     'text' => 'Все вопросы',
-                    'route' => 'page.admin.questions.index',
+                    'route' => AdminRouteNamesEnum::page_questions_index,
                     'can' => PermissionsEnum::manage_questions,
                 ],
                 [
                     'text' => 'Добавить вопрос',
-                    'route' => 'page.admin.questions.create',
+                    'route' => AdminRouteNamesEnum::page_questions_create,
                     'can' => PermissionsEnum::manage_questions,
                     'icon' => 'fas fa-plus',
                 ],
@@ -278,87 +273,28 @@ return [
         ],
         [
             'text' => 'Категории',
-            'route' => 'page.admin.categories.index',
+            'route' => AdminRouteNamesEnum::page_categories_index,
             'icon' => 'fas fa-list-ul',
             'can' => PermissionsEnum::manage_categories,
         ],
         [
             'text' => 'Теги',
-            'route' => 'page.admin.tags.index',
+            'route' => AdminRouteNamesEnum::page_tags_index,
             'icon' => 'fas fa-tags',
             'can' => PermissionsEnum::manage_tags,
         ],
         [
             'text' => 'Комментарии',
-            'route' => 'page.admin.comments.index',
+            'route' => AdminRouteNamesEnum::page_comments_index,
             'icon' => 'fas fa-comments',
             'can' => PermissionsEnum::manage_comments,
         ],
-        // ['header' => 'account_settings'],
-        // [
-        //     'text' => 'profile',
-        //     'url'  => 'admin/settings',
-        //     'icon' => 'fas fa-fw fa-user',
-        // ],
-        // [
-        //     'text' => 'change_password',
-        //     'url'  => 'admin/settings',
-        //     'icon' => 'fas fa-fw fa-lock',
-        // ],
-        // [
-        //     'text'    => 'multilevel',
-        //     'icon'    => 'fas fa-fw fa-share',
-        //     'submenu' => [
-        //         [
-        //             'text' => 'level_one',
-        //             'url'  => '#',
-        //         ],
-        //         [
-        //             'text'    => 'level_one',
-        //             'url'     => '#',
-        //             'submenu' => [
-        //                 [
-        //                     'text' => 'level_two',
-        //                     'url'  => '#',
-        //                 ],
-        //                 [
-        //                     'text'    => 'level_two',
-        //                     'url'     => '#',
-        //                     'submenu' => [
-        //                         [
-        //                             'text' => 'level_three',
-        //                             'url'  => '#',
-        //                         ],
-        //                         [
-        //                             'text' => 'level_three',
-        //                             'url'  => '#',
-        //                         ],
-        //                     ],
-        //                 ],
-        //             ],
-        //         ],
-        //         [
-        //             'text' => 'level_one',
-        //             'url'  => '#',
-        //         ],
-        //     ],
-        // ],
-        // ['header' => 'labels'],
-        // [
-        //     'text'       => 'important',
-        //     'icon_color' => 'red',
-        //     'url'        => '#',
-        // ],
-        // [
-        //     'text'       => 'warning',
-        //     'icon_color' => 'yellow',
-        //     'url'        => '#',
-        // ],
-        // [
-        //     'text'       => 'information',
-        //     'icon_color' => 'cyan',
-        //     'url'        => '#',
-        // ],
+        [
+            'text' => 'Пользователи',
+            'route' => AdminRouteNamesEnum::page_users_index,
+            'icon' => 'fas fa-users',
+            'can' => PermissionsEnum::manage_users,
+        ],
     ],
 
     /*

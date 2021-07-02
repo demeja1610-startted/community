@@ -13,7 +13,7 @@
             class="custom-control-label {{ $labelClasses ?? '' }}"
             @isset($id) for="{{ $id }}" @endisset
         >
-            {{ $label }}
+            {!! $label !!}
         </label>
     </div>
 </div>

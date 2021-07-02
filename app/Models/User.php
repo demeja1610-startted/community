@@ -30,7 +30,7 @@ class User extends Authenticatable
 
     public function questions()
     {
-        return $this->hasMany(Article::class);
+        return $this->hasMany(Question::class);
     }
 
     public function subscribers()
@@ -66,11 +66,6 @@ class User extends Authenticatable
     public function bookmarks()
     {
         return $this->hasMany(Bookmark::class);
-    }
-
-    public function likes()
-    {
-        return $this->hasMany(Like::class);
     }
 
     public function voices()

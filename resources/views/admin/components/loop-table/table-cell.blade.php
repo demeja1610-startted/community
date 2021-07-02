@@ -6,5 +6,5 @@
         @endforeach
     @endisset
 >
-    {{ $cellContent }}
+    {!! $cellContent !!}
 </td>

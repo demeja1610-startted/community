@@ -5,7 +5,7 @@
                 for="{{ $id }}"
             @endisset
         >
-            {{ $label }}
+            {!! $label !!}
         </label>
     @endisset
     <input
@@ -16,16 +16,16 @@
             id="{{ $id }}"
         @endisset
         @isset($placeholder)
-            placeholder="{{ $placeholder }}"
+            placeholder="{!! $placeholder !!}"
         @endisset
         @if(!empty($value))
-            value="{{ $value }}"
+            value="{!! $value !!}"
         @endif
         name="{{ $name }}"
     >
     @isset($error)
         @error($error)
-            <p class="text text-danger">{{ $message }}</p>
+            <p class="text text-danger">{!! $message !!}</p>
         @enderror
     @endisset
 </div>

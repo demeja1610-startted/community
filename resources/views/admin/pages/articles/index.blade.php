@@ -30,8 +30,8 @@
                                 @include('admin.components/loop-table/table-cell', ['cellContent' => $article->id, 'cellClasses' => 'w-px-10'])
                                 @component('admin.components/loop-table/table-cell')
                                     @slot('cellContent')
-                                        <a href="{{ route('page.admin.articles.edit', ['article_id' => $article->id]) }}" class="link text-clamp-2">
-                                            {{ $article->title }}
+                                        <a href="{{ route(AdminRouterNames()::page_articles_edit, ['article_id' => $article->id]) }}" class="link text-clamp-2">
+                                            {!! $article->title !!}
                                         </a>
                                     @endslot
                                 @endcomponent
@@ -42,12 +42,12 @@
                                     <div class="d-flex align--items-center no-wrap w-100 justify-content-center">
                                         @slot('cellContent')
                                             @include('admin.components/loop-table/edit-button', [
-                                                'url' => route('page.admin.articles.edit', ['article_id' => $article->id]),
+                                                'url' => route(AdminRouterNames()::page_articles_edit, ['article_id' => $article->id]),
                                                 'title' => __('Редактировать'),
                                                 'buttonClasses' => 'mr-2',
                                             ])
                                             @include('admin.components/confirm/button', [
-                                                'url' => route('admin.articles.delete', ['article_id' => $article->id]),
+                                                'url' => route(AdminRouterNames()::page_articles_destroy, ['article_id' => $article->id]),
                                                 'title' => __('Удалить статью'),
                                                 'icon' => '<i class="fas fa-trash-alt"></i>',
                                                 'confirmText' => 'Вы действительно хотите удалить эту статью?',

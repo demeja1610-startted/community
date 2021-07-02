@@ -8,7 +8,7 @@
             @endif
 
             <tbody class="{{ $tableBodyClasses ?? '' }}">
-                {{ $tableContent }}
+                {!! $tableContent !!}
             </tbody>
         </table>
     </div>
