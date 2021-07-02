@@ -36,7 +36,7 @@ class ComposerServiceProvider extends ServiceProvider
         Blade::if('currentUser', function () {
             $userID = request()->user_id;
             $authUserID = request()->user()->id;
-            return $userID == $authUserID;
+            return $userID == $authUserID || !$userID;
         });
     }
 }
