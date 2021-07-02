@@ -55,7 +55,7 @@
                                                     'buttonClasses' => 'mr-2',
                                                 ])
                                                 @include('admin.components/confirm/button', [
-                                                    'url' => route(AdminRouterNames()::page_users_destroy, ['user_id' => $user->id]),
+                                                    'url' => route(AdminRouterNames()::users_destroy, ['user_id' => $user->id]),
                                                     'title' => __('Удалить пользователя'),
                                                     'icon' => '<i class="fas fa-trash-alt"></i>',
                                                     'confirmText' => 'Вы действительно хотите удалить этого пользователя?',

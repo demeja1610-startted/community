@@ -47,7 +47,7 @@
                                                 'buttonClasses' => 'mr-2',
                                             ])
                                             @include('admin.components/confirm/button', [
-                                                'url' => route(AdminRouterNames()::page_articles_destroy, ['article_id' => $article->id]),
+                                                'url' => route(AdminRouterNames()::articles_destroy, ['article_id' => $article->id]),
                                                 'title' => __('Удалить статью'),
                                                 'icon' => '<i class="fas fa-trash-alt"></i>',
                                                 'confirmText' => 'Вы действительно хотите удалить эту статью?',

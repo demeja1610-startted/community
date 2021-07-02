@@ -235,7 +235,6 @@ return [
         ],
         [
             'text' => 'Статьи',
-            'route' =>  AdminRouteNamesEnum::page_articles_index,
             'icon' => 'far fa-newspaper',
             'can' => PermissionsEnum::manage_articles,
             'submenu' => [
@@ -254,7 +253,6 @@ return [
         ],
         [
             'text' => 'Вопросы',
-            'route' => AdminRouteNamesEnum::page_questions_index,
             'icon' => 'far fa-question-circle',
             'can' => PermissionsEnum::manage_questions,
             'submenu' => [
@@ -291,9 +289,21 @@ return [
         ],
         [
             'text' => 'Пользователи',
-            'route' => AdminRouteNamesEnum::page_users_index,
             'icon' => 'fas fa-users',
             'can' => PermissionsEnum::manage_users,
+            'submenu' => [
+                [
+                    'text' => 'Все пользователи',
+                    'route' => AdminRouteNamesEnum::page_users_index,
+                    'can' => PermissionsEnum::manage_users,
+                ],
+                [
+                    'text' => 'Создать пользователя',
+                    'route' => AdminRouteNamesEnum::page_users_create,
+                    'can' => PermissionsEnum::manage_users,
+                    'icon' => 'fas fa-plus',
+                ],
+            ],
         ],
     ],
 

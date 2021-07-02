@@ -1,8 +1,8 @@
 @component('admin.components/form/single')
     @slot('submitText', isset($category) ? __('Сохранить') : __('Опубликовать') )
     @slot('action', isset($category) ?
-        route(AdminRouterNames()::page_categories_update, ['category_id' => $category->id]) :
-        route(AdminRouterNames()::page_categories_store)
+        route(AdminRouterNames()::categories_update, ['category_id' => $category->id]) :
+        route(AdminRouterNames()::сategories_store)
     )
     @slot('method', isset($category) ? 'PATCH' : 'PUT' )
     @slot('title', isset($category) ? __('Редактирование категории') : __('Создание категории') )

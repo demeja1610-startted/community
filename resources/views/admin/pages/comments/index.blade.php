@@ -50,7 +50,7 @@
                                                 'buttonClasses' => 'mr-2',
                                             ])
                                             @include('admin.components/confirm/button', [
-                                                'url' => route(AdminRouterNames()::page_comments_destroy, ['comment_id' => $comment->id]),
+                                                'url' => route(AdminRouterNames()::comments_destroy, ['comment_id' => $comment->id]),
                                                 'title' => __('Удалить комментарий'),
                                                 'icon' => '<i class="fas fa-trash-alt"></i>',
                                                 'confirmText' => 'Вы действительно хотите удалить этот комментарий?',
@@ -59,7 +59,7 @@
                                             ])
                                             @if ( !$comment->is_published)
                                                 @include('admin.components/confirm/button', [
-                                                    'url' => route(AdminRouterNames()::page_comments_approve, ['comment_id' => $comment->id]),
+                                                    'url' => route(AdminRouterNames()::comments_approve, ['comment_id' => $comment->id]),
                                                     'title' => __('Одобрить комментарий'),
                                                     'icon' => '<i class="fas fa-thumbs-up"></i>',
                                                     'confirmText' => 'Вы действительно хотите одобрить этот комментарий?',
@@ -67,7 +67,7 @@
                                                 ])
                                             @else
                                                 @include('admin.components/confirm/button', [
-                                                    'url' => route(AdminRouterNames()::page_comments_unapprove, ['comment_id' => $comment->id]),
+                                                    'url' => route(AdminRouterNames()::comments_unapprove, ['comment_id' => $comment->id]),
                                                     'title' => __('Отклонить комментарий'),
                                                     'icon' => '<i class="fas fa-thumbs-down"></i>',
                                                     'confirmText' => 'Вы действительно хотите отклонить этот комментарий?',

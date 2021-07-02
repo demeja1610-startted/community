@@ -5,7 +5,7 @@
         @component('admin.components/form/single')
             @slot('formClasses', 'mt-2')
             @slot('submitText', isset($comment) ? __('Сохранить') : __('Опубликовать') )
-            @slot('action', route(AdminRouterNames()::page_comments_update, ['comment_id' => $comment->id]))
+            @slot('action', route(AdminRouterNames()::сomments_update, ['comment_id' => $comment->id]))
             @slot('method', isset($comment) ? 'PATCH' : 'PUT' )
             @slot('title', isset($comment) ? __('Редактирование комментария') : __('Создание комментария') )
             @slot('formContent')

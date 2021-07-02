@@ -12,7 +12,7 @@
             <i class="fas fa-edit"></i>
         </a>
         @include('admin.components/confirm/button', [
-            'url' => route(AdminRouterNames()::page_categories_destroy, ['category_id' => $category->id]),
+            'url' => route(AdminRouterNames()::categories_destroy, ['category_id' => $category->id]),
             'title' => __('Удалить категорию'),
             'icon' => '<i class="fas fa-trash-alt"></i>',
             'confirmText' => 'Вы действительно хотите удалить эту категорию?',

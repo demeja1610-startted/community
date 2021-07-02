@@ -47,7 +47,7 @@
                                                 'buttonClasses' => 'mr-2',
                                             ])
                                             @include('admin.components/confirm/button', [
-                                                'url' => route(AdminRouterNames()::page_questions_destroy, ['question_id' => $question->id]),
+                                                'url' => route(AdminRouterNames()::questions_destroy, ['question_id' => $question->id]),
                                                 'title' => __('Удалить вопрос'),
                                                 'icon' => '<i class="fas fa-trash-alt"></i>',
                                                 'confirmText' => 'Вы действительно хотите удалить этот вопрос?',

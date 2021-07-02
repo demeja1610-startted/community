@@ -4,7 +4,7 @@
     action="{{
         isset($question) ?
         route(AdminRouterNames()::page_questions_edit, ['question_id' => $question->id]) :
-        route(AdminRouterNames()::page_questions_store) }}"
+        route(AdminRouterNames()::questions_store) }}"
     class="col-12 {{ $formClasses ?? '' }}"
 >
     @csrf
