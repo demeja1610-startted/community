@@ -20,8 +20,7 @@ class ArticleController extends Controller
             dd($request->input());
         }*/
         $data = [
-            'filter' => $request->input('filter'),
-            'answered' => $request->input('answered'),
+            'filter' => $request->input('filter') ? $request->input('filter') : 'default'
         ];
         $response = $this->articleService->index($data);
 

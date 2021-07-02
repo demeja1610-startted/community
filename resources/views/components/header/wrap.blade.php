@@ -23,7 +23,7 @@
                 <div class="header__signin-mobile">
                     @include('icons.avatar')
                 </div>
-                <button class="button button_primary header__signin">Войти</button>
+                <button class="button button_primary button_medium header__signin">Войти</button>
             </div>
         </div>
     </div>

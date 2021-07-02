@@ -10,7 +10,7 @@
     <div class="question-card__bottom">
         <div class="question-card__categories">
             @foreach($question->categories as $category)
-                <a href="{{ $category['link'] }}" class="button button_light text_medium question-card__category">{!! $category['name'] !!}</a>
+                <a href="{{ $category['link'] }}" class="button button_light button_large text_medium question-card__category">{!! $category['name'] !!}</a>
             @endforeach
         </div>
         @include('components.post-actions.wrap', ['answersCount' => $question->comments_count])

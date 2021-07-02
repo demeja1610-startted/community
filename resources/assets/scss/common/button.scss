@@ -8,12 +8,8 @@
     border-radius: 8px;
 
     &_primary {
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 20px;
         color: #fff;
         background-color: var(--secondary-7);
-        padding: 8px 12px;
 
         &:hover {
             background-color: var(--secondary-6);
@@ -23,10 +19,6 @@
     &_light {
         border-radius: 10px;
         border: 1px solid var(--secondary-3);
-        padding: 12px 20px;
-        font-size: 16px;
-        letter-spacing: -0.18px;
-        line-height: 24px;
         color: var(--secondary-6);
         font-weight: 600;
         display: inline-flex;
@@ -38,9 +30,23 @@
         }
     }
 
+    &_medium {
+        padding: 8px 12px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
     &_mini {
         padding: 4px 8px;
         font-size: 14px;
         line-height: 20px;
+    }
+
+    &_large {
+        padding: 12px 20px;
+        font-size: 16px;
+        letter-spacing: -0.18px;
+        line-height: 24px;
     }
 }

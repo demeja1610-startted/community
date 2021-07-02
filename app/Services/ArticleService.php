@@ -13,10 +13,12 @@ class ArticleService
 {
 
     protected $articleRepository;
+    protected $filterService;
 
-    public function __construct(ArticleRepository $articleRepository)
+    public function __construct(ArticleRepository $articleRepository, FilterService $filterService)
     {
         $this->articleRepository = $articleRepository;
+        $this->filterService = $filterService;
     }
 
     public function index(array $data) {
@@ -25,9 +27,9 @@ class ArticleService
         } else {
             $filter['filter'] = 'fresh';
         }
-        $articles = $this->articleRepository->articleList($filter);
+        $articles = $this->articleRepository->articleList();
         $paginate = Setting::where('slug', SettingsEnum::articles_pagination)->first()->value;
-        return $articles->paginate($paginate);
+        return $this->filterService->sort($data, $articles)->paginate($paginate);
     }
 
     public function show($slug)
