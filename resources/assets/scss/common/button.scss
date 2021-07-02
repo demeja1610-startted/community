@@ -9,12 +9,8 @@
     transition: background-color ease 200ms, color ease 200ms;
 
     &_primary {
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 20px;
         color: #fff;
         background-color: var(--secondary-7);
-        padding: 8px 12px;
 
         &:hover {
             background-color: var(--secondary-6);
@@ -24,10 +20,6 @@
     &_light {
         border-radius: 10px;
         border: 1px solid var(--secondary-3);
-        padding: 12px 20px;
-        font-size: 16px;
-        letter-spacing: -0.18px;
-        line-height: 24px;
         color: var(--secondary-6);
         font-weight: 600;
         display: inline-flex;
@@ -38,6 +30,13 @@
             background-color: var(--secondary-1);
             color: var(--secondary-7);
         }
+    }
+
+    &_medium {
+        padding: 8px 12px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 20px;
     }
 
     &_mini {
@@ -53,5 +52,12 @@
     &_center {
         margin-left: auto;
         margin-right: auto;
+    }
+
+    &_large {
+        padding: 12px 20px;
+        font-size: 16px;
+        letter-spacing: -0.18px;
+        line-height: 24px;
     }
 }

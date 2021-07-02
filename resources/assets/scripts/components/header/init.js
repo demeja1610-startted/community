@@ -7,7 +7,7 @@ export default function header() {
     let dropdownOpen = document.querySelector('.categories-menu__edit');
 
     searchMobileButton?.addEventListener('click', function() {
-        document.querySelector('.header-top__search').classList.toggle('active');
+        document.querySelector('.header__search').classList.toggle('active');
     });
 
     hamburger?.addEventListener('click', function() {

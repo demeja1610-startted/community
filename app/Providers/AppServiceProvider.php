@@ -3,7 +3,10 @@
 namespace App\Providers;
 
 use App\Helpers\General\CommentableRouteHelper;
+use App\Helpers\General\ModelRouteHelper;
+use App\Repositories\ArticleRepository;
 use App\Repositories\CommentRepository;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
 use App\Models\Comment;
@@ -45,17 +48,19 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer('layouts.app', function ($view) {
-            $repository = new CommentRepository();
-            $comments = $repository->popularComments()->limit(5)->get();
+            $commentRepository = new CommentRepository();
+            $articleRepository = new ArticleRepository();
+            $comments = $commentRepository->popularComments()->limit(5)->get();
+            $popularArticles = $articleRepository->popularArticles()->limit(4)->get();
             $comments->map(function($comment) {
-                $url = CommentableRouteHelper::getUrl($comment);
+                $routeName = ModelRouteHelper::getPageRouteName($comment->commentable, 'single');
 
-                if(!isset($url->error)) {
-                    $comment->commentableUrl = $url;
+                if($routeName) {
+                    $comment->commentableRouteName = $routeName;
                     return $comment;
                 }
             });
-            $view->with('popularComments', $comments);
+            $view->with('popularComments', $comments)->with('popularArticles', $popularArticles);
         });
     }
 }
