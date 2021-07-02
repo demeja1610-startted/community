@@ -33,13 +33,13 @@
 
     @include('lk.components.sidebar.item', [
        'title' => 'Подписки',
-       'count' => $user->subscribers_count,
+       'count' => $user->subscriptions_count,
        'routeName' => lkRouterNames()::page_subscriptions_index,
    ])
 
     @include('lk.components.sidebar.item', [
      'title' => 'Подписчики',
-     'count' => $user->subscriptions_count,
+     'count' => $user->subscribers_count,
      'routeName' => lkRouterNames()::page_subscribers_index,
  ])
 </div>

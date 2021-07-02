@@ -1,10 +1,8 @@
-@if($subscriptions->count())
-    @dump($subscriptions)
+@if($subscriptions->total())
+    @foreach($subscriptions as $subscription)
+        @include('lk.components.subscribe-item')
+    @endforeach
 @else
-    @component('lk.components.empty', ['title' => 'У вас пока нет подписок'])
-        @slot('text')
-            Читайте <a class="text_link" href="{{ route(webRouterNames()::page_articles_index) }}">статьи</a> и подписывайтесь на понравившихся авторов и интересные темы
-        @endslot
-    @endcomponent
+    @include('lk.components.subscriptions.empty')
 @endif
 
