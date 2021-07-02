@@ -262,4 +262,31 @@ class AUserService
             ];
         }
     }
+
+    public function toggleBan($user_id) {
+        $can = Gate::check(PermissionsEnum::manage_users);
+
+        if (!$can) {
+            throw new Exception('Недостаточно прав для редактирования', 403);
+        }
+
+        $user = User::find($user_id);
+
+        if(!$user) {
+            throw new Exception('Не найдено', 404);
+        }
+
+        $user->is_banned = !(bool) $user->is_banned;
+
+        $success = $user->save();
+
+        if (!$success) {
+            throw new Exception('Не удалось редактировать пользователя', 500);
+        }
+
+        return (object) [
+            'message' => 'Пользователь успешно отредактирован',
+            'code' => 200,
+        ];
+    }
 }

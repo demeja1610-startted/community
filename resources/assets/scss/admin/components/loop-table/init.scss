@@ -1,0 +1,16 @@
+.loop-table {
+
+    &__cell {
+        &.highlighted {
+            box-shadow: inset 5px 0px 0px 0px var(--secondary, #ddd);
+
+            &.danger {
+                box-shadow: inset 5px 0px 0px 0px var(--danger, #ddd);
+            }
+
+            &.success {
+                box-shadow: inset 5px 0px 0px 0px var(--success, #ddd);
+            }
+        }
+    }
+}

@@ -43,4 +43,5 @@ class AdminRouteNamesEnum {
     public const users_store = 'admin.users.store';
     public const users_update = 'admin.users.update';
     public const users_destroy = 'admin.users.delete';
+    public const users_toggle_ban = 'admin.users.toggleBan';
 }

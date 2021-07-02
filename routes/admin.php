@@ -68,4 +68,5 @@ Route::group(['prefix' => 'users'], function () {
     Route::put('/store', [AUserController::class, 'store'])->name(AdminRouteNamesEnum::users_store);
     Route::patch('/{user_id}', [AUserController::class, 'update'])->name(AdminRouteNamesEnum::users_update);
     Route::delete('/{user_id}', [AUserController::class, 'destroy'])->name(AdminRouteNamesEnum::users_destroy);
+    Route::patch('/{user_id}/toggle-ban/', [AUserController::class, 'toggleBan'])->name(AdminRouteNamesEnum::users_toggle_ban);
 });

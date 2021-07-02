@@ -27,7 +27,12 @@
                     @forelse ($comments as $comment)
                         @component('admin.components/loop-table/table-row')
                             @slot('rowContent')
-                                @include('admin.components/loop-table/table-cell', ['cellContent' => $comment->id, 'cellClasses' => 'w-px-10'])
+                                @include('admin.components/loop-table/table-cell', [
+                                    'cellContent' => $comment->id,
+                                    'cellClasses' => implode(' ', [
+                                        'w-5', 'pl-3 ', 'highlighted', $comment->is_published ? 'success' : 'danger',
+                                    ])
+                                ])
                                 @component('admin.components/loop-table/table-cell')
                                     @slot('cellContent')
                                         <a href="{{ route(AdminRouterNames()::page_comments_edit, ['comment_id' => $comment->id]) }}" class="link text-clamp-2">

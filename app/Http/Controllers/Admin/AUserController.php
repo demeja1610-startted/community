@@ -107,4 +107,16 @@ class AUserController extends Controller
 
         return redirect()->back();
     }
+
+    public function toggleBan($user_id) {
+        $response = $this->aUserService->toggleBan($user_id);
+
+        if (isset($response->error)) {
+            session()->flash('error', $response->error);
+        } else {
+            session()->flash('success', $response->message);
+        }
+
+        return redirect()->back();
+    }
 }

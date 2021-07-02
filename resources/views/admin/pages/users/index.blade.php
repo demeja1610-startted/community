@@ -12,10 +12,7 @@
                                 @include('admin.components/loop-table/header-cell', ['cellContent' => __('Имя')])
                                 @include('admin.components/loop-table/header-cell', ['cellContent' => __('Email')])
                                 @include('admin.components/loop-table/header-cell', ['cellContent' => __('Роли')])
-                                @include('admin.components/loop-table/header-cell', ['cellContent' => __('Статьи')])
-                                @include('admin.components/loop-table/header-cell', ['cellContent' => __('Вопросы')])
-                                @include('admin.components/loop-table/header-cell', ['cellContent' => __('Комментарии')])
-                                @include('admin.components/loop-table/header-cell', ['cellContent' => __('Голоса')])
+                                @include('admin.components/loop-table/header-cell', ['cellContent' => __('Забанен')])
                                 @include('admin.components/loop-table/header-cell', ['cellContent' => __('Действия')])
                             @endslot
                         @endcomponent
@@ -31,7 +28,12 @@
                         @endphp
                         @component('admin.components/loop-table/table-row')
                             @slot('rowContent')
-                                @include('admin.components/loop-table/table-cell', ['cellContent' => $user->id, 'cellClasses' => 'w-px-10'])
+                                @include('admin.components/loop-table/table-cell', [
+                                    'cellContent' => $user->id,
+                                    'cellClasses' => implode(' ', [
+                                        'w-5', 'pl-3 ', 'highlighted', $user->is_banned ? 'danger' : 'success',
+                                    ])
+                                ])
                                 @component('admin.components/loop-table/table-cell')
                                     @slot('cellContent')
                                         <a href="{{ route(AdminRouterNames()::page_users_edit, ['user_id' => $user->id]) }}" class="link text-clamp-2">
@@ -41,10 +43,7 @@
                                 @endcomponent
                                 @include('admin.components/loop-table/table-cell', ['cellContent' => $user->email, 'cellClasses' => 'w-10'])
                                 @include('admin.components/loop-table/table-cell', ['cellContent' => implode(',', $userRoles), 'cellClasses' => 'w-10'])
-                                @include('admin.components/loop-table/table-cell', ['cellContent' => $user->articles_count, 'cellClasses' => 'w-10'])
-                                @include('admin.components/loop-table/table-cell', ['cellContent' => $user->questions_count, 'cellClasses' => 'w-10'])
-                                @include('admin.components/loop-table/table-cell', ['cellContent' => $user->comments_count, 'cellClasses' => 'w-10'])
-                                @include('admin.components/loop-table/table-cell', ['cellContent' => $user->voices_count, 'cellClasses' => 'w-10'])
+                                @include('admin.components/loop-table/table-cell', ['cellContent' => $user->is_banned ? __('Да') : __('Нет'), 'cellClasses' => 'w-10'])
                                 @component('admin.components/loop-table/table-cell', ['cellClasses' => 'w-10'])
 
                                         @slot('cellContent')
@@ -60,6 +59,20 @@
                                                     'icon' => '<i class="fas fa-trash-alt"></i>',
                                                     'confirmText' => 'Вы действительно хотите удалить этого пользователя?',
                                                     'method' => 'delete',
+                                                    'buttonClasses' => 'mr-2 btn-outline-danger',
+                                                ])
+                                                @php
+                                                    $blockText = 'Вы действительно хотите ';
+                                                    $blockText .= $user->is_banned ? 'разблокировать' : 'заблокировать';
+                                                    $blockText .= 'этого пользователя?';
+                                                @endphp
+                                                @include('admin.components/confirm/button', [
+                                                    'url' => route(AdminRouterNames()::users_toggle_ban, ['user_id' => $user->id]),
+                                                    'title' => $user->is_banned ? __('Разблокировать пользователя') : __('Заблокировать пользователя'),
+                                                    'icon' => $user->is_banned ? '<i class="fas fa-thumbs-up"></i>' : '<i class="fas fa-thumbs-down"></i>',
+                                                    'confirmText' => $blockText,
+                                                    'method' => 'patch',
+                                                    'buttonClasses' => $user->is_banned ? 'btn-outline-success' : 'btn-outline-warning',
                                                 ])
                                             </div>
                                         @endslot
