@@ -7,9 +7,8 @@ use Illuminate\Http\Request;
 
 class LKSettingController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-//        $user = $request->user();
-        return view('lk.pages.settings');
+        return view('lk.pages.page-settings');
     }
 }

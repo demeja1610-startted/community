@@ -23,9 +23,12 @@ class LKService
     }
 
 
-    public function user($user_id)
+    public function user()
     {
-        $user = $this->lkRepository->lkUser($user_id)->first();
+        $request = request();
+        $userID = $request->user_id ?? $request->user()->id;
+
+        $user = $this->lkRepository->lkUser($userID)->first();
         if ($user === null) {
             return redirect(404)->send();
         }

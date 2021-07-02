@@ -1,4 +1,4 @@
-@if($answers->count())
+@if($answers->total())
     @dump($answers)
 @else
     @component('lk.components.empty')

@@ -27,10 +27,8 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('lk.pages.*', function ($view) {
-            $userID = request()->user_id;
-            $authUserID = request()->user()->id;
-            $currentUserID = $userID ?? $authUserID;
+        View::composer('lk.pages.page-*', function ($view) {
+            $currentUserID = request()->user_id ?? request()->user()->id;
             $userData = (new LKRepository())->lkUser($currentUserID)->first();
             $view->with('user', $userData);
         });

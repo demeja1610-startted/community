@@ -19,11 +19,11 @@ class LKIndexController extends Controller
      * LKIndexController constructor.
      * @param LKService $lkService
      */
-    public function __construct(Request $request, LKService $lkService)
+    public function __construct(LKService $lkService)
     {
         $this->lkService = $lkService;
-        $userID = $request->user_id;
-        $this->user = $this->lkService->user($userID);
+        $this->user = $this->lkService->user();
+        View::share('user', $this->user);
     }
 
 }
