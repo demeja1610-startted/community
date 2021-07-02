@@ -2,22 +2,31 @@
 
 namespace App\Services\Admin;
 
-use App\Enum\PermissionsEnum;
 use Exception;
-use App\Models\Setting;
-use App\Enum\SettingsEnum;
+use App\Models\Tag;
 use App\Models\Article;
-use App\Repositories\ArticleRepository;
+use App\Models\Setting;
+use App\Models\Category;
+use App\Enum\SettingsEnum;
+use App\Enum\PermissionsEnum;
 use Illuminate\Support\Facades\Gate;
+use App\Repositories\ArticleRepository;
 
 class AArticleService
 {
 
     protected $articleRepository;
+    protected $acategoryService;
+    protected $aTagService;
 
-    public function __construct(ArticleRepository $articleRepository)
-    {
+    public function __construct(
+        ArticleRepository $articleRepository,
+        ACategoryService $aCategoryService,
+        ATagService $aTagService
+    ) {
         $this->articleRepository = $articleRepository;
+        $this->acategoryService = $aCategoryService;
+        $this->aTagService = $aTagService;
     }
 
     public function index()
@@ -50,7 +59,13 @@ class AArticleService
                 throw new Exception('Недостаточно прав для создания', 403);
             }
 
-            return 1;
+            $categories = Category::all();
+            $tags = Tag::all();
+
+            return [
+                'categories' => $categories,
+                'tags' => $tags,
+            ];
         } catch (Exception $e) {
             return (object) [
                 'error' => $e->getMessage(),
@@ -59,7 +74,8 @@ class AArticleService
         }
     }
 
-    public function store(array $data) {
+    public function store(array $data)
+    {
         try {
             $can = Gate::check(PermissionsEnum::manage_articles);
 
@@ -72,8 +88,12 @@ class AArticleService
             $article->description = $data['description'];
             $article->user_id = $data['user_id'];
 
-            if(!isset($data['save'])) {
+            if (!isset($data['save'])) {
                 $article->is_published = true;
+            }
+
+            if (isset($data['stash'])) {
+                $article->is_published = false;
             }
 
             $success = $article->save();
@@ -81,7 +101,24 @@ class AArticleService
             if (!$success) {
                 throw new Exception('Не удалось сохранить статью', 500);
             }
+
             $article->refresh();
+
+            if(!empty($data['categories'])) {
+                $response = $this->acategoryService->saveCategoriesToModel($article, $data['categories']);
+
+                if(isset($response->error)) {
+                    throw new Exception($response->error, $response->code);
+                }
+            }
+
+            if(!empty($data['tags'])) {
+                $response = $this->aTagService->saveTagsToModel($article, $data['tags']);
+
+                if(isset($response->error)) {
+                    throw new Exception($response->error, $response->code);
+                }
+            }
 
             return (object) [
                 'message' => 'Статья успешно сохранена',
@@ -113,7 +150,14 @@ class AArticleService
                 throw new Exception('Не найдено', 404);
             }
 
-            return $article;
+            $categories = Category::all();
+            $tags = Tag::all();
+
+            return [
+                'article' => $article,
+                'categories' => $categories,
+                'tags' => $tags,
+            ];
         } catch (Exception $e) {
             return (object) [
                 'error' => $e->getMessage(),
@@ -140,11 +184,31 @@ class AArticleService
             $article->title = $data['title'];
             $article->description = $data['description'];
 
-            if(!isset($data['save'])) {
+            if (!isset($data['save'])) {
                 $article->is_published = true;
             }
 
+            if (isset($data['stash'])) {
+                $article->is_published = false;
+            }
+
             $success = $article->save();
+
+            if(!empty($data['categories'])) {
+                $response = $this->acategoryService->saveCategoriesToModel($article, $data['categories']);
+
+                if(isset($response->error)) {
+                    throw new Exception($response->error, $response->code);
+                }
+            }
+
+            if(!empty($data['tags'])) {
+                $response = $this->aTagService->saveTagsToModel($article, $data['tags']);
+
+                if(isset($response->error)) {
+                    throw new Exception($response->error, $response->code);
+                }
+            }
 
             if (!$success) {
                 throw new Exception('Не удалось редактировать статью', 500);

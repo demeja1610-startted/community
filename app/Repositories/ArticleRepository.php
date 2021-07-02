@@ -17,13 +17,11 @@ class ArticleRepository
     public function singlePageArticle($slug)
     {
         return Article::where('slug', $slug)
-            ->with(['categories', 'tags', 'images'])
-            ->withCount(['likes']);
+            ->with(['categories', 'tags', 'images']);
     }
 
     public function adminSingleArticle($article_id) {
         return Article::byId($article_id)
-            ->with(['categories', 'tags', 'images'])
-            ->withCount(['likes']);
+            ->with(['categories', 'tags']);
     }
 }

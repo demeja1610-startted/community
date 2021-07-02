@@ -18,6 +18,14 @@ class Comment extends Model
         'reply_to',
     ];
 
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($comment) { // before delete() method call this
+            $comment->replies()->update(['depth' => 0]);
+        });
+    }
+
     public function commentable()
     {
         return $this->morphTo();

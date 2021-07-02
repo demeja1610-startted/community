@@ -1,5 +1,5 @@
 @extends('layouts.lk')
 
 @section('content')
-    Статьи
+    @include('lk.components.articles.wrap')
 @endsection

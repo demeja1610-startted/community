@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AArticleController;
 use App\Http\Controllers\Admin\ACommentController;
 use App\Http\Controllers\Admin\ACategoryController;
 use App\Http\Controllers\Admin\AQuestionController;
+use App\Http\Controllers\Admin\AUserController;
 
 Route::get('/', [AIndexController::class, 'index'])->name(AdminRouteNamesEnum::page_index);
 
@@ -57,4 +58,14 @@ Route::group(['prefix' => 'comments'], function () {
     Route::patch('/{comment_id}/approve', [ACommentController::class, 'approve'])->name(AdminRouteNamesEnum::page_comments_approve);
     Route::patch('/{comment_id}/unapprove', [ACommentController::class, 'unapprove'])->name(AdminRouteNamesEnum::page_comments_unapprove);
     Route::delete('/{comment_id}', [ACommentController::class, 'destroy'])->name(AdminRouteNamesEnum::page_comments_destroy);
+});
+
+Route::group(['prefix' => 'users'], function () {
+    Route::get('/', [AUserController::class, 'index'])->name(AdminRouteNamesEnum::page_users_index);
+    Route::get('/{user_id}', [AUserController::class, 'edit'])->name(AdminRouteNamesEnum::page_users_edit);
+
+    // Route::patch('/{user_id}', [AUserController::class, 'update'])->name(AdminRouteNamesEnum::page_comments_update);
+    // Route::patch('/{user_id}/approve', [AUserController::class, 'approve'])->name(AdminRouteNamesEnum::page_comments_approve);
+    // Route::patch('/{user_id}/unapprove', [AUserController::class, 'unapprove'])->name(AdminRouteNamesEnum::page_comments_unapprove);
+    Route::delete('/{user_id}', [AUserController::class, 'destroy'])->name(AdminRouteNamesEnum::page_users_destroy);
 });

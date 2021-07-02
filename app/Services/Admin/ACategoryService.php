@@ -11,6 +11,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Gate;
 use App\Repositories\CategoryRepository;
 use App\Helpers\General\CollectionHelper;
+use Illuminate\Database\Eloquent\Model;
 
 class ACategoryService
 {
@@ -221,5 +222,25 @@ class ACategoryService
 
             return $data;
         });
+    }
+
+    public function saveCategoriesToModel(Model $model, array $categories_ids) {
+        try {
+            if(!$model->isRelation('categories')) {
+                throw new Exception('Модель не имеет связи с категориями', 404);
+            }
+
+            $model->categories()->sync($categories_ids);
+
+            return (object) [
+                'message' => 'success',
+                'code' => 200,
+            ];
+        } catch (Exception $e) {
+            return (object) [
+                'error' => $e->getMessage(),
+                'code' => $e->getCode(),
+            ];
+        }
     }
 }

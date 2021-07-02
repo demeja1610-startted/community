@@ -8,7 +8,7 @@ class LKCommentController extends LKIndexController
 {
     public function index()
     {
-        $comments = $this->user->articleComments();
+        $comments = $this->user->articleComments()->paginate(20);
         return view('lk.pages.comments', ['comments' => $comments]);
     }
 }

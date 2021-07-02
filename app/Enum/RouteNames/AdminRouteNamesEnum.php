@@ -36,4 +36,11 @@ class AdminRouteNamesEnum {
     public const page_comments_approve = 'admin.comments.approve';
     public const page_comments_unapprove = 'admin.comments.unapprove';
     public const page_comments_destroy = 'admin.comments.delete';
+
+    public const page_users_index = 'page.admin.users.index';
+    public const page_users_edit = 'page.admin.users.edit';
+    public const page_users_update = 'admin.users.update';
+    public const page_users_approve = 'admin.users.approve';
+    public const page_users_unapprove = 'admin.users.unapprove';
+    public const page_users_destroy = 'admin.users.delete';
 }

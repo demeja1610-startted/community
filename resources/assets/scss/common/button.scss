@@ -6,6 +6,7 @@
     border: none;
     background: transparent;
     border-radius: 8px;
+    transition: background-color ease 200ms, color ease 200ms;
 
     &_primary {
         color: #fff;
@@ -27,6 +28,7 @@
 
         &:hover {
             background-color: var(--secondary-1);
+            color: var(--secondary-7);
         }
     }
 
@@ -41,6 +43,15 @@
         padding: 4px 8px;
         font-size: 14px;
         line-height: 20px;
+    }
+
+    &_maxContent {
+        width: max-content;
+    }
+
+    &_center {
+        margin-left: auto;
+        margin-right: auto;
     }
 
     &_large {

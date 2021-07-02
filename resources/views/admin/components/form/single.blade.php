@@ -2,7 +2,7 @@
     <div class="card card-secondary w-100 {{ $formClasses ?? '' }}">
         @isset($title)
             <div class="card-header">
-                <h3 class="card-title">{{ $title }}</h3>
+                <h3 class="card-title">{!! $title !!}</h3>
             </div>
         @endisset
 
@@ -14,12 +14,12 @@
             @endisset
 
             <div class="card-body">
-                {{ $formContent }}
+                {!! $formContent !!}
             </div>
 
             <div class="card-footer">
                 <button type="submit" class="btn  {{ $submitClasses ?? 'btn-primary' }}">
-                    {{ $submitText }}
+                    {!! $submitText !!}
                 </button>
             </div>
         </form>

@@ -4,7 +4,6 @@ return [
    'write_articles' => 'Писать статьи',
    'write_questions' => 'Писать вопросы',
    'write_comments' => 'Оставлять комментарии',
-   'like' => 'Ставить лайки',
    'vote' => 'Голосовать',
    'manage_articles' => 'Управлять статьями',
    'manage_questions' => 'Управлять вопросами',

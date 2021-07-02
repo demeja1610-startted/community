@@ -4,59 +4,53 @@
 namespace App\Services\LK;
 
 
-use App\Models\User;
 use App\Repositories\UserRepository;
-use Error;
 use Exception;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class LKService
 {
-    protected $userRepository;
+    protected $lkRepository;
     protected $user;
 
     /**
      * LKService constructor.
-     * @param $userRepository
+     * @param $lkRepository
      */
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $lkRepository)
     {
-        $this->userRepository = $userRepository;
+        $this->lkRepository = $lkRepository;
     }
 
 
-    public function user($user_id)
+    public function user()
     {
-        try {
-            $user = $this->userRepository->lkUser($user_id)->first();
-            if ($user === null) {
-                throw new Exception('Ошибка 404', 404);
-            }
-            $this->user = $user;
-            return $this->user;
-        } catch (Exception $e) {
-            return (object)[
-                'error' => $e->getMessage(),
-                'code' => $e->getCode(),
-            ];
+        $request = request();
+        $userID = $request->user_id ?? $request->user()->id;
+
+        $user = $this->lkRepository->user($userID)->first();
+        if ($user === null) {
+            return redirect(404)->send();
         }
+        $this->user = $user;
+        return $this->user;
     }
 
     public function bookmarks()
     {
-        return $this->user->bookmarks()->with(['user', 'bookmarkable' => function ($q) {
-            $q->with('images');
+        return $this->user->bookmarks()->with(['bookmarkable' => function ($q) {
+            $q->with('images', 'user');
         }]);
     }
 
     public function articles()
     {
-        return $this->user->articles()->with('user');
+        return $this->user->articles()->with('user', 'images');
     }
 
     public function questions()
     {
-        return $this->user->questions()->with('user');
+        return $this->user->questions()->with('user', 'images');
     }
 
     public function answers()
