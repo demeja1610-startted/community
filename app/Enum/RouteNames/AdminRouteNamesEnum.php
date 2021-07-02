@@ -33,8 +33,7 @@ class AdminRouteNamesEnum {
     public const page_comments_index = 'page.admin.comments.index';
     public const page_comments_edit = 'page.admin.comments.edit';
     public const сomments_update = 'admin.comments.update';
-    public const comments_approve = 'admin.comments.approve';
-    public const comments_unapprove = 'admin.comments.unapprove';
+    public const comments_toggle_approve = 'admin.comments.toggleApprove';
     public const comments_destroy = 'admin.comments.delete';
 
     public const page_users_index = 'page.admin.users.index';

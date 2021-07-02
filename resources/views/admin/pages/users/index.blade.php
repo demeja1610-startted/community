@@ -64,7 +64,7 @@
                                                 @php
                                                     $blockText = 'Вы действительно хотите ';
                                                     $blockText .= $user->is_banned ? 'разблокировать' : 'заблокировать';
-                                                    $blockText .= 'этого пользователя?';
+                                                    $blockText .= ' этого пользователя?';
                                                 @endphp
                                                 @include('admin.components/confirm/button', [
                                                     'url' => route(AdminRouterNames()::users_toggle_ban, ['user_id' => $user->id]),

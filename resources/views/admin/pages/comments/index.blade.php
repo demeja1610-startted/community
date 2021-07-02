@@ -44,7 +44,7 @@
                                 @include('admin.components/loop-table/table-cell', ['cellContent' => $comment->created_at, 'cellClasses' => 'w-10'])
                                 @include('admin.components/loop-table/table-cell', [
                                     'cellContent' => $comment->is_published ? __('Да') : __('Нет'),
-                                    'cellClasses' => 'w-10 ' . ($comment->is_published ? 'text-success' : 'text-danger')
+                                    'cellClasses' => 'w-10 ',
                                 ])
                                 @component('admin.components/loop-table/table-cell', ['cellClasses' => 'w-10'])
                                     @slot('cellContent')
@@ -60,25 +60,21 @@
                                                 'icon' => '<i class="fas fa-trash-alt"></i>',
                                                 'confirmText' => 'Вы действительно хотите удалить этот комментарий?',
                                                 'method' => 'delete',
-                                                'buttonClasses' => 'mr-2',
+                                                'buttonClasses' => 'mr-2 btn-outline-danger',
                                             ])
-                                            @if ( !$comment->is_published)
-                                                @include('admin.components/confirm/button', [
-                                                    'url' => route(AdminRouterNames()::comments_approve, ['comment_id' => $comment->id]),
-                                                    'title' => __('Одобрить комментарий'),
-                                                    'icon' => '<i class="fas fa-thumbs-up"></i>',
-                                                    'confirmText' => 'Вы действительно хотите одобрить этот комментарий?',
-                                                    'method' => 'patch',
-                                                ])
-                                            @else
-                                                @include('admin.components/confirm/button', [
-                                                    'url' => route(AdminRouterNames()::comments_unapprove, ['comment_id' => $comment->id]),
-                                                    'title' => __('Отклонить комментарий'),
-                                                    'icon' => '<i class="fas fa-thumbs-down"></i>',
-                                                    'confirmText' => 'Вы действительно хотите отклонить этот комментарий?',
-                                                    'method' => 'patch',
-                                                ])
-                                            @endif
+                                            @php
+                                                $blockText = 'Вы действительно хотите ';
+                                                $blockText .= $comment->is_published ? 'одобрить' : 'отклонить';
+                                                $blockText .= ' этот комментарий?';
+                                            @endphp
+                                            @include('admin.components/confirm/button', [
+                                                'url' => route(AdminRouterNames()::comments_toggle_approve, ['comment_id' => $comment->id]),
+                                                'title' => $comment->is_published ? __('Отклонить комментарий') : __('Одобрить комментарий'),
+                                                'icon' => $comment->is_published ? '<i class="fas fa-thumbs-down"></i>' : '<i class="fas fa-thumbs-up"></i>',
+                                                'confirmText' => $blockText,
+                                                'method' => 'patch',
+                                                'buttonClasses' => $comment->is_published ? 'btn-outline-warning' : 'btn-outline-success',
+                                            ])
                                         </div>
                                     @endslot
                                 @endcomponent

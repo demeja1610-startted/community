@@ -27,7 +27,12 @@
                     @forelse ($articles as $article)
                         @component('admin.components/loop-table/table-row')
                             @slot('rowContent')
-                                @include('admin.components/loop-table/table-cell', ['cellContent' => $article->id, 'cellClasses' => 'w-px-10'])
+                                @include('admin.components/loop-table/table-cell', [
+                                    'cellContent' => $article->id,
+                                    'cellClasses' => implode(' ', [
+                                        'w-5', 'pl-3 ', 'highlighted', $article->is_published ? 'success' : '',
+                                    ])
+                                ])
                                 @component('admin.components/loop-table/table-cell')
                                     @slot('cellContent')
                                         <a href="{{ route(AdminRouterNames()::page_articles_edit, ['article_id' => $article->id]) }}" class="link text-clamp-2">
@@ -52,6 +57,7 @@
                                                 'icon' => '<i class="fas fa-trash-alt"></i>',
                                                 'confirmText' => 'Вы действительно хотите удалить эту статью?',
                                                 'method' => 'delete',
+                                                'buttonClasses' => 'btn-outline-danger',
                                             ])
                                         @endslot
                                     </div>

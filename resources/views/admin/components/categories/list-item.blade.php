@@ -17,6 +17,7 @@
             'icon' => '<i class="fas fa-trash-alt"></i>',
             'confirmText' => 'Вы действительно хотите удалить эту категорию?',
             'method' => 'delete',
+            'buttonClasses' => 'btn-outline-danger',
         ])
     </div>
 </li>

@@ -55,8 +55,7 @@ Route::group(['prefix' => 'comments'], function () {
     Route::get('/{comment_id}', [ACommentController::class, 'edit'])->name(AdminRouteNamesEnum::page_comments_edit);
 
     Route::patch('/{comment_id}', [ACommentController::class, 'update'])->name(AdminRouteNamesEnum::сomments_update);
-    Route::patch('/{comment_id}/approve', [ACommentController::class, 'approve'])->name(AdminRouteNamesEnum::comments_approve);
-    Route::patch('/{comment_id}/unapprove', [ACommentController::class, 'unapprove'])->name(AdminRouteNamesEnum::comments_unapprove);
+    Route::patch('/{comment_id}/toggle-approve', [ACommentController::class, 'toggleApprove'])->name(AdminRouteNamesEnum::comments_toggle_approve);
     Route::delete('/{comment_id}', [ACommentController::class, 'destroy'])->name(AdminRouteNamesEnum::comments_destroy);
 });
 
