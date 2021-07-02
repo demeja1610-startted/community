@@ -12,7 +12,8 @@ class UserRepository
     {
         return User::query()
             ->where('id', $user_id)
-            ->withCount('bookmarks', 'articles', 'articleComments', 'questions', 'answers', 'subscribers', 'subscriptions');
+            ->withCount('bookmarks', 'articles', 'articleComments', 'questions', 'answers', 'subscribers', 'subscriptions')
+            ->with('avatar');
     }
 
     public function adminUsersList()
