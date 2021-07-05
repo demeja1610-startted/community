@@ -1,5 +1,5 @@
 <div class="{{ $wrapperClasses ?? 'col-12' }} a-gallery">
-    <div class="card card-secondary w-100 mb-0 {{ $cardClasses ?? '' }} a-gallery__card">
+    <div class="card card-secondary w-100 mb-0 {{ $cardClasses ?? '' }} gallery a-gallery__card">
         <div class="card-header a-gallery__header">
             <h3 class="card-title a-gallery__title">{!! __('Галлерея') !!}</h3>
         </div>
