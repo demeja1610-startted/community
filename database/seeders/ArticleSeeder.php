@@ -20,8 +20,7 @@ class ArticleSeeder extends Seeder
         $faker = Factory::create();
 
         $articles->each(function($article) use ($faker) {
-            $imageID = $faker->numberBetween(1, 50);
-            $image = Image::find($imageID);
+            $image = Image::find(1);
 
             $article->images()->save($image);
         });

@@ -9,6 +9,16 @@ use Illuminate\Database\Seeder;
 
 class ImageSeeder extends Seeder
 {
+
+    protected $imageService;
+    protected $faker;
+
+    public function __construct()
+    {
+        $this->imageService = new ImageService();
+        $this->faker = Factory::create();
+    }
+
     /**
      * Run the database seeds.
      *
@@ -16,14 +26,12 @@ class ImageSeeder extends Seeder
      */
     public function run()
     {
-        $service = new ImageService();
-        $faker = Factory::create();
-        $savedImage = $service->saveFromURL('https://source.unsplash.com/random');
+        $savedImage = $this->imageService->saveFromURL('https://source.unsplash.com/random');
 
-        for ($i=0; $i < 50; $i++) {
+        if(!isset($savedImage->error)) {
             $image = new Image([
                 'url' => $savedImage,
-                'alt' => $faker->text(20),
+                'alt' => $this->faker->text(20),
             ]);
 
             $image->save();

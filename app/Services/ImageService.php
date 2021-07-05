@@ -14,7 +14,7 @@ class ImageService
         $this->client = new Client();
     }
 
-    public function saveFromURL(string $url) : string
+    public function saveFromURL(string $url)
     {
         try {
             $uploadFolder = '/uploads/' . date('d-m-y') . '/';
