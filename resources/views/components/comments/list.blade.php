@@ -1,9 +1,9 @@
 <div class="comments-list">
     <div class="comments-list__wrapper">
         @foreach ($comments as $comment)
-
             <div class="comments-list__item" data-id="{{ $comment->id }}">
-                <strong>
+                @include('components.comment.wrap', ['comment' => $comment])
+                {{--<strong>
                     {{ $comment->user->name }}
                     @if ($comment->replyTo)
                         {!! __('Ответил(-а)') !!}
@@ -20,7 +20,7 @@
                     @endphp
 
                     @if (!$replies->isEmpty()) @include('components.comments/list', ['comments' => $replies, 'paginate' => false]) @endif
-                @endif
+                @endif--}}
             </div>
 
         @endforeach

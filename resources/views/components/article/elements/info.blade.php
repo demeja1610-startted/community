@@ -1,16 +1,16 @@
-<div class="article-info mrgn12-bottom">
+<div class="article-info mrgn16-bottom">
 
     <div class="article-info__avatar">
-        <img src="{{ URL::asset('/images/no-avatar.svg') }}" alt="" class="article-info__avatar-image">
+        <img src="{{ $avatar }}" alt="{{ $alt }}" class="article-info__avatar-image">
     </div>
 
-    <a href="#" class="article-info__user">Inje</a>
+    <a href="#" class="article-info__user">{!! $name !!}</a>
 
-    <div class="article-info__date">Вчера в 14:49</div>
+    <div class="article-info__date">{!!  date_format($date, 'j F \в H:i') !!}</div>
 
     <div class="article-info__views">
         @include('icons.eye')
-        269
+        {!! $viewsCount !!}
     </div>
 
 </div>

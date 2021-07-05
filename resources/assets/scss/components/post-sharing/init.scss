@@ -1,0 +1,13 @@
+@import "item";
+
+.post-sharing {
+    display: flex;
+
+    .sharing-item {
+        margin-right: 8px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

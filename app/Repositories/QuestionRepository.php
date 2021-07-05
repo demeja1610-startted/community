@@ -13,7 +13,7 @@ class QuestionRepository
     public function singlePageQuestion($slug)
     {
         return Question::where('slug', $slug)
-            ->with(['categories', 'tags', 'images']);
+            ->with(['categories', 'tags', 'images', 'user', 'user.avatar'])->withCount('comments');
     }
 
     public function adminSingleQuestion($article_id) {

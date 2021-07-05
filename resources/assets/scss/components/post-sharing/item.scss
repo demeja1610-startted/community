@@ -1,0 +1,13 @@
+.sharing-item {
+    padding: 8px 12px;
+    border-radius: var(--radius-8);
+    background-color: var(--light);
+    border: 1px solid var(--secondary-4);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background: var(--secondary-1);
+    }
+}
