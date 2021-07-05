@@ -8,6 +8,7 @@
 /public/images
 /public/admin
 /public/vendor
+/public/uploads
 /storage/*.key
 /vendor
 .env
