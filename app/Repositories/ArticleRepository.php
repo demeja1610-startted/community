@@ -7,7 +7,7 @@ use App\Models\Article;
 class ArticleRepository
 {
     public function articleList() {
-        return Article::query()->with(['categories', 'tags', 'user', 'user.avatar', 'images'])->withCount(['comments', 'likes']);
+        return Article::query()->with(['categories', 'tags', 'user', 'user.avatar', 'images'])->withCount(['comments']);
     }
 
     public function popularArticles() {
