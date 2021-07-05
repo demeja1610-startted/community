@@ -17,7 +17,7 @@ class ArticleRepository
     public function singlePageArticle($slug)
     {
         return Article::where('slug', $slug)
-            ->with(['categories', 'tags', 'images']);
+            ->with(['categories', 'tags', 'images', 'user', 'user.avatar']);
     }
 
     public function adminSingleArticle($article_id) {

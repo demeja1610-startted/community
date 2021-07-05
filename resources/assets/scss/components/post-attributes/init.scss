@@ -1,0 +1,36 @@
+.post-attributes {
+    display: flex;
+    align-items: center;
+
+    &__item {
+        margin-right: 12px;
+        text-decoration: none;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    &__category {
+        font-size: 15px;
+        line-height: 24px;
+        letter-spacing: -0.13px;
+        border: 1px solid var(--secondary-2);
+        border-radius: var(--radius-8);
+        color: var(--secondary-7);
+        padding: 4px 12px;
+
+        &:hover {
+            background-color: var(--secondary-1);
+        }
+    }
+
+    &__tag {
+        color: var(--secondary);
+        font-size: 15px;
+
+        &:hover {
+            color: var(--link-color-hover);
+        }
+    }
+}

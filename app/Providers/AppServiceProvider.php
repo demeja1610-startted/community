@@ -50,8 +50,8 @@ class AppServiceProvider extends ServiceProvider
         View::composer('layouts.app', function ($view) {
             $commentRepository = new CommentRepository();
             $articleRepository = new ArticleRepository();
-            $comments = $commentRepository->popularComments()->limit(5)->get();
-            $popularArticles = $articleRepository->popularArticles()->limit(4)->get();
+            $comments = $commentRepository->popularComments()->take(5)->get();
+            $popularArticles = $articleRepository->popularArticles()->take(4)->get();
             $comments->map(function($comment) {
                 $routeName = ModelRouteHelper::getPageRouteName($comment->commentable, 'single');
 
