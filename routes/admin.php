@@ -3,12 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Enum\RouteNames\AdminRouteNamesEnum;
 use App\Http\Controllers\Admin\ATagController;
+use App\Http\Controllers\Admin\AUserController;
 use App\Http\Controllers\Admin\AIndexController;
 use App\Http\Controllers\Admin\AArticleController;
 use App\Http\Controllers\Admin\ACommentController;
+use App\Http\Controllers\Admin\AGalleryController;
 use App\Http\Controllers\Admin\ACategoryController;
 use App\Http\Controllers\Admin\AQuestionController;
-use App\Http\Controllers\Admin\AUserController;
 
 Route::get('/', [AIndexController::class, 'index'])->name(AdminRouteNamesEnum::page_index);
 
@@ -68,4 +69,14 @@ Route::group(['prefix' => 'users'], function () {
     Route::patch('/{user_id}', [AUserController::class, 'update'])->name(AdminRouteNamesEnum::users_update);
     Route::delete('/{user_id}', [AUserController::class, 'destroy'])->name(AdminRouteNamesEnum::users_destroy);
     Route::patch('/{user_id}/toggle-ban/', [AUserController::class, 'toggleBan'])->name(AdminRouteNamesEnum::users_toggle_ban);
+});
+
+Route::group(['prefix' => 'gallery'], function () {
+    Route::get('/', [AGalleryController::class, 'index'])->name(AdminRouteNamesEnum::page_gallery_index);
+    // Route::get('/create', [AUserController::class, 'create'])->name(AdminRouteNamesEnum::page_users_create);
+    // Route::get('/{user_id}', [AUserController::class, 'edit'])->name(AdminRouteNamesEnum::page_users_edit);
+
+    // Route::patch('/{user_id}', [AUserController::class, 'update'])->name(AdminRouteNamesEnum::users_update);
+    // Route::delete('/{user_id}', [AUserController::class, 'destroy'])->name(AdminRouteNamesEnum::users_destroy);
+    // Route::patch('/{user_id}/toggle-ban/', [AUserController::class, 'toggleBan'])->name(AdminRouteNamesEnum::users_toggle_ban);
 });

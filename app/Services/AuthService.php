@@ -16,6 +16,7 @@ class AuthService
         try {
             $user = new User($credentials);
             $user->password = Hash::make($credentials['password']);
+
             $success = $user->save();
 
             if(!$success) {
@@ -40,6 +41,9 @@ class AuthService
                 throw new Exception('Неверный email или пароль', 401);
             }
 
+            $user = Auth::user();
+            $user->createToken('login_token');
+
             return $canLogin;
         } catch (Exception $ex) {
             return (object) [
@@ -52,6 +56,9 @@ class AuthService
     public function logout()
     {
         try {
+            $user = Auth::user();
+            $user->tokens()->where('name', 'login_token')->delete();
+
             $success = Auth::logout();
 
             if (!$success) {
