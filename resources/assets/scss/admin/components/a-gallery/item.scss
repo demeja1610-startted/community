@@ -1,0 +1,14 @@
+.a-gallery {
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding-bottom: 56.25%;
+        overflow: hidden;
+        border-radius: calc(var(--spacer) / 4);
+        border: 1px solid #ddd;
+        position: relative;
+    }
+}

@@ -47,7 +47,7 @@ class AdminRouteNamesEnum {
     public const page_gallery_index = 'page.admin.gallery.index';
     // public const page_users_create = 'page.admin.users.create';
     // public const page_users_edit = 'page.admin.users.edit';
-    // public const users_store = 'admin.users.store';
+    // public const gallery_store = 'admin.gallery.store';
     // public const users_update = 'admin.users.update';
     // public const users_destroy = 'admin.users.delete';
     // public const users_toggle_ban = 'admin.users.toggleBan';

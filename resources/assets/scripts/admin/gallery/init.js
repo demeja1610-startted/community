@@ -1,12 +1,7 @@
-import lightgallery from 'lightgallery.js';
+import { lightbox } from "./lightbox";
+import {uploadInput} from './upload-input';
 
 export function gallery() {
-    let galleries = document.querySelectorAll('.gallery');
-
-    galleries.forEach(gallery => {
-        lightGallery(gallery, {
-            selector: '.gallery-item',
-            speed: 500,
-        });
-    })
+    lightbox();
+    uploadInput();
 }

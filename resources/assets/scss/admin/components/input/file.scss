@@ -1,0 +1,23 @@
+.custom-file {
+    &-label {
+        &::after {
+            content: unset !important;
+        }
+
+        &__text {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 3;
+            display: block;
+            height: 2.25rem;
+            padding: .375rem .75rem;
+            line-height: 1.5;
+            color: var(--secondary);
+            background-color: var(--light);
+            border-left: inherit;
+            border-radius: 0 calc(var(--spacer) / 4) calc(var(--spacer) / 4) 0;
+        }
+    }
+}
