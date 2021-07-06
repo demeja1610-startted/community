@@ -2,18 +2,7 @@
 
 @section('layoutContent')
     <div class="row mt-2">
-        <div class="col-12 mb-2">
-            @include('admin.components/input/file', [
-                'labelText' => 'Выбрать',
-                'inputText' => 'Добавить изображение',
-                'id' => 'images',
-                'name' => 'images[]',
-                'multiple' => true,
-                'inputClasses' => 'a-gallery-image-upload',
-                'url' => route(apiAdminRouterNames()::gallery_store),
-                'csrf' => csrf_token(),
-            ])
-        </div>
+        @include('admin.components/gallery/header')
 
         @component('admin.components/gallery/wrap')
             @slot('images', $images)
