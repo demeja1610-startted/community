@@ -26,7 +26,7 @@ class ImageSeeder extends Seeder
      */
     public function run()
     {
-        $savedImage = $this->imageService->saveFromURL('https://source.unsplash.com/random');
+        $savedImage = $this->imageService->saveFromURL('https://loremflickr.com/320/240');
 
         if(!isset($savedImage->error)) {
             $image = new Image([
